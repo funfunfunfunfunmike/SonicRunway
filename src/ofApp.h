@@ -6,7 +6,16 @@
 
 #include "Audio.hpp"
 #include "AudioUI.hpp"
+#include "Settings.hpp"
+#include "Cues.hpp"
+#include "LightArray.hpp"
+#include "GridDisplay.hpp"
+#include "OnsetPattern.hpp"
 
+///
+/// Main openFrameworks app.  This handles creating a window,
+/// getting events, and drawing.
+///
 class ofApp : public ofBaseApp{
 
 public:
@@ -30,6 +39,11 @@ public:
     void audioOut();
 
 private:
+    SrSettings _settings;
+    SrCues _cues;
+    SrLightArray _lightArray;
     SrAudio _audio;
     SrAudioUI _audioUI;
+    SrOnsetPattern _onsetPattern;
+    SrGridDisplay _gridDisplay;
 };

@@ -64,19 +64,23 @@ void
 SrAudioUI::Draw()
 {
     // update beat info
+    /*
     if (_audio->BeatReceived()) {
         ofSetColor(ofColor::green);
-        ofRect(90,150,50,50);
+        ofDrawRectangle(90,150,50,50);
     }
+     */
     
     // update onset info
+    /*
     if (_audio->OnsetReceived()) {
         ofSetColor(ofColor::red);
-        ofRect(250 + 90,150,50,50);
+        ofDrawRectangle(250 + 90,150,50,50);
         _gotOnsetSlider = 1;
     } else {
         _gotOnsetSlider = 0;
     }
+     */
     
     _beatGui.draw();
     _onsetGui.draw();

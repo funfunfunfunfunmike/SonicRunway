@@ -16,9 +16,15 @@
 
 class ofApp;
 
+///
+/// SrAudio - Audio input and processing.
+///
+/// This is a wrapper class on the ofxAubio extension, consolidating
+/// various aspects of audio processing.
+///
 class SrAudio {
 public:
-    void Setup(ofApp *app);
+    void Setup();
     void Update();
     void Exit();
     

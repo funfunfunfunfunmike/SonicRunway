@@ -15,7 +15,7 @@
 #include "ofxGui.h"
 
 void
-SrAudio::Setup(ofApp *app)
+SrAudio::Setup()
 {
     
     _onset.setup();
@@ -27,7 +27,6 @@ SrAudio::Setup(ofApp *app)
 void
 SrAudio::Update()
 {
-    printf("SrAudio::update\n");
     
 }
 

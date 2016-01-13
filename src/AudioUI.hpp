@@ -16,6 +16,9 @@
 
 class SrAudio;
 
+///
+/// SrAudioUI - Draw some sliders showing audio algorithm settings
+///
 class SrAudioUI {
 public:
     void Setup(SrAudio * audio, float x, float y);
