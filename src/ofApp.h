@@ -8,7 +8,10 @@ class SrApp;
 
 ///
 /// Main openFrameworks app.  This handles creating a window,
-/// getting events, and drawing.
+/// and receiving events from the of framework.  The rest of
+/// the implementation is delegated to an instance of SrApp
+/// so we can follow a more traditional constructor/destructor
+/// pattern.
 ///
 class ofApp : public ofBaseApp{
 

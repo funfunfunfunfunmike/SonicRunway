@@ -19,6 +19,10 @@
 #include "GridDisplay.hpp"
 #include "OnsetPattern.hpp"
 
+///
+/// Main app.  Much like ofApp, but with constructor/destructor
+/// instead of setup/exit.
+///
 class SrApp {
 public:
     SrApp();
