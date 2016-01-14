@@ -14,24 +14,20 @@
 #include "ofxAubio.h"
 #include "ofxGui.h"
 
-void
-SrAudio::Setup()
+SrAudio::SrAudio()
 {
-    
     _onset.setup();
     _beat.setup();
     _bands.setup();
+}
+
+SrAudio::~SrAudio()
+{
     
 }
 
 void
 SrAudio::Update()
-{
-    
-}
-
-void
-SrAudio::Exit()
 {
     
 }

@@ -32,15 +32,14 @@ SrCue::GetAge(const SrTime &now) const
 
 ////////////////////////////
 
-void
-SrCues::Setup(SrAudio *audio)
+SrCues::SrCues(SrAudio *audio) :
+    _audio(audio),
+    _initialTime(std::chrono::system_clock::now())
 {
-    _audio = audio;
-    _initialTime = std::chrono::system_clock::now();
+    
 }
 
-void
-SrCues::Exit()
+SrCues::~SrCues()
 {
     
 }

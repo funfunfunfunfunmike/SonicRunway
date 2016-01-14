@@ -23,11 +23,12 @@ class SrCues;
 ///
 class SrOnsetPattern {
 public:
-    void Setup(SrSettings * settings,
-               SrLightArray * lightArray,
-               SrCues * cues);
+    SrOnsetPattern(SrSettings * settings,
+                   SrLightArray * lightArray,
+                   SrCues * cues);
+    ~SrOnsetPattern();
+    
     void Update(const SrTime & now);
-    void Exit();
     
 private:
     SrSettings *_settings;

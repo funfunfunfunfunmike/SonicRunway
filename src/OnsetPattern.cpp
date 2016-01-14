@@ -12,18 +12,17 @@
 #include "Cues.hpp"
 #include "ofMain.h"
 
-void
-SrOnsetPattern::Setup(SrSettings * settings,
-                     SrLightArray * lightArray,
-                     SrCues * cues)
+SrOnsetPattern::SrOnsetPattern(SrSettings * settings,
+                               SrLightArray * lightArray,
+                               SrCues * cues) :
+    _settings(settings),
+    _lightArray(lightArray),
+    _cues(cues)
 {
-    _settings = settings;
-    _lightArray = lightArray;
-    _cues = cues;
+    
 }
 
-void
-SrOnsetPattern::Exit()
+SrOnsetPattern::~SrOnsetPattern()
 {
     
 }

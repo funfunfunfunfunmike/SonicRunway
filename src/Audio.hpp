@@ -24,9 +24,10 @@ class ofApp;
 ///
 class SrAudio {
 public:
-    void Setup();
+    SrAudio();
+    ~SrAudio();
+    
     void Update();
-    void Exit();
     
     void AudioIn(float * input, int bufferSize, int nChannels);
     

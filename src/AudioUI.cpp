@@ -14,8 +14,8 @@
 
 #include "ofMain.h"
 
-void
-SrAudioUI::Setup(SrAudio * audio, float x, float y)
+SrAudioUI::SrAudioUI(SrAudio * audio, float x, float y) :
+    _audio(audio)
 {
     _audio = audio;
     
@@ -42,8 +42,7 @@ SrAudioUI::Setup(SrAudio * audio, float x, float y)
     }
 }
 
-void
-SrAudioUI::Exit()
+SrAudioUI::~SrAudioUI()
 {
     
 }
@@ -63,25 +62,6 @@ SrAudioUI::Update()
 void
 SrAudioUI::Draw()
 {
-    // update beat info
-    /*
-    if (_audio->BeatReceived()) {
-        ofSetColor(ofColor::green);
-        ofDrawRectangle(90,150,50,50);
-    }
-     */
-    
-    // update onset info
-    /*
-    if (_audio->OnsetReceived()) {
-        ofSetColor(ofColor::red);
-        ofDrawRectangle(250 + 90,150,50,50);
-        _gotOnsetSlider = 1;
-    } else {
-        _gotOnsetSlider = 0;
-    }
-     */
-    
     _beatGui.draw();
     _onsetGui.draw();
     

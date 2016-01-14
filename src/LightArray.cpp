@@ -9,12 +9,17 @@
 #include "LightArray.hpp"
 #include "Settings.hpp"
 
-void
-SrLightArray::Setup(const SrSettings & settings)
+SrLightArray::SrLightArray(const SrSettings & settings) :
+    _numX(settings.GetNumStations()),
+    _numY(settings.GetLightsPerStation()),
+    _data(_numX * _numY)
 {
-    _numX = settings.GetNumStations();
-    _numY = settings.GetLightsPerStation();
-    _data.resize(_numX * _numY);
+    
+}
+
+SrLightArray::~SrLightArray()
+{
+    
 }
 
 void

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		101D2DB773940813A5C898CD /* ofxAubioPitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93CAC8A94359FD331BAD8CFA /* ofxAubioPitch.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
+		306565A31C472E7C00917ADB /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306565A11C472E7C00917ADB /* App.cpp */; };
 		30AC5FE01C44164F00B793E9 /* Cues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30AC5FDE1C44164F00B793E9 /* Cues.cpp */; };
 		30AC5FE31C447F6F00B793E9 /* GridDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30AC5FE11C447F6F00B793E9 /* GridDisplay.cpp */; };
 		30AC5FE91C44886F00B793E9 /* OnsetPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30AC5FE71C44886F00B793E9 /* OnsetPattern.cpp */; };
@@ -71,6 +72,8 @@
 		1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGuiGroup.h; path = ../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
 		238BB8FC8860C7A7012B2E27 /* ofxAubioMelBands.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAubioMelBands.h; path = ../../../addons/ofxAubio/src/ofxAubioMelBands.h; sourceTree = SOURCE_ROOT; };
 		2834D88A62CD23F3DE2C47D1 /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxButton.h; path = ../../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
+		306565A11C472E7C00917ADB /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
+		306565A21C472E7C00917ADB /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
 		30AC5FDE1C44164F00B793E9 /* Cues.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cues.cpp; sourceTree = "<group>"; };
 		30AC5FDF1C44164F00B793E9 /* Cues.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Cues.hpp; sourceTree = "<group>"; };
 		30AC5FE11C447F6F00B793E9 /* GridDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridDisplay.cpp; sourceTree = "<group>"; };
@@ -250,6 +253,8 @@
 				30AC5FE71C44886F00B793E9 /* OnsetPattern.cpp */,
 				30AC5FE81C44886F00B793E9 /* OnsetPattern.hpp */,
 				30AC5FEA1C448C7600B793E9 /* Types.hpp */,
+				306565A11C472E7C00917ADB /* App.cpp */,
+				306565A21C472E7C00917ADB /* App.hpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -359,6 +364,7 @@
 				67383740F5CC47ED5F955A76 /* ofxAubioMelBands.cpp in Sources */,
 				9C7B8B4D99CDFC508E76CC3A /* ofxAubioOnset.cpp in Sources */,
 				30AEA5981C4052A80034C794 /* README.md in Sources */,
+				306565A31C472E7C00917ADB /* App.cpp in Sources */,
 				30C844361C42C17E006452BE /* AudioUI.cpp in Sources */,
 				101D2DB773940813A5C898CD /* ofxAubioPitch.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,

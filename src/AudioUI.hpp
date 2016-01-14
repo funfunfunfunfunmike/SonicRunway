@@ -21,10 +21,11 @@ class SrAudio;
 ///
 class SrAudioUI {
 public:
-    void Setup(SrAudio * audio, float x, float y);
+    SrAudioUI(SrAudio * audio, float x, float y);
+    ~SrAudioUI();
+    
     void Update();
     void Draw();
-    void Exit();
     
 private:
     

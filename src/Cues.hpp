@@ -41,9 +41,10 @@ typedef std::deque<SrCue> SrQueue;
 class SrCues {
    
 public:
-    void Setup(SrAudio *audio);
+    SrCues(SrAudio *audio);
+    ~SrCues();
+    
     void Update(const SrTime & now);
-    void Exit();
     
     const SrQueue & GetBeatQueue() const;
     const SrQueue & GetOnsetQueue() const;

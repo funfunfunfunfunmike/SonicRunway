@@ -24,7 +24,8 @@ class SrSettings;
 ///
 class SrLightArray {
 public:
-    void Setup(const SrSettings & settings);
+    SrLightArray(const SrSettings &settings);
+    ~SrLightArray();
     
     void SetColor(size_t x, size_t y, const ofColor & color);
     void AddColor(size_t x, size_t y, const ofColor & color);

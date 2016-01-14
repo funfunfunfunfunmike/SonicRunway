@@ -4,13 +4,7 @@
 #include "ofxAubio.h"
 #include "ofxGui.h"
 
-#include "Audio.hpp"
-#include "AudioUI.hpp"
-#include "Settings.hpp"
-#include "Cues.hpp"
-#include "LightArray.hpp"
-#include "GridDisplay.hpp"
-#include "OnsetPattern.hpp"
+class SrApp;
 
 ///
 /// Main openFrameworks app.  This handles creating a window,
@@ -24,7 +18,10 @@ public:
 
     void update();
     void draw();
+    
+    void audioIn(float * input, int bufferSize, int nChannels);
 
+    /*
     void keyPressed(int key);
     void keyReleased(int key);
     void mouseMoved(int x, int y );
@@ -34,16 +31,10 @@ public:
     void windowResized(int w, int h);
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
-
-    void audioIn(float * input, int bufferSize, int nChannels);
     void audioOut();
+     */
+
 
 private:
-    SrSettings _settings;
-    SrCues _cues;
-    SrLightArray _lightArray;
-    SrAudio _audio;
-    SrAudioUI _audioUI;
-    SrOnsetPattern _onsetPattern;
-    SrGridDisplay _gridDisplay;
+    SrApp *_app;
 };

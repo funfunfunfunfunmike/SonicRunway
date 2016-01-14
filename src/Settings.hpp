@@ -16,9 +16,10 @@
 ///
 class SrSettings {
 public:
-    void Setup();
+    SrSettings();
+    ~SrSettings();
+    
     void Update();
-    void Exit();
     
     int GetNumStations() const;
     int GetLightsPerStation() const;

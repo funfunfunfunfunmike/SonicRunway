@@ -20,13 +20,14 @@ class SrSettings;
 ///
 class SrGridDisplay {
 public:
-    void Setup(SrLightArray * lightArray,
-               SrSettings * settings,
-               float x, float y,
-               float width, float height);
+    SrGridDisplay(SrLightArray * lightArray,
+                  SrSettings * settings,
+                  float x, float y,
+                  float width, float height);
+    ~SrGridDisplay();
+    
     void Update();
     void Draw();
-    void Exit();
     
 private:
     SrLightArray *_lightArray;

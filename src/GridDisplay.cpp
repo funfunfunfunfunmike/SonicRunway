@@ -12,20 +12,24 @@
 
 #include "ofMain.h"
 
-void
-SrGridDisplay::Setup(SrLightArray *lightArray,
-                     SrSettings *settings,
-                     float x, float y,
-                     float width, float height)
+SrGridDisplay::SrGridDisplay(SrLightArray *lightArray,
+                             SrSettings *settings,
+                             float x, float y,
+                             float width, float height) :
+    _lightArray(lightArray),
+    _settings(settings),
+    _x(x),
+    _y(y),
+    _width(width),
+    _height(height)
 {
-    _lightArray = lightArray;
-    _settings = settings;
-    _x = x;
-    _y = y;
-    _width = width;
-    _height = height;
+    
 }
 
+SrGridDisplay::~SrGridDisplay()
+{
+    
+}
 void
 SrGridDisplay::Update()
 {
@@ -60,10 +64,4 @@ SrGridDisplay::Draw()
         }
     }
         
-}
-
-void
-SrGridDisplay::Exit()
-{
-    
 }

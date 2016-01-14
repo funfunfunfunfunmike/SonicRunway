@@ -8,13 +8,18 @@
 
 #include "Settings.hpp"
 
-void
-SrSettings::Setup()
+SrSettings::SrSettings() :
+    _numStations(30),
+    _lightsPerStation(16),
+    _runwayLength(1000.0), // feet
+    _speedOfSound(1126.0)  // feet per second
 {
-    _numStations = 30;
-    _lightsPerStation = 16;
-    _runwayLength = 1000.0; // feet
-    _speedOfSound = 1126.0; // feet per second
+    
+}
+
+SrSettings::~SrSettings()
+{
+    
 }
 
 int
