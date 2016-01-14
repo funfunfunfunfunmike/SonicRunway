@@ -18,6 +18,7 @@
 #include "LightArray.hpp"
 #include "GridDisplay.hpp"
 #include "OnsetPattern.hpp"
+#include "Artnet.hpp"
 
 ///
 /// Main app.  Much like ofApp, but with constructor/destructor
@@ -41,6 +42,7 @@ private:
     SrAudioUI _audioUI;
     SrOnsetPattern _onsetPattern;
     SrGridDisplay _gridDisplay;
+    SrArtnet _artnet;
 };
 
 #endif

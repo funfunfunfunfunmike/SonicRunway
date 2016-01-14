@@ -13,9 +13,10 @@ SrApp::SrApp() :
     _audio(),
     _cues(&_audio),
     _lightArray(_settings),
-    _audioUI(&_audio, 10.0, 10.0),
+     _audioUI(&_audio, 10.0, 10.0),
     _onsetPattern(&_settings, &_lightArray, &_cues),
-    _gridDisplay(&_lightArray, &_settings, 10.0, 230.0, 930.0, 300.0)
+    _gridDisplay(&_lightArray, &_settings, 10.0, 230.0, 930.0, 300.0),
+    _artnet()
 {
     
 }
