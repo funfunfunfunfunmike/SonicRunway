@@ -14,6 +14,11 @@
 #include <stdio.h>
 #include "ofxAubio.h"
 
+/*
+#include <essentia/essentia.h>
+#include <essentia/algorithmfactory.h>
+ */
+
 class ofApp;
 
 ///
@@ -46,6 +51,8 @@ public:
     float * GetBandsEnergies() const;
     
 private:
+    //essentia::standard::Algorithm *_bandPass;
+    
     ofxAubioOnset _onset;
     ofxAubioBeat _beat;
     ofxAubioMelBands _bands;

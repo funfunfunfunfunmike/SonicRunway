@@ -19,6 +19,10 @@ Mac install instructions:
   Find 'aubio.framework' (under the parent directory)
   Move it to /Users/youruserid/Library/Frameworks (create directory if necessary)
 
+- Install essentia audio analysis library (with homebrew):
+    https://github.com/MTG/homebrew-essentia
+    This should end up under /usr/local/
+
 - Clone this repo under <yourOpenFramworksDir>/apps/myApps/
 
 - Open SonicRunway.xcodeproj

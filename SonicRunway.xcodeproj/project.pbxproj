@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		101D2DB773940813A5C898CD /* ofxAubioPitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93CAC8A94359FD331BAD8CFA /* ofxAubioPitch.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
+		300CF0471C652BD800295FBF /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF03C1C652BD800295FBF /* libavcodec.a */; };
+		300CF0481C652BD800295FBF /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF03D1C652BD800295FBF /* libavformat.a */; };
+		300CF0491C652BD800295FBF /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF03E1C652BD800295FBF /* libavresample.a */; };
+		300CF04A1C652BD800295FBF /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF03F1C652BD800295FBF /* libavutil.a */; };
+		300CF04B1C652BD800295FBF /* libessentia.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0401C652BD800295FBF /* libessentia.dylib */; };
+		300CF04C1C652BD800295FBF /* libfftw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0411C652BD800295FBF /* libfftw3.a */; };
+		300CF04D1C652BD800295FBF /* libfftw3f.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0421C652BD800295FBF /* libfftw3f.a */; };
+		300CF04E1C652BD800295FBF /* libsamplerate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0431C652BD800295FBF /* libsamplerate.a */; };
+		300CF04F1C652BD800295FBF /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0441C652BD800295FBF /* libswresample.a */; };
+		300CF0501C652BD800295FBF /* libtag.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0451C652BD800295FBF /* libtag.dylib */; };
+		300CF0511C652BD800295FBF /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0461C652BD800295FBF /* libyaml.a */; };
 		306565A31C472E7C00917ADB /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306565A11C472E7C00917ADB /* App.cpp */; };
 		308CEE551C48593A007C124A /* artnet.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE481C48593A007C124A /* artnet.c */; };
 		308CEE561C48593A007C124A /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE4C1C48593A007C124A /* misc.c */; };
@@ -79,6 +90,17 @@
 		1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGuiGroup.h; path = ../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
 		238BB8FC8860C7A7012B2E27 /* ofxAubioMelBands.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAubioMelBands.h; path = ../../../addons/ofxAubio/src/ofxAubioMelBands.h; sourceTree = SOURCE_ROOT; };
 		2834D88A62CD23F3DE2C47D1 /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxButton.h; path = ../../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
+		300CF03C1C652BD800295FBF /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = ../../../../../../../../usr/local/lib/libavcodec.a; sourceTree = "<group>"; };
+		300CF03D1C652BD800295FBF /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = ../../../../../../../../usr/local/lib/libavformat.a; sourceTree = "<group>"; };
+		300CF03E1C652BD800295FBF /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavresample.a; path = ../../../../../../../../usr/local/lib/libavresample.a; sourceTree = "<group>"; };
+		300CF03F1C652BD800295FBF /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = ../../../../../../../../usr/local/lib/libavutil.a; sourceTree = "<group>"; };
+		300CF0401C652BD800295FBF /* libessentia.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libessentia.dylib; path = ../../../../../../../../usr/local/lib/libessentia.dylib; sourceTree = "<group>"; };
+		300CF0411C652BD800295FBF /* libfftw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfftw3.a; path = ../../../../../../../../usr/local/lib/libfftw3.a; sourceTree = "<group>"; };
+		300CF0421C652BD800295FBF /* libfftw3f.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfftw3f.a; path = ../../../../../../../../usr/local/lib/libfftw3f.a; sourceTree = "<group>"; };
+		300CF0431C652BD800295FBF /* libsamplerate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsamplerate.a; path = ../../../../../../../../usr/local/lib/libsamplerate.a; sourceTree = "<group>"; };
+		300CF0441C652BD800295FBF /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = ../../../../../../../../usr/local/lib/libswresample.a; sourceTree = "<group>"; };
+		300CF0451C652BD800295FBF /* libtag.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtag.dylib; path = ../../../../../../../../usr/local/lib/libtag.dylib; sourceTree = "<group>"; };
+		300CF0461C652BD800295FBF /* libyaml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyaml.a; path = ../../../../../../../../usr/local/lib/libyaml.a; sourceTree = "<group>"; };
 		306565A11C472E7C00917ADB /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
 		306565A21C472E7C00917ADB /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
 		308CEE481C48593A007C124A /* artnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = artnet.c; sourceTree = "<group>"; };
@@ -151,8 +173,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				300CF04A1C652BD800295FBF /* libavutil.a in Frameworks */,
+				300CF0511C652BD800295FBF /* libyaml.a in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
+				300CF04D1C652BD800295FBF /* libfftw3f.a in Frameworks */,
+				300CF04C1C652BD800295FBF /* libfftw3.a in Frameworks */,
 				30C3F40A1C4046DE00184240 /* aubio.framework in Frameworks */,
+				300CF04B1C652BD800295FBF /* libessentia.dylib in Frameworks */,
+				300CF0471C652BD800295FBF /* libavcodec.a in Frameworks */,
+				300CF04E1C652BD800295FBF /* libsamplerate.a in Frameworks */,
+				300CF0481C652BD800295FBF /* libavformat.a in Frameworks */,
+				300CF0501C652BD800295FBF /* libtag.dylib in Frameworks */,
+				300CF04F1C652BD800295FBF /* libswresample.a in Frameworks */,
+				300CF0491C652BD800295FBF /* libavresample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +307,17 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				300CF03C1C652BD800295FBF /* libavcodec.a */,
+				300CF03D1C652BD800295FBF /* libavformat.a */,
+				300CF03E1C652BD800295FBF /* libavresample.a */,
+				300CF03F1C652BD800295FBF /* libavutil.a */,
+				300CF0401C652BD800295FBF /* libessentia.dylib */,
+				300CF0411C652BD800295FBF /* libfftw3.a */,
+				300CF0421C652BD800295FBF /* libfftw3f.a */,
+				300CF0431C652BD800295FBF /* libsamplerate.a */,
+				300CF0441C652BD800295FBF /* libswresample.a */,
+				300CF0451C652BD800295FBF /* libtag.dylib */,
+				300CF0461C652BD800295FBF /* libyaml.a */,
 				308CEE461C48593A007C124A /* Vendor */,
 				30AEA5971C4052A80034C794 /* README.md */,
 				30C3F4091C4046DE00184240 /* aubio.framework */,
@@ -544,12 +588,16 @@
 					"$(OF_CORE_HEADERS)",
 					../../../addons/ofxAubio/src,
 					../../../addons/ofxGui/src,
+					/usr/local/include,
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
 			};
@@ -573,12 +621,16 @@
 					"$(OF_CORE_HEADERS)",
 					../../../addons/ofxAubio/src,
 					../../../addons/ofxGui/src,
+					/usr/local/include,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
