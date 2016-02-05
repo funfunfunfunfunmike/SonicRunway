@@ -23,6 +23,7 @@ public:
     void draw();
     
     void audioIn(float * input, int bufferSize, int nChannels);
+    void audioOut(float * output, int bufferSize, int nChannels);
 
     /*
     void keyPressed(int key);

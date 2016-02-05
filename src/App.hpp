@@ -31,8 +31,8 @@ public:
     
     void Update();
     void Draw();
-    void AudioIn(float * input, int bufferSize,
-                 int nChannels);
+    void AudioIn(float * input, int bufferSize, int nChannels);
+    void AudioOut(float * output, int buferSize, int nChannels);
     
 private:
     SrSettings _settings;

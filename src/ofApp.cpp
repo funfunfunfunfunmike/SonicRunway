@@ -10,9 +10,6 @@ void ofApp::setup(){
     
     // set the size of the window
     ofSetWindowShape(950, 550);
-    
-    ofSoundStreamSetup(2 /* nOutputs */,
-                       2 /* nInputs */, this);
 }
 
 void ofApp::exit(){
@@ -24,6 +21,10 @@ void ofApp::exit(){
 
 void ofApp::audioIn(float * input, int bufferSize, int nChannels){
     _app->AudioIn(input, bufferSize, nChannels);
+}
+
+void ofApp::audioOut(float * output, int bufferSize, int nChannels) {
+    _app->AudioOut(output, bufferSize, nChannels);
 }
 
 //--------------------------------------------------------------

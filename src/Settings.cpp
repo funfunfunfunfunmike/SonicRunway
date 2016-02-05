@@ -12,7 +12,10 @@ SrSettings::SrSettings() :
     _numStations(30),
     _lightsPerStation(16),
     _runwayLength(1000.0), // feet
-    _speedOfSound(1126.0)  // feet per second
+    _speedOfSound(1126.0),  // feet per second
+    _sampleRate(44100),
+    _bufferSize(256),
+    _numChannels(1)
 {
     
 }
@@ -50,4 +53,22 @@ float
 SrSettings::ComputeDelayPerStation() const
 {
     return GetRunwayLength() / GetNumStations() / GetSpeedOfSound();
+}
+
+int
+SrSettings::GetSampleRate() const
+{
+    return _sampleRate;
+}
+
+int
+SrSettings::GetBufferSize() const
+{
+    return _bufferSize;
+}
+
+int
+SrSettings::GetNumChannels() const
+{
+    return _numChannels;
 }

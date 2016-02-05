@@ -14,12 +14,14 @@
 #include <stdio.h>
 #include "ofxAubio.h"
 
-/*
 #include <essentia/essentia.h>
 #include <essentia/algorithmfactory.h>
- */
 
 class ofApp;
+class SrSettings;
+
+// XXX this should be defined in essentia somewhere..
+typedef float Real;
 
 ///
 /// SrAudio - Audio input and processing.
@@ -29,12 +31,13 @@ class ofApp;
 ///
 class SrAudio {
 public:
-    SrAudio();
+    SrAudio(const SrSettings &settings);
     ~SrAudio();
     
     void Update();
     
     void AudioIn(float * input, int bufferSize, int nChannels);
+    void AudioOut(float * output, int bufferSize, int nChannels);
     
     // Beat
     bool BeatReceived();
@@ -51,11 +54,17 @@ public:
     float * GetBandsEnergies() const;
     
 private:
-    //essentia::standard::Algorithm *_bandPass;
+    int _sampleRate;
+    int _bufferSize;
+    
+    essentia::standard::Algorithm *_bandPass;
     
     ofxAubioOnset _onset;
     ofxAubioBeat _beat;
     ofxAubioMelBands _bands;
+    
+    vector<Real> _inputBuffer;
+    vector<Real> _bandPassBuffer;
 };
 
 #endif

@@ -29,12 +29,18 @@ public:
     
     float ComputeDelayPerStation() const; // in seconds
     
+    int GetSampleRate() const;
+    int GetBufferSize() const;
+    int GetNumChannels() const;
+    
 private:
     int _numStations;
     int _lightsPerStation;
     float _runwayLength;
     float _speedOfSound;
-    
+    int _sampleRate;
+    int _bufferSize;
+    int _numChannels;
 };
 
 #endif
