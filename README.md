@@ -23,7 +23,7 @@ Mac install instructions:
     https://github.com/MTG/homebrew-essentia
     This should end up under /usr/local/
 
-- Clone this repo under <yourOpenFramworksDir>/apps/myApps/
+- Clone this repo under (yourOpenFramworksDir)/apps/myApps/
 
 - Open SonicRunway.xcodeproj
 
@@ -43,3 +43,15 @@ https://code.google.com/p/open-lighting/downloads/list
 
 ... but included in this project (along with attribution/copying info)
 
+TODO:
+
+- RJ:  Separate incoming signal into high/mid/low and do offset 
+       detection on each.
+
+- Make a 3D tunnel visualization to match the structure
+
+- Add beat-based patterns
+
+- Add EQ-based patterns
+
+- Add some UI with knobs for various settings
