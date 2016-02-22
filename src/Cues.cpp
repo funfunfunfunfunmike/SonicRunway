@@ -51,7 +51,9 @@ SrCues::Update(const SrTime &now)
     
     // Remove any cues that are outdated
     _RemoveOutdatedCues(&_beatQueue, expiration);
-    _RemoveOutdatedCues(&_onsetQueue, expiration);
+    _RemoveOutdatedCues(&_lowOnsetQueue, expiration);
+    _RemoveOutdatedCues(&_midOnsetQueue, expiration);
+    _RemoveOutdatedCues(&_highOnsetQueue, expiration);
     
     // Process audio data and push any new cues
     if (_audio->BeatReceived()) {
@@ -59,9 +61,17 @@ SrCues::Update(const SrTime &now)
         _beatQueue.push_back(SrCue(now));
     }
     
-    if (_audio->OnsetReceived()) {
+    if (_audio->LowOnsetReceived()) {
         std::chrono::duration<float> timeSince = now - _initialTime;
-        _onsetQueue.push_back(SrCue(now));
+        _lowOnsetQueue.push_back(SrCue(now));
+    }
+    if (_audio->MidOnsetReceived()) {
+        std::chrono::duration<float> timeSince = now - _initialTime;
+        _midOnsetQueue.push_back(SrCue(now));
+    }
+    if (_audio->HighOnsetReceived()) {
+        std::chrono::duration<float> timeSince = now - _initialTime;
+        _highOnsetQueue.push_back(SrCue(now));
     }
     
 }
@@ -83,7 +93,19 @@ SrCues::GetBeatQueue() const
 }
 
 const SrQueue &
-SrCues::GetOnsetQueue() const
+SrCues::GetLowOnsetQueue() const
 {
-    return _onsetQueue;
+    return _lowOnsetQueue;
+}
+
+const SrQueue &
+SrCues::GetMidOnsetQueue() const
+{
+    return _midOnsetQueue;
+}
+
+const SrQueue &
+SrCues::GetHighOnsetQueue() const
+{
+    return _highOnsetQueue;
 }

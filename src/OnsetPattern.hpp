@@ -12,10 +12,10 @@
 #include <stdio.h>
 
 #include "Types.hpp"
+#include "Cues.hpp"
 
 class SrSettings;
 class SrLightArray;
-class SrCues;
 
 ///
 /// A pattern that renders 'onset' cues to the lightArray,
@@ -25,16 +25,20 @@ class SrOnsetPattern {
 public:
     SrOnsetPattern(SrSettings * settings,
                    SrLightArray * lightArray,
-                   SrCues * cues);
+                   const SrQueue & queue);
     ~SrOnsetPattern();
     
     void Update(const SrTime & now);
     
+    void SetHue(float hue);
+    void SetYRange(float yMin, float yMax);
+    
 private:
     SrSettings *_settings;
     SrLightArray *_lightArray;
-    SrCues *_cues;
-    
+    const SrQueue & _queue;
+    float _hue;
+    float _yMin, _yMax;
 };
 
 #endif

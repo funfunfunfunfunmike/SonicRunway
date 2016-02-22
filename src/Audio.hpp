@@ -44,11 +44,14 @@ public:
     float GetBPM() const;
     
     // Onset
-    bool OnsetReceived();
     float GetOnsetThreshold() const;
     void SetOnsetThreshold(float threshold);
     float GetOnsetThresholdedNovelty() const;
     float GetOnsetNovelty() const;
+    
+    bool LowOnsetReceived();
+    bool MidOnsetReceived();
+    bool HighOnsetReceived();
     
     // Bands
     float * GetBandsEnergies() const;
@@ -57,14 +60,20 @@ private:
     int _sampleRate;
     int _bufferSize;
     
-    essentia::standard::Algorithm *_bandPass;
+    essentia::standard::Algorithm *_lowPass;
+    essentia::standard::Algorithm *_midPass;
+    essentia::standard::Algorithm *_highPass;
     
-    ofxAubioOnset _onset;
+    ofxAubioOnset _lowOnset;
+    ofxAubioOnset _midOnset;
+    ofxAubioOnset _highOnset;
     ofxAubioBeat _beat;
     ofxAubioMelBands _bands;
     
     vector<Real> _inputBuffer;
-    vector<Real> _bandPassBuffer;
+    vector<Real> _lowPassBuffer;
+    vector<Real> _midPassBuffer;
+    vector<Real> _highPassBuffer;
 };
 
 #endif

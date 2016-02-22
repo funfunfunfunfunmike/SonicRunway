@@ -47,7 +47,9 @@ public:
     void Update(const SrTime & now);
     
     const SrQueue & GetBeatQueue() const;
-    const SrQueue & GetOnsetQueue() const;
+    const SrQueue & GetLowOnsetQueue() const;
+    const SrQueue & GetMidOnsetQueue() const;
+    const SrQueue & GetHighOnsetQueue() const;
     
 private:
     void _RemoveOutdatedCues(SrQueue *queue,
@@ -58,7 +60,9 @@ private:
     SrTime _initialTime;
     
     SrQueue _beatQueue;
-    SrQueue _onsetQueue;
+    SrQueue _lowOnsetQueue;
+    SrQueue _midOnsetQueue;
+    SrQueue _highOnsetQueue;
 };
 
 #endif /* Cues_hpp */

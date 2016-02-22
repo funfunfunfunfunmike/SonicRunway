@@ -25,27 +25,44 @@ SrAudio::SrAudio(const SrSettings & settings) :
     essentia::init();
     AlgorithmFactory & factory = AlgorithmFactory::instance();
     
-    _bandPass = factory.create("BandPass",
+    _lowPass = factory.create("LowPass",
                                "sampleRate", _sampleRate,
-                               "bandwidth", 100,
-                               "cutoffFrequency", 200);
+                               "cutoffFrequency", 1500);
+    _midPass = factory.create("BandPass",
+                               "sampleRate", _sampleRate,
+                               "bandwidth", 3500,
+                               "cutoffFrequency", 5000);
+    _highPass = factory.create("HighPass",
+                               "sampleRate", _sampleRate,
+                               "cutoffFrequency", 5000);
     
     _inputBuffer.resize(_bufferSize);
-    _bandPassBuffer.resize(_bufferSize);
-                        
-    _bandPass->input("signal").set(_inputBuffer);
-    _bandPass->output("signal").set(_bandPassBuffer);
+    _lowPassBuffer.resize(_bufferSize);
+    _midPassBuffer.resize(_bufferSize);
+    _highPassBuffer.resize(_bufferSize);
     
-    _onset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
+    _lowPass->input("signal").set(_inputBuffer);
+    _lowPass->output("signal").set(_lowPassBuffer);
+    _midPass->input("signal").set(_inputBuffer);
+    _midPass->output("signal").set(_midPassBuffer);
+    _highPass->input("signal").set(_inputBuffer);
+    _highPass->output("signal").set(_highPassBuffer);
+    
+    _lowOnset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
+    _midOnset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
+    _highOnset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
     _beat.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
     _bands.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
 }
 
 SrAudio::~SrAudio()
 {
-    delete _bandPass;
+    delete _lowPass;
+    delete _midPass;
+    delete _highPass;
     
     essentia::shutdown();
+    // XXX delete / exit aubio stuff?
 }
 
 void
@@ -62,9 +79,13 @@ SrAudio::AudioIn(float *input, int bufferSize, int nChannels)
         _inputBuffer[i] = input[i * nChannels];
     }
     
-    _bandPass->compute();
+    _lowPass->compute();
+    _midPass->compute();
+    _highPass->compute();
     
-    _onset.audioIn(&_bandPassBuffer[0], bufferSize, nChannels);
+    _lowOnset.audioIn(&_lowPassBuffer[0], bufferSize, nChannels);
+    _midOnset.audioIn(&_midPassBuffer[0], bufferSize, nChannels);
+    _highOnset.audioIn(&_highPassBuffer[0], bufferSize, nChannels);
     _beat.audioIn(input, bufferSize, nChannels);
     _bands.audioIn(input, bufferSize, nChannels);
 }
@@ -74,7 +95,7 @@ SrAudio::AudioOut(float *output, int bufferSize, int nChannels)
 {
     // XXX only handling mono for now.
     for(int i=0; i < bufferSize; i++) {
-        output[i*nChannels] = _bandPassBuffer[i];
+        output[i*nChannels] = _lowPassBuffer[i];
     }
 }
 
@@ -93,31 +114,43 @@ SrAudio::GetBPM() const
 float
 SrAudio::GetOnsetThreshold() const
 {
-    return _onset.threshold;
+    return _lowOnset.threshold;
 }
 
 void
 SrAudio::SetOnsetThreshold(float threshold)
 {
-    _onset.threshold = threshold;
+    _lowOnset.threshold = threshold;
 }
 
 bool
-SrAudio::OnsetReceived()
+SrAudio::LowOnsetReceived()
 {
-    return _onset.received();
+    return _lowOnset.received();
+}
+
+bool
+SrAudio::MidOnsetReceived()
+{
+    return _midOnset.received();
+}
+
+bool
+SrAudio::HighOnsetReceived()
+{
+    return _highOnset.received();
 }
 
 float
 SrAudio::GetOnsetNovelty() const
 {
-    return _onset.novelty;
+    return _lowOnset.novelty;
 }
 
 float
 SrAudio::GetOnsetThresholdedNovelty() const
 {
-    return _onset.thresholdedNovelty;
+    return _lowOnset.thresholdedNovelty;
 }
 
 float *

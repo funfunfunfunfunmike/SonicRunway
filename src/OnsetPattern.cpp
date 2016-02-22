@@ -14,10 +14,13 @@
 
 SrOnsetPattern::SrOnsetPattern(SrSettings * settings,
                                SrLightArray * lightArray,
-                               SrCues * cues) :
+                               const SrQueue & queue) :
     _settings(settings),
     _lightArray(lightArray),
-    _cues(cues)
+    _queue(queue),
+    _hue(100),
+    _yMin(0.0),
+    _yMax(1.0)
 {
     
 }
@@ -41,15 +44,26 @@ _Clamp(float a, float min, float max)
 }
 
 void
+SrOnsetPattern::SetHue(float hue)
+{
+    _hue = hue;
+}
+
+void
+SrOnsetPattern::SetYRange(float yMin, float yMax)
+{
+    _yMin = yMin;
+    _yMax = yMax;
+}
+
+void
 SrOnsetPattern::Update(const SrTime & now)
 {
-    float hue = 100.0; // [0,255]
     float decayTime = 0.25; // seconds
     float maxBrightness = 0.7; /* [0,1] */
     
     // For each onset cue
-    const SrQueue & onsetQueue = _cues->GetOnsetQueue();
-    for (auto iter=onsetQueue.begin(); iter != onsetQueue.end(); iter++) {
+    for (auto iter=_queue.begin(); iter != _queue.end(); iter++) {
         const SrCue & cue = *iter;
         
         float cueAge = cue.GetAge(now);
@@ -76,10 +90,12 @@ SrOnsetPattern::Update(const SrTime & now)
             float saturation = (1.0 - factor) * 255.0;
             
             ofColor color;
-            color.setHsb(hue, saturation, brightness);
+            color.setHsb(_hue, saturation, brightness);
             
             // For each light in the station.
-            for (int y = 0; y < _settings->GetLightsPerStation(); y++) {
+            int yMin = _yMin * _settings->GetLightsPerStation();
+            int yMax = _yMax * _settings->GetLightsPerStation();
+            for (int y = yMin; y < yMax; y++) {
                 _lightArray->AddColor(x, y, color);
             }
         }

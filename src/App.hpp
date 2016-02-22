@@ -40,7 +40,9 @@ private:
     SrLightArray _lightArray;
     SrAudio _audio;
     SrAudioUI _audioUI;
-    SrOnsetPattern _onsetPattern;
+    SrOnsetPattern _lowOnsetPattern;
+    SrOnsetPattern _midOnsetPattern;
+    SrOnsetPattern _highOnsetPattern;
     SrGridDisplay _gridDisplay;
     SrArtnet _artnet;
 };

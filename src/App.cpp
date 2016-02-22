@@ -15,12 +15,25 @@ SrApp::SrApp() :
     _cues(&_audio),
     _lightArray(_settings),
      _audioUI(&_audio, 10.0, 10.0),
-    _onsetPattern(&_settings, &_lightArray, &_cues),
+    _lowOnsetPattern(&_settings, &_lightArray,
+                     _cues.GetLowOnsetQueue()),
+    _midOnsetPattern(&_settings, &_lightArray,
+                     _cues.GetMidOnsetQueue()),
+    _highOnsetPattern(&_settings, &_lightArray,
+                      _cues.GetHighOnsetQueue()),
     _gridDisplay(&_lightArray, &_settings, 10.0, 230.0, 930.0, 300.0),
     _artnet()
 {
     int nChannels = _settings.GetNumChannels();
     ofSoundStreamSetup(nChannels, nChannels, _settings.GetSampleRate(), _settings.GetBufferSize(), 4);
+    
+    _lowOnsetPattern.SetHue(100.0);
+    _midOnsetPattern.SetHue(200.0);
+    _highOnsetPattern.SetHue(0.0);
+    
+    _lowOnsetPattern.SetYRange(0.0, 0.33);
+    _midOnsetPattern.SetYRange(0.33, 0.66);
+    _highOnsetPattern.SetYRange(0.66, 1.0);
 }
 
 SrApp::~SrApp()
@@ -49,7 +62,9 @@ SrApp::Update()
     _cues.Update(now);
     
     _lightArray.Clear();
-    _onsetPattern.Update(now);
+    _lowOnsetPattern.Update(now);
+    _midOnsetPattern.Update(now);
+    _highOnsetPattern.Update(now);
     
     _audioUI.Update();
     _gridDisplay.Update();
