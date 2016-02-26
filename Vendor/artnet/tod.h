@@ -31,9 +31,9 @@ enum { ARTNET_TOD_INCREMENT = 50 };
  * table of devices
  */
 typedef struct {
-  uint8_t *data;
-  int length;
-  int max_length;
+    uint8_t *data;
+    int length;
+    int max_length;
 } tod_t;
 
 

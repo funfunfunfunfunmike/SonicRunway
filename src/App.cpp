@@ -22,7 +22,7 @@ SrApp::SrApp() :
     _highOnsetPattern(&_settings, &_lightArray,
                       _cues.GetHighOnsetQueue()),
     _gridDisplay(&_lightArray, &_settings, 10.0, 230.0, 930.0, 300.0),
-    _artnet()
+    _artnet(_lightArray)
 {
     int nChannels = _settings.GetNumChannels();
     ofSoundStreamSetup(nChannels, nChannels, _settings.GetSampleRate(), _settings.GetBufferSize(), 4);

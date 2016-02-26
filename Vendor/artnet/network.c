@@ -598,4 +598,4 @@ int artnet_net_inet_aton(const char *ip_address, struct in_addr *address) {
         return strerror(errno);
 #endif
     }
-    
+

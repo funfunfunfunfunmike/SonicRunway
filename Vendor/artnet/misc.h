@@ -31,12 +31,12 @@ void artnet_misc_int_to_bytes(int data, uint8_t *bytes);
 
 // check if the node is null and return an error
 #define check_nullnode(node) if (node == NULL) { \
-  artnet_error("%s : argument 1 (artnet_node) was null" , __FUNCTION__ ); \
-  return ARTNET_EARG; \
+artnet_error("%s : argument 1 (artnet_node) was null" , __FUNCTION__ ); \
+return ARTNET_EARG; \
 }
 
-#define artnet_error_malloc() artnet_error("%s : malloc error %s" , __FUNCTION__, strerror(errno) ) 
-#define artnet_error_realloc() artnet_error("%s : realloc error %s" , __FUNCTION__, strerror(errno) ) 
-#define artnet_error_nullnode() artnet_error("%s : argument 1 (artnet_node) was null" , __FUNCTION__ ) 
+#define artnet_error_malloc() artnet_error("%s : malloc error %s" , __FUNCTION__, strerror(errno) )
+#define artnet_error_realloc() artnet_error("%s : realloc error %s" , __FUNCTION__, strerror(errno) )
+#define artnet_error_nullnode() artnet_error("%s : argument 1 (artnet_node) was null" , __FUNCTION__ )
 
 #endif

@@ -31,13 +31,10 @@ char artnet_errstr[256];
  * using artnet_strerror();
  */
 void artnet_error(const char *fmt, ...) {
-  va_list ap;
-  va_start(ap, fmt);
-  vsnprintf(artnet_errstr, sizeof(artnet_errstr), fmt, ap);
-
-  // XXX RJ
-  printf(fmt, ap);
-  va_end(ap);
+    va_list ap;
+    va_start(ap, fmt);
+    vsnprintf(artnet_errstr, sizeof(artnet_errstr), fmt, ap);
+    va_end(ap);
 }
 
 
@@ -45,7 +42,7 @@ void artnet_error(const char *fmt, ...) {
  * Converts 4 bytes in big endian order to a 32 bit int
  */
 int32_t artnet_misc_nbytes_to_32(uint8_t bytes[4]) {
-  return (bytes[0] << 24) | (bytes[1] << 16) | (bytes[2] << 8) | bytes[3];
+    return (bytes[0] << 24) | (bytes[1] << 16) | (bytes[2] << 8) | bytes[3];
 }
 
 /*
