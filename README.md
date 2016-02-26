@@ -36,17 +36,11 @@ You'll probably get some errors about 'aubio.h' not found.
 If so, you may need to delete and re-add 'aubio.framework' to 
 the xcodeproj to get the header include path sorted.
 
-Artnet:
 
-libartnet source is copied from here:
-https://code.google.com/p/open-lighting/downloads/list
-
-... but included in this project (along with attribution/copying info)
 
 TODO:
 
-- RJ:  Separate incoming signal into high/mid/low and do offset 
-       detection on each.
+- Refactor LightArray to just be an ofImage or Fbo.  Scrape this to Artnet output.
 
 - Make a 3D tunnel visualization to match the structure
 
