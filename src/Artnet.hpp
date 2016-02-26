@@ -10,16 +10,17 @@
 #define SR_ARTNET_HPP
 
 #include <stdio.h>
-#include "artnet.h"
+#include "ofxArtnet.hpp"
 
 class SrArtnet {
 public:
     SrArtnet();
     ~SrArtnet();
     
-private:
-    artnet_node _artnetNode;
+    void UpdateLights();
     
+private:
+    ofxArtnet _artnet;
 };
 
 #endif

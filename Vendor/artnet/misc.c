@@ -34,6 +34,9 @@ void artnet_error(const char *fmt, ...) {
   va_list ap;
   va_start(ap, fmt);
   vsnprintf(artnet_errstr, sizeof(artnet_errstr), fmt, ap);
+
+  // XXX RJ
+  printf(fmt, ap);
   va_end(ap);
 }
 

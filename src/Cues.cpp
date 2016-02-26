@@ -82,7 +82,6 @@ SrCues::_RemoveOutdatedCues(SrQueue *queue,
 {
     while(not queue->empty() and queue->front().GetTime() < expiration) {
         queue->pop_front();
-        printf("cue expired.  queue size %zu!\n", queue->size());
     }
 }
 

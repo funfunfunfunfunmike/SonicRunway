@@ -9,3 +9,7 @@ Bug Reports & Patches:
  Justin Cormack
  nico <sl1200mk2@gmail.com> (Win32 port)
  Massimo Callegari
+
+-----------------
+Note:  Incorporated Hiroyuki's changes to artnet code from ofxArtnet
+See https://github.com/hiroyuki/ofxArtnet

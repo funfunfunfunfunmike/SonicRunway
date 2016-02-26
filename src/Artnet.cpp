@@ -10,18 +10,39 @@
 
 SrArtnet::SrArtnet()
 {
-    char *ip_addr = NULL;
+    _artnet.setup("192.168.0.1");
+    _artnet.verbose = true;
     
-    uint8_t subnet_addr = 0;
-    uint8_t port_addr = 1;
     
-    printf("creating artnet node\n");
-    _artnetNode = artnet_new(ip_addr, 1);
+    /*
+    _artnet.init("192.168.0.1", true);
+    _artnet.setNodeType(ARTNET_TYPE_SERVER);
+    _artnet.setPortType(1, ARTNET_PORT_ENABLE_OUTPUT, ARTNET_DATA_DMX);
+    _artnet.start();
+    */
+}
+
+void
+SrArtnet::UpdateLights()
+{
+    
+    /*
+    const int len = 512;
+    ofxArtNetDmxData dmxData(len);
+    uint8_t data[len];
+    
+    for (int i=0; i<len; i++) {
+        data[i] = 200;
+    }
+    
+    _artnet.sendDmxRaw(1, data, len);
+     */
 }
 
 SrArtnet::~SrArtnet()
 {
-    printf("deleting artnet node\n");
-    artnet_stop(_artnetNode);
-    artnet_destroy(_artnetNode);
+    /*
+    _artnet.stop();
+    _artnet.close();
+     */
 }

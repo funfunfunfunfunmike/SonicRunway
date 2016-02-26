@@ -21,6 +21,7 @@
 		300CF0501C652BD800295FBF /* libtag.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0451C652BD800295FBF /* libtag.dylib */; };
 		300CF0511C652BD800295FBF /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0461C652BD800295FBF /* libyaml.a */; };
 		306565A31C472E7C00917ADB /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306565A11C472E7C00917ADB /* App.cpp */; };
+		306DFD3F1C80100200AB9225 /* ofxArtnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306DFD3D1C80100200AB9225 /* ofxArtnet.cpp */; };
 		308CEE551C48593A007C124A /* artnet.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE481C48593A007C124A /* artnet.c */; };
 		308CEE561C48593A007C124A /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE4C1C48593A007C124A /* misc.c */; };
 		308CEE571C48593A007C124A /* network.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE4E1C48593A007C124A /* network.c */; };
@@ -103,6 +104,8 @@
 		300CF0461C652BD800295FBF /* libyaml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyaml.a; path = ../../../../../../../../usr/local/lib/libyaml.a; sourceTree = "<group>"; };
 		306565A11C472E7C00917ADB /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
 		306565A21C472E7C00917ADB /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
+		306DFD3D1C80100200AB9225 /* ofxArtnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxArtnet.cpp; sourceTree = "<group>"; };
+		306DFD3E1C80100200AB9225 /* ofxArtnet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ofxArtnet.hpp; sourceTree = "<group>"; };
 		308CEE481C48593A007C124A /* artnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = artnet.c; sourceTree = "<group>"; };
 		308CEE491C48593A007C124A /* artnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = artnet.h; sourceTree = "<group>"; };
 		308CEE4A1C48593A007C124A /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
@@ -210,9 +213,19 @@
 			name = src;
 			sourceTree = "<group>";
 		};
+		306DFD3C1C80100200AB9225 /* ofxArtnet */ = {
+			isa = PBXGroup;
+			children = (
+				306DFD3D1C80100200AB9225 /* ofxArtnet.cpp */,
+				306DFD3E1C80100200AB9225 /* ofxArtnet.hpp */,
+			);
+			path = ofxArtnet;
+			sourceTree = "<group>";
+		};
 		308CEE461C48593A007C124A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				306DFD3C1C80100200AB9225 /* ofxArtnet */,
 				308CEE471C48593A007C124A /* artnet */,
 			);
 			path = Vendor;
@@ -481,6 +494,7 @@
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,
 				308CEE551C48593A007C124A /* artnet.c in Sources */,
 				F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */,
+				306DFD3F1C80100200AB9225 /* ofxArtnet.cpp in Sources */,
 				837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */,
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
 				308CEE5D1C48598D007C124A /* Artnet.cpp in Sources */,

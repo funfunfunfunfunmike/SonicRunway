@@ -76,4 +76,5 @@ SrApp::Draw()
     ofBackground(40,40,40);
     _audioUI.Draw();
     _gridDisplay.Draw();
+    _artnet.UpdateLights();
 }
