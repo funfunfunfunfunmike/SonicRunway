@@ -13,7 +13,7 @@
 
 #include "Audio.hpp"
 #include "AudioUI.hpp"
-#include "Settings.hpp"
+#include "Model.hpp"
 #include "Cues.hpp"
 #include "LightArray.hpp"
 #include "GridDisplay.hpp"
@@ -35,7 +35,11 @@ public:
     void AudioOut(float * output, int buferSize, int nChannels);
     
 private:
-    SrSettings _settings;
+    int _sampleRate;
+    int _bufferSize;
+    int _numChannels;
+    
+    SrModel _model;
     SrCues _cues;
     SrLightArray _lightArray;
     SrAudio _audio;

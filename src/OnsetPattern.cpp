@@ -7,15 +7,15 @@
 //
 
 #include "OnsetPattern.hpp"
-#include "Settings.hpp"
+#include "Model.hpp"
 #include "LightArray.hpp"
 #include "Cues.hpp"
 #include "ofMain.h"
 
-SrOnsetPattern::SrOnsetPattern(SrSettings * settings,
+SrOnsetPattern::SrOnsetPattern(SrModel * model,
                                SrLightArray * lightArray,
                                const SrQueue & queue) :
-    _settings(settings),
+    _model(model),
     _lightArray(lightArray),
     _queue(queue),
     _hue(100),
@@ -69,10 +69,10 @@ SrOnsetPattern::Update(const SrTime & now)
         float cueAge = cue.GetAge(now);
         
         // For each station
-        for (int x = 0; x < _settings->GetNumStations(); x++) {
+        for (int x = 0; x < _model->GetNumStations(); x++) {
            
             // Caclulate station delay.
-            float stationDelay = _settings->ComputeDelayPerStation() * x;
+            float stationDelay = _model->ComputeDelayPerStation() * x;
             float relativeAge = cueAge - stationDelay;
             
             // Bail if the sound hasn't gotten here yet.
@@ -93,8 +93,8 @@ SrOnsetPattern::Update(const SrTime & now)
             color.setHsb(_hue, saturation, brightness);
             
             // For each light in the station.
-            int yMin = _yMin * _settings->GetLightsPerStation();
-            int yMax = _yMax * _settings->GetLightsPerStation();
+            int yMin = _yMin * _model->GetLightsPerStation();
+            int yMax = _yMax * _model->GetLightsPerStation();
             for (int y = yMin; y < yMax; y++) {
                 _lightArray->AddColor(x, y, color);
             }

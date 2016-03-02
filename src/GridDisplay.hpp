@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 class SrLightArray;
-class SrSettings;
+class SrModel;
 
 ///
 /// SrGridDisplay - a 2d rendering of the lightArray for debugging
@@ -21,7 +21,7 @@ class SrSettings;
 class SrGridDisplay {
 public:
     SrGridDisplay(SrLightArray * lightArray,
-                  SrSettings * settings,
+                  SrModel * model,
                   float x, float y,
                   float width, float height);
     ~SrGridDisplay();
@@ -31,7 +31,7 @@ public:
     
 private:
     SrLightArray *_lightArray;
-    SrSettings *_settings;
+    SrModel *_model;
     float _x;
     float _y;
     float _width;

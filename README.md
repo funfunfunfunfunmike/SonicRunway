@@ -49,3 +49,14 @@ TODO:
 - Add EQ-based patterns
 
 - Add some UI with knobs for various settings
+
+---------------------
+
+Plan:
+  - model owns Fbo
+  - patterns expect to draw with active fbo
+  - patterns may own shapes that move down runway
+      default shape updates its coords automatically
+  - model can draw Fbo directly to UI (maybe scaled)
+  - previs draws 3d previs
+  - artnet sends to pixels

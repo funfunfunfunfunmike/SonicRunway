@@ -36,7 +36,7 @@
 		30C3F40A1C4046DE00184240 /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C3F4091C4046DE00184240 /* aubio.framework */; };
 		30C844331C422B01006452BE /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844311C422B01006452BE /* Audio.cpp */; };
 		30C844361C42C17E006452BE /* AudioUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844341C42C17E006452BE /* AudioUI.cpp */; };
-		30C844391C42D110006452BE /* Settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844371C42D110006452BE /* Settings.cpp */; };
+		30C844391C42D110006452BE /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844371C42D110006452BE /* Model.cpp */; };
 		30C8443C1C42D30E006452BE /* LightArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C8443A1C42D30E006452BE /* LightArray.cpp */; };
 		479DCA850DD8BB469A777AD4 /* ofxAubioBeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A96B8F6D2ECF14F9304EBD6C /* ofxAubioBeat.cpp */; };
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
@@ -136,8 +136,8 @@
 		30C844321C422B01006452BE /* Audio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Audio.hpp; sourceTree = "<group>"; };
 		30C844341C42C17E006452BE /* AudioUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioUI.cpp; sourceTree = "<group>"; };
 		30C844351C42C17E006452BE /* AudioUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AudioUI.hpp; sourceTree = "<group>"; };
-		30C844371C42D110006452BE /* Settings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Settings.cpp; sourceTree = "<group>"; };
-		30C844381C42D110006452BE /* Settings.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Settings.hpp; sourceTree = "<group>"; };
+		30C844371C42D110006452BE /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
+		30C844381C42D110006452BE /* Model.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
 		30C8443A1C42D30E006452BE /* LightArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LightArray.cpp; sourceTree = "<group>"; };
 		30C8443B1C42D30E006452BE /* LightArray.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LightArray.hpp; sourceTree = "<group>"; };
 		3B6AFA97F893CE28547CFCDC /* ofxAubio.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAubio.h; path = ../../../addons/ofxAubio/src/ofxAubio.h; sourceTree = SOURCE_ROOT; };
@@ -354,8 +354,8 @@
 				30C844321C422B01006452BE /* Audio.hpp */,
 				30C844341C42C17E006452BE /* AudioUI.cpp */,
 				30C844351C42C17E006452BE /* AudioUI.hpp */,
-				30C844371C42D110006452BE /* Settings.cpp */,
-				30C844381C42D110006452BE /* Settings.hpp */,
+				30C844371C42D110006452BE /* Model.cpp */,
+				30C844381C42D110006452BE /* Model.hpp */,
 				30C8443A1C42D30E006452BE /* LightArray.cpp */,
 				30C8443B1C42D30E006452BE /* LightArray.hpp */,
 				30AC5FDE1C44164F00B793E9 /* Cues.cpp */,
@@ -490,7 +490,7 @@
 				B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */,
 				30AC5FE31C447F6F00B793E9 /* GridDisplay.cpp in Sources */,
 				308CEE571C48593A007C124A /* network.c in Sources */,
-				30C844391C42D110006452BE /* Settings.cpp in Sources */,
+				30C844391C42D110006452BE /* Model.cpp in Sources */,
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,
 				308CEE551C48593A007C124A /* artnet.c in Sources */,
 				F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */,

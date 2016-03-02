@@ -9,7 +9,6 @@
 //
 
 #include "Audio.hpp"
-#include "Settings.hpp"
 
 #include "ofMain.h"
 #include "ofxAubio.h"
@@ -18,9 +17,9 @@
 using namespace essentia;
 using namespace standard;
 
-SrAudio::SrAudio(const SrSettings & settings) :
-    _sampleRate(settings.GetSampleRate()),
-    _bufferSize(settings.GetBufferSize())
+SrAudio::SrAudio(int sampleRate, int bufferSize) :
+    _sampleRate(sampleRate),
+    _bufferSize(bufferSize)
 {
     essentia::init();
     AlgorithmFactory & factory = AlgorithmFactory::instance();

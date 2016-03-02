@@ -14,7 +14,7 @@
 
 #include "ofMain.h"
 
-class SrSettings;
+class SrModel;
 
 ///
 /// LightArray is a 2-dimensional array of ofColors representing
@@ -24,7 +24,7 @@ class SrSettings;
 ///
 class SrLightArray {
 public:
-    SrLightArray(const SrSettings &settings);
+    SrLightArray(const SrModel &model);
     ~SrLightArray();
     
     void SetColor(size_t x, size_t y, const ofColor & color);

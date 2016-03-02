@@ -7,17 +7,17 @@
 //
 
 #include "GridDisplay.hpp"
-#include "Settings.hpp"
+#include "Model.hpp"
 #include "LightArray.hpp"
 
 #include "ofMain.h"
 
 SrGridDisplay::SrGridDisplay(SrLightArray *lightArray,
-                             SrSettings *settings,
+                             SrModel *model,
                              float x, float y,
                              float width, float height) :
     _lightArray(lightArray),
-    _settings(settings),
+    _model(model),
     _x(x),
     _y(y),
     _width(width),
@@ -45,8 +45,8 @@ SrGridDisplay::Draw()
     float margin = 10.0;
     float radius = 5.0;
     
-    int nStations = _settings->GetNumStations();
-    int nLightsPerStation = _settings->GetLightsPerStation();
+    int nStations = _model->GetNumStations();
+    int nLightsPerStation = _model->GetLightsPerStation();
     
     float widthPerStation = (_width - margin * 2.0) / nStations;
     float heightPerLight = (_height - margin * 2.0) / nLightsPerStation;

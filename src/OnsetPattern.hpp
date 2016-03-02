@@ -14,7 +14,7 @@
 #include "Types.hpp"
 #include "Cues.hpp"
 
-class SrSettings;
+class SrModel;
 class SrLightArray;
 
 ///
@@ -23,7 +23,7 @@ class SrLightArray;
 ///
 class SrOnsetPattern {
 public:
-    SrOnsetPattern(SrSettings * settings,
+    SrOnsetPattern(SrModel * model,
                    SrLightArray * lightArray,
                    const SrQueue & queue);
     ~SrOnsetPattern();
@@ -34,7 +34,7 @@ public:
     void SetYRange(float yMin, float yMax);
     
 private:
-    SrSettings *_settings;
+    SrModel *_model;
     SrLightArray *_lightArray;
     const SrQueue & _queue;
     float _hue;

@@ -7,11 +7,11 @@
 //
 
 #include "LightArray.hpp"
-#include "Settings.hpp"
+#include "Model.hpp"
 
-SrLightArray::SrLightArray(const SrSettings & settings) :
-    _numX(settings.GetNumStations()),
-    _numY(settings.GetLightsPerStation()),
+SrLightArray::SrLightArray(const SrModel & model) :
+    _numX(model.GetNumStations()),
+    _numY(model.GetLightsPerStation()),
     _data(_numX * _numY)
 {
     

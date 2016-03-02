@@ -10,22 +10,25 @@
 #include "ofApp.h"
 
 SrApp::SrApp() :
-    _settings(),
-    _audio(_settings),
+    _sampleRate(44100),
+    _bufferSize(256),
+    _numChannels(1),
+    _model(),
+    _audio(_sampleRate, _bufferSize),
     _cues(&_audio),
-    _lightArray(_settings),
+    _lightArray(_model),
      _audioUI(&_audio, 10.0, 10.0),
-    _lowOnsetPattern(&_settings, &_lightArray,
+    _lowOnsetPattern(&_model, &_lightArray,
                      _cues.GetLowOnsetQueue()),
-    _midOnsetPattern(&_settings, &_lightArray,
+    _midOnsetPattern(&_model, &_lightArray,
                      _cues.GetMidOnsetQueue()),
-    _highOnsetPattern(&_settings, &_lightArray,
+    _highOnsetPattern(&_model, &_lightArray,
                       _cues.GetHighOnsetQueue()),
-    _gridDisplay(&_lightArray, &_settings, 10.0, 230.0, 930.0, 300.0),
+    _gridDisplay(&_lightArray, &_model, 10.0, 230.0, 930.0, 300.0),
     _artnet(_lightArray)
 {
-    int nChannels = _settings.GetNumChannels();
-    ofSoundStreamSetup(nChannels, nChannels, _settings.GetSampleRate(), _settings.GetBufferSize(), 4);
+    ofSoundStreamSetup(_numChannels, _numChannels,
+                       _sampleRate, _bufferSize, 4);
     
     _lowOnsetPattern.SetHue(100.0);
     _midOnsetPattern.SetHue(200.0);

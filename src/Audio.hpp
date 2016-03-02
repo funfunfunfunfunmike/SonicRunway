@@ -18,7 +18,6 @@
 #include <essentia/algorithmfactory.h>
 
 class ofApp;
-class SrSettings;
 
 // XXX this should be defined in essentia somewhere..
 typedef float Real;
@@ -31,7 +30,7 @@ typedef float Real;
 ///
 class SrAudio {
 public:
-    SrAudio(const SrSettings &settings);
+    SrAudio(int sampleSize, int bufferSize);
     ~SrAudio();
     
     void Update();
