@@ -8,8 +8,8 @@
 
 #include "Artnet.hpp"
 
-SrArtnet::SrArtnet(const SrLightArray & lightArray) :
-    _lightArray(lightArray)
+SrArtnet::SrArtnet(const SrModel & model) :
+    _model(model)
 {
     _artnet.setup("192.168.0.1");
     _artnet.verbose = true;
@@ -36,7 +36,9 @@ SrArtnet::UpdateLights()
         ofSetColor((int)colorR, (int)colorG, (int)colorB);
          */
         
+        /*
         ofSetColor(_lightArray.GetColor(0,0));
+         */
         ofRect(0, 0, 512, 1);
         _fbo.end();
         _fbo.readToPixels(_testImage.getPixelsRef());

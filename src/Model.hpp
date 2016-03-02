@@ -10,6 +10,7 @@
 #define _SR_MODEL_HPP
 
 #include <stdio.h>
+#include "ofMain.h"
 
 ///
 /// Global settings for the app.
@@ -29,12 +30,19 @@ public:
     
     float ComputeDelayPerStation() const; // in seconds
     
+    void Clear();
+    void BeginDrawing();
+    void EndDrawing();
+    
+    void RenderFrameBuffer(float x, float y);
+    
 private:
     int _numStations;
     int _lightsPerStation;
     float _runwayLength;
     float _speedOfSound;
     
+    ofFbo _frameBuffer;
 };
 
 #endif

@@ -25,9 +25,6 @@ typedef float Real;
 ///
 /// SrAudio - Audio input and processing.
 ///
-/// This is a wrapper class on the ofxAubio extension, consolidating
-/// various aspects of audio processing.
-///
 class SrAudio {
 public:
     SrAudio(int sampleSize, int bufferSize);
@@ -37,6 +34,15 @@ public:
     
     void AudioIn(float * input, int bufferSize, int nChannels);
     void AudioOut(float * output, int bufferSize, int nChannels);
+    
+    enum Event {
+        Beat,
+        LowOnset,
+        MidOnset,
+        HighOnset
+    };
+    
+    //const std::vector<Event> GetCurrentEvents() const;
     
     // Beat
     bool BeatReceived();
@@ -73,6 +79,8 @@ private:
     vector<Real> _lowPassBuffer;
     vector<Real> _midPassBuffer;
     vector<Real> _highPassBuffer;
+    
+    //std::vector<Event> _currentEvents;
 };
 
 #endif

@@ -12,14 +12,13 @@ SrModel::SrModel() :
     _numStations(30),
     _lightsPerStation(16),
     _runwayLength(1000.0), // feet
-    _speedOfSound(1126.0)  // feet per second
+    _speedOfSound(1126.0) // feet per second
 {
-    
+    _frameBuffer.allocate(_numStations, _lightsPerStation, GL_RGBA);
 }
 
 SrModel::~SrModel()
 {
-    
 }
 
 int
@@ -50,4 +49,30 @@ float
 SrModel::ComputeDelayPerStation() const
 {
     return GetRunwayLength() / GetNumStations() / GetSpeedOfSound();
+}
+
+void
+SrModel::Clear()
+{
+    _frameBuffer.begin();
+    ofClear(50.0,0,0,255.0);
+    _frameBuffer.end();
+}
+
+void
+SrModel::BeginDrawing()
+{
+    _frameBuffer.begin();
+}
+
+void
+SrModel::EndDrawing()
+{
+    _frameBuffer.end();
+}
+
+void
+SrModel::RenderFrameBuffer(float x, float y)
+{
+    _frameBuffer.draw(x, y);
 }

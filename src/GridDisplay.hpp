@@ -20,17 +20,14 @@ class SrModel;
 ///
 class SrGridDisplay {
 public:
-    SrGridDisplay(SrLightArray * lightArray,
-                  SrModel * model,
+    SrGridDisplay(SrModel * model,
                   float x, float y,
                   float width, float height);
     ~SrGridDisplay();
     
-    void Update();
     void Draw();
     
 private:
-    SrLightArray *_lightArray;
     SrModel *_model;
     float _x;
     float _y;

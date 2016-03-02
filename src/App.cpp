@@ -16,16 +16,15 @@ SrApp::SrApp() :
     _model(),
     _audio(_sampleRate, _bufferSize),
     _cues(&_audio),
-    _lightArray(_model),
      _audioUI(&_audio, 10.0, 10.0),
-    _lowOnsetPattern(&_model, &_lightArray,
+    _lowOnsetPattern(&_model,
                      _cues.GetLowOnsetQueue()),
-    _midOnsetPattern(&_model, &_lightArray,
+    _midOnsetPattern(&_model,
                      _cues.GetMidOnsetQueue()),
-    _highOnsetPattern(&_model, &_lightArray,
+    _highOnsetPattern(&_model,
                       _cues.GetHighOnsetQueue()),
-    _gridDisplay(&_lightArray, &_model, 10.0, 230.0, 930.0, 300.0),
-    _artnet(_lightArray)
+    _gridDisplay(&_model, 10.0, 230.0, 930.0, 300.0),
+    _artnet(_model)
 {
     ofSoundStreamSetup(_numChannels, _numChannels,
                        _sampleRate, _bufferSize, 4);
@@ -64,20 +63,30 @@ SrApp::Update()
     _audio.Update();
     _cues.Update(now);
     
-    _lightArray.Clear();
-    _lowOnsetPattern.Update(now);
-    _midOnsetPattern.Update(now);
-    _highOnsetPattern.Update(now);
-    
     _audioUI.Update();
-    _gridDisplay.Update();
 }
 
 void
 SrApp::Draw()
 {
+    SrTime now = std::chrono::system_clock::now();
+    
+    _model.Clear();
+    _model.BeginDrawing();
+    
+    _lowOnsetPattern.Draw(now);
+    _midOnsetPattern.Draw(now);
+    _highOnsetPattern.Draw(now);
+    
+    _model.EndDrawing();
+    
     ofBackground(40,40,40);
+    
+    _model.RenderFrameBuffer(300,300);
+    
     _audioUI.Draw();
-    _gridDisplay.Draw();
+    
+   // _gridDisplay.Draw();
+    
     _artnet.UpdateLights();
 }

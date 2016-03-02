@@ -24,18 +24,16 @@ class SrLightArray;
 class SrOnsetPattern {
 public:
     SrOnsetPattern(SrModel * model,
-                   SrLightArray * lightArray,
                    const SrQueue & queue);
     ~SrOnsetPattern();
     
-    void Update(const SrTime & now);
+    void Draw(const SrTime & now);
     
     void SetHue(float hue);
     void SetYRange(float yMin, float yMax);
     
 private:
     SrModel *_model;
-    SrLightArray *_lightArray;
     const SrQueue & _queue;
     float _hue;
     float _yMin, _yMax;

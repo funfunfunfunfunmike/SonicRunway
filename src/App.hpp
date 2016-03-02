@@ -15,7 +15,6 @@
 #include "AudioUI.hpp"
 #include "Model.hpp"
 #include "Cues.hpp"
-#include "LightArray.hpp"
 #include "GridDisplay.hpp"
 #include "OnsetPattern.hpp"
 #include "Artnet.hpp"
@@ -41,7 +40,6 @@ private:
     
     SrModel _model;
     SrCues _cues;
-    SrLightArray _lightArray;
     SrAudio _audio;
     SrAudioUI _audioUI;
     SrOnsetPattern _lowOnsetPattern;

@@ -8,15 +8,12 @@
 
 #include "GridDisplay.hpp"
 #include "Model.hpp"
-#include "LightArray.hpp"
 
 #include "ofMain.h"
 
-SrGridDisplay::SrGridDisplay(SrLightArray *lightArray,
-                             SrModel *model,
+SrGridDisplay::SrGridDisplay(SrModel *model,
                              float x, float y,
                              float width, float height) :
-    _lightArray(lightArray),
     _model(model),
     _x(x),
     _y(y),
@@ -30,15 +27,11 @@ SrGridDisplay::~SrGridDisplay()
 {
     
 }
-void
-SrGridDisplay::Update()
-{
-    
-}
 
 void
 SrGridDisplay::Draw()
 {
+    /*
     ofSetColor(10, 10, 10);
     ofDrawRectangle(_x, _y, _width, _height);
     
@@ -63,5 +56,6 @@ SrGridDisplay::Draw()
             ofDrawCircle(_x + x, _y + y, radius);
         }
     }
+    */
         
 }

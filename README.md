@@ -53,8 +53,9 @@ TODO:
 ---------------------
 
 Plan:
-  - model owns Fbo
-  - patterns expect to draw with active fbo
+  - Get rid of cues.
+  - Audio returns current events that patterns can read.
+
   - patterns may own shapes that move down runway
       default shape updates its coords automatically
   - model can draw Fbo directly to UI (maybe scaled)

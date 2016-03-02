@@ -12,17 +12,17 @@
 #include <stdio.h>
 #include "ofxArtnet.hpp"
 #include "ofMain.h"
-#include "LightArray.hpp"
+#include "Model.hpp"
 
 class SrArtnet {
 public:
-    SrArtnet(const SrLightArray & lightArray);
+    SrArtnet(const SrModel & model);
     ~SrArtnet();
     
     void UpdateLights();
     
 private:
-    const SrLightArray & _lightArray;
+    const SrModel & _model;
     
     ofxArtnet _artnet;
     ofImage _testImage;
