@@ -12,7 +12,7 @@ SrModel::SrModel() :
     _numStations(30),
     _lightsPerStation(16),
     _runwayLength(1000.0), // feet
-    _speedOfSound(1126.0) // feet per second
+    _speedOfSound(1126.0)  // feet per second
 {
     _frameBuffer.allocate(_numStations, _lightsPerStation, GL_RGBA);
 }
@@ -55,7 +55,7 @@ void
 SrModel::Clear()
 {
     _frameBuffer.begin();
-    ofClear(50.0,0,0,255.0);
+    ofClear(0,0,0,255);
     _frameBuffer.end();
 }
 
@@ -72,7 +72,18 @@ SrModel::EndDrawing()
 }
 
 void
-SrModel::RenderFrameBuffer(float x, float y)
+SrModel::RenderFrameBuffer(float x, float y, float width, float height)
 {
-    _frameBuffer.draw(x, y);
+    ofPushStyle();
+    ofPushMatrix();
+    
+    ofSetColor(255,255,255,255);
+    ofDisableAntiAliasing();
+    
+    ofTranslate(x, y);
+    ofScale(width / _numStations, height / _lightsPerStation);
+    _frameBuffer.draw(1, 1);
+    
+    ofPopMatrix();
+    ofPopStyle();
 }

@@ -34,7 +34,7 @@ public:
     void BeginDrawing();
     void EndDrawing();
     
-    void RenderFrameBuffer(float x, float y);
+    void RenderFrameBuffer(float x, float y, float width, float height);
     
 private:
     int _numStations;

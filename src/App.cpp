@@ -9,38 +9,28 @@
 #include "App.hpp"
 #include "ofApp.h"
 
+#include "ShapePattern.hpp"
+
 SrApp::SrApp() :
     _sampleRate(44100),
     _bufferSize(256),
     _numChannels(1),
     _model(),
     _audio(_sampleRate, _bufferSize),
-    _cues(&_audio),
-     _audioUI(&_audio, 10.0, 10.0),
-    _lowOnsetPattern(&_model,
-                     _cues.GetLowOnsetQueue()),
-    _midOnsetPattern(&_model,
-                     _cues.GetMidOnsetQueue()),
-    _highOnsetPattern(&_model,
-                      _cues.GetHighOnsetQueue()),
-    _gridDisplay(&_model, 10.0, 230.0, 930.0, 300.0),
-    _artnet(_model)
+    _audioUI(&_audio, 10.0, 10.0),
+    _artnet(&_model)
 {
     ofSoundStreamSetup(_numChannels, _numChannels,
                        _sampleRate, _bufferSize, 4);
     
-    _lowOnsetPattern.SetHue(100.0);
-    _midOnsetPattern.SetHue(200.0);
-    _highOnsetPattern.SetHue(0.0);
-    
-    _lowOnsetPattern.SetYRange(0.0, 0.33);
-    _midOnsetPattern.SetYRange(0.33, 0.66);
-    _highOnsetPattern.SetYRange(0.66, 1.0);
+    _patterns.push_back(new SrShapePattern(&_model, &_audio));
 }
 
 SrApp::~SrApp()
 {
-    
+    for(auto iter = _patterns.begin(); iter != _patterns.end(); iter++) {
+        delete *iter;
+    }
 }
 
 void
@@ -60,8 +50,12 @@ SrApp::Update()
 {
     SrTime now = std::chrono::system_clock::now();
     
-    _audio.Update();
-    _cues.Update(now);
+    _audio.UpdateEvents();
+    
+    for(auto iter = _patterns.begin(); iter != _patterns.end(); iter++) {
+        SrPattern *pattern = *iter;
+        pattern->Update(now);
+    }
     
     _audioUI.Update();
 }
@@ -74,19 +68,18 @@ SrApp::Draw()
     _model.Clear();
     _model.BeginDrawing();
     
-    _lowOnsetPattern.Draw(now);
-    _midOnsetPattern.Draw(now);
-    _highOnsetPattern.Draw(now);
+    for(auto iter = _patterns.begin(); iter != _patterns.end(); iter++) {
+        SrPattern *pattern = *iter;
+        pattern->Draw(now);
+    }
     
     _model.EndDrawing();
     
     ofBackground(40,40,40);
     
-    _model.RenderFrameBuffer(300,300);
+    _model.RenderFrameBuffer(10,300, 800, 200);
     
     _audioUI.Draw();
-    
-   // _gridDisplay.Draw();
     
     _artnet.UpdateLights();
 }

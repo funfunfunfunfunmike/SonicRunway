@@ -37,10 +37,13 @@ If so, you may need to delete and re-add 'aubio.framework' to
 the xcodeproj to get the header include path sorted.
 
 
-
 TODO:
 
-- Refactor LightArray to just be an ofImage or Fbo.  Scrape this to Artnet output.
+- Consider integrating boost for smart ptrs..
+
+- Fix up anti-aliasing issues with rendering
+
+- Fix up artnet output to scrape the new Fbo
 
 - Make a 3D tunnel visualization to match the structure
 
@@ -49,15 +52,3 @@ TODO:
 - Add EQ-based patterns
 
 - Add some UI with knobs for various settings
-
----------------------
-
-Plan:
-  - Get rid of cues.
-  - Audio returns current events that patterns can read.
-
-  - patterns may own shapes that move down runway
-      default shape updates its coords automatically
-  - model can draw Fbo directly to UI (maybe scaled)
-  - previs draws 3d previs
-  - artnet sends to pixels

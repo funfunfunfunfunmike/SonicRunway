@@ -14,10 +14,9 @@
 #include "Audio.hpp"
 #include "AudioUI.hpp"
 #include "Model.hpp"
-#include "Cues.hpp"
-#include "GridDisplay.hpp"
-#include "OnsetPattern.hpp"
 #include "Artnet.hpp"
+
+class SrPattern;
 
 ///
 /// Main app.  Much like ofApp, but with constructor/destructor
@@ -39,14 +38,11 @@ private:
     int _numChannels;
     
     SrModel _model;
-    SrCues _cues;
     SrAudio _audio;
     SrAudioUI _audioUI;
-    SrOnsetPattern _lowOnsetPattern;
-    SrOnsetPattern _midOnsetPattern;
-    SrOnsetPattern _highOnsetPattern;
-    SrGridDisplay _gridDisplay;
     SrArtnet _artnet;
+    
+    std::vector<SrPattern *> _patterns;
 };
 
 #endif

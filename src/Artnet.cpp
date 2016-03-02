@@ -7,8 +7,9 @@
 //
 
 #include "Artnet.hpp"
+#include "Model.hpp"
 
-SrArtnet::SrArtnet(const SrModel & model) :
+SrArtnet::SrArtnet(SrModel * model) :
     _model(model)
 {
     _artnet.setup("192.168.0.1");

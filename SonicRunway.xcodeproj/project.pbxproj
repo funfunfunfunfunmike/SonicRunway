@@ -22,6 +22,9 @@
 		300CF0511C652BD800295FBF /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0461C652BD800295FBF /* libyaml.a */; };
 		306565A31C472E7C00917ADB /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306565A11C472E7C00917ADB /* App.cpp */; };
 		306DFD3F1C80100200AB9225 /* ofxArtnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306DFD3D1C80100200AB9225 /* ofxArtnet.cpp */; };
+		3074F8CE1C8744A8008BD5EF /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3074F8CC1C8744A8008BD5EF /* Shape.cpp */; };
+		3074F8D11C874AF2008BD5EF /* Pattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3074F8CF1C874AF2008BD5EF /* Pattern.cpp */; };
+		3074F8D41C874BBA008BD5EF /* ShapePattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3074F8D21C874BBA008BD5EF /* ShapePattern.cpp */; };
 		308CEE551C48593A007C124A /* artnet.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE481C48593A007C124A /* artnet.c */; };
 		308CEE561C48593A007C124A /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE4C1C48593A007C124A /* misc.c */; };
 		308CEE571C48593A007C124A /* network.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE4E1C48593A007C124A /* network.c */; };
@@ -29,9 +32,6 @@
 		308CEE591C48593A007C124A /* tod.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE521C48593A007C124A /* tod.c */; };
 		308CEE5A1C48593A007C124A /* transmit.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE541C48593A007C124A /* transmit.c */; };
 		308CEE5D1C48598D007C124A /* Artnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE5B1C48598D007C124A /* Artnet.cpp */; };
-		30AC5FE01C44164F00B793E9 /* Cues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30AC5FDE1C44164F00B793E9 /* Cues.cpp */; };
-		30AC5FE31C447F6F00B793E9 /* GridDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30AC5FE11C447F6F00B793E9 /* GridDisplay.cpp */; };
-		30AC5FE91C44886F00B793E9 /* OnsetPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30AC5FE71C44886F00B793E9 /* OnsetPattern.cpp */; };
 		30AEA5981C4052A80034C794 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 30AEA5971C4052A80034C794 /* README.md */; };
 		30C3F40A1C4046DE00184240 /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C3F4091C4046DE00184240 /* aubio.framework */; };
 		30C844331C422B01006452BE /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844311C422B01006452BE /* Audio.cpp */; };
@@ -105,6 +105,12 @@
 		306565A21C472E7C00917ADB /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
 		306DFD3D1C80100200AB9225 /* ofxArtnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxArtnet.cpp; sourceTree = "<group>"; };
 		306DFD3E1C80100200AB9225 /* ofxArtnet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ofxArtnet.hpp; sourceTree = "<group>"; };
+		3074F8CC1C8744A8008BD5EF /* Shape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shape.cpp; sourceTree = "<group>"; };
+		3074F8CD1C8744A8008BD5EF /* Shape.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shape.hpp; sourceTree = "<group>"; };
+		3074F8CF1C874AF2008BD5EF /* Pattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pattern.cpp; sourceTree = "<group>"; };
+		3074F8D01C874AF2008BD5EF /* Pattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pattern.hpp; sourceTree = "<group>"; };
+		3074F8D21C874BBA008BD5EF /* ShapePattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShapePattern.cpp; sourceTree = "<group>"; };
+		3074F8D31C874BBA008BD5EF /* ShapePattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShapePattern.hpp; sourceTree = "<group>"; };
 		308CEE481C48593A007C124A /* artnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = artnet.c; sourceTree = "<group>"; };
 		308CEE491C48593A007C124A /* artnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = artnet.h; sourceTree = "<group>"; };
 		308CEE4A1C48593A007C124A /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
@@ -122,12 +128,6 @@
 		308CEE5C1C48598D007C124A /* Artnet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Artnet.hpp; sourceTree = "<group>"; };
 		308CEE5E1C486171007C124A /* artnet_AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = artnet_AUTHORS; sourceTree = "<group>"; };
 		308CEE5F1C486177007C124A /* artnet_COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = artnet_COPYING; sourceTree = "<group>"; };
-		30AC5FDE1C44164F00B793E9 /* Cues.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cues.cpp; sourceTree = "<group>"; };
-		30AC5FDF1C44164F00B793E9 /* Cues.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Cues.hpp; sourceTree = "<group>"; };
-		30AC5FE11C447F6F00B793E9 /* GridDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridDisplay.cpp; sourceTree = "<group>"; };
-		30AC5FE21C447F6F00B793E9 /* GridDisplay.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GridDisplay.hpp; sourceTree = "<group>"; };
-		30AC5FE71C44886F00B793E9 /* OnsetPattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OnsetPattern.cpp; sourceTree = "<group>"; };
-		30AC5FE81C44886F00B793E9 /* OnsetPattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OnsetPattern.hpp; sourceTree = "<group>"; };
 		30AC5FEA1C448C7600B793E9 /* Types.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Types.hpp; sourceTree = "<group>"; };
 		30AEA5971C4052A80034C794 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		30C3F4091C4046DE00184240 /* aubio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = aubio.framework; path = ../../../../../../Library/Frameworks/aubio.framework; sourceTree = "<group>"; };
@@ -353,17 +353,17 @@
 				30C844351C42C17E006452BE /* AudioUI.hpp */,
 				30C844371C42D110006452BE /* Model.cpp */,
 				30C844381C42D110006452BE /* Model.hpp */,
-				30AC5FDE1C44164F00B793E9 /* Cues.cpp */,
-				30AC5FDF1C44164F00B793E9 /* Cues.hpp */,
-				30AC5FE11C447F6F00B793E9 /* GridDisplay.cpp */,
-				30AC5FE21C447F6F00B793E9 /* GridDisplay.hpp */,
-				30AC5FE71C44886F00B793E9 /* OnsetPattern.cpp */,
-				30AC5FE81C44886F00B793E9 /* OnsetPattern.hpp */,
 				30AC5FEA1C448C7600B793E9 /* Types.hpp */,
 				306565A11C472E7C00917ADB /* App.cpp */,
 				306565A21C472E7C00917ADB /* App.hpp */,
 				308CEE5B1C48598D007C124A /* Artnet.cpp */,
 				308CEE5C1C48598D007C124A /* Artnet.hpp */,
+				3074F8CC1C8744A8008BD5EF /* Shape.cpp */,
+				3074F8CD1C8744A8008BD5EF /* Shape.hpp */,
+				3074F8CF1C874AF2008BD5EF /* Pattern.cpp */,
+				3074F8D01C874AF2008BD5EF /* Pattern.hpp */,
+				3074F8D21C874BBA008BD5EF /* ShapePattern.cpp */,
+				3074F8D31C874BBA008BD5EF /* ShapePattern.hpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -464,28 +464,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30AC5FE01C44164F00B793E9 /* Cues.cpp in Sources */,
 				308CEE591C48593A007C124A /* tod.c in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				479DCA850DD8BB469A777AD4 /* ofxAubioBeat.cpp in Sources */,
-				30AC5FE91C44886F00B793E9 /* OnsetPattern.cpp in Sources */,
 				C60077973A257D8F44947E2E /* ofxAubioBlock.cpp in Sources */,
 				67383740F5CC47ED5F955A76 /* ofxAubioMelBands.cpp in Sources */,
 				9C7B8B4D99CDFC508E76CC3A /* ofxAubioOnset.cpp in Sources */,
 				30AEA5981C4052A80034C794 /* README.md in Sources */,
 				306565A31C472E7C00917ADB /* App.cpp in Sources */,
+				3074F8CE1C8744A8008BD5EF /* Shape.cpp in Sources */,
 				30C844361C42C17E006452BE /* AudioUI.cpp in Sources */,
 				101D2DB773940813A5C898CD /* ofxAubioPitch.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
 				308CEE561C48593A007C124A /* misc.c in Sources */,
 				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,
 				30C844331C422B01006452BE /* Audio.cpp in Sources */,
+				3074F8D41C874BBA008BD5EF /* ShapePattern.cpp in Sources */,
 				308CEE5A1C48593A007C124A /* transmit.c in Sources */,
 				B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */,
-				30AC5FE31C447F6F00B793E9 /* GridDisplay.cpp in Sources */,
 				308CEE571C48593A007C124A /* network.c in Sources */,
 				30C844391C42D110006452BE /* Model.cpp in Sources */,
+				3074F8D11C874AF2008BD5EF /* Pattern.cpp in Sources */,
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,
 				308CEE551C48593A007C124A /* artnet.c in Sources */,
 				F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */,

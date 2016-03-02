@@ -30,11 +30,10 @@ public:
     SrAudio(int sampleSize, int bufferSize);
     ~SrAudio();
     
-    void Update();
-    
     void AudioIn(float * input, int bufferSize, int nChannels);
     void AudioOut(float * output, int bufferSize, int nChannels);
     
+    // XXX should create subclasses to hold parameters..
     enum Event {
         Beat,
         LowOnset,
@@ -42,10 +41,11 @@ public:
         HighOnset
     };
     
-    //const std::vector<Event> GetCurrentEvents() const;
+    void UpdateEvents();
+    
+    const std::vector<Event> & GetCurrentEvents() const;
     
     // Beat
-    bool BeatReceived();
     float GetBPM() const;
     
     // Onset
@@ -53,10 +53,6 @@ public:
     void SetOnsetThreshold(float threshold);
     float GetOnsetThresholdedNovelty() const;
     float GetOnsetNovelty() const;
-    
-    bool LowOnsetReceived();
-    bool MidOnsetReceived();
-    bool HighOnsetReceived();
     
     // Bands
     float * GetBandsEnergies() const;
@@ -80,7 +76,7 @@ private:
     vector<Real> _midPassBuffer;
     vector<Real> _highPassBuffer;
     
-    //std::vector<Event> _currentEvents;
+    std::vector<Event> _currentEvents;
 };
 
 #endif

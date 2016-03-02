@@ -65,12 +65,6 @@ SrAudio::~SrAudio()
 }
 
 void
-SrAudio::Update()
-{
-    
-}
-
-void
 SrAudio::AudioIn(float *input, int bufferSize, int nChannels)
 {
     // Copy left channel audio into mono input buffer
@@ -87,6 +81,25 @@ SrAudio::AudioIn(float *input, int bufferSize, int nChannels)
     _highOnset.audioIn(&_highPassBuffer[0], bufferSize, nChannels);
     _beat.audioIn(input, bufferSize, nChannels);
     _bands.audioIn(input, bufferSize, nChannels);
+    
+}
+
+void
+SrAudio::UpdateEvents()
+{
+    _currentEvents.clear();
+    if (_beat.received()) {
+        _currentEvents.push_back(Beat);
+    }
+    if (_lowOnset.received()) {
+        _currentEvents.push_back(LowOnset);
+    }
+    if (_midOnset.received()) {
+        _currentEvents.push_back(MidOnset);
+    }
+    if (_highOnset.received()) {
+        _currentEvents.push_back(HighOnset);
+    }
 }
 
 void
@@ -96,12 +109,6 @@ SrAudio::AudioOut(float *output, int bufferSize, int nChannels)
     for(int i=0; i < bufferSize; i++) {
         output[i*nChannels] = _lowPassBuffer[i];
     }
-}
-
-bool
-SrAudio::BeatReceived()
-{
-    return _beat.received();
 }
 
 float
@@ -122,24 +129,6 @@ SrAudio::SetOnsetThreshold(float threshold)
     _lowOnset.threshold = threshold;
 }
 
-bool
-SrAudio::LowOnsetReceived()
-{
-    return _lowOnset.received();
-}
-
-bool
-SrAudio::MidOnsetReceived()
-{
-    return _midOnset.received();
-}
-
-bool
-SrAudio::HighOnsetReceived()
-{
-    return _highOnset.received();
-}
-
 float
 SrAudio::GetOnsetNovelty() const
 {
@@ -156,4 +145,10 @@ float *
 SrAudio::GetBandsEnergies() const
 {
     return _bands.energies;
+}
+
+const std::vector<SrAudio::Event> &
+SrAudio::GetCurrentEvents() const
+{
+    return _currentEvents;
 }

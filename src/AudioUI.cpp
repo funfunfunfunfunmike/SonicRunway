@@ -65,6 +65,8 @@ SrAudioUI::Draw()
     _beatGui.draw();
     _onsetGui.draw();
     
+    ofPushStyle();
+    
     ofSetColor(ofColor::orange);
     ofSetLineWidth(3.0);
     _bandsGui.draw();
@@ -72,4 +74,6 @@ SrAudioUI::Draw()
         _bandPlot[i].y = 240 - 100 * _audio->GetBandsEnergies()[i];
     }
     _bandPlot.draw();
+    
+    ofPopStyle();
 }
