@@ -13,12 +13,10 @@ SrShape::SrShape(SrModel * model, const SrTime & time) :
     _model(model),
     _time(time)
 {
-    printf("constructed shape\n");
 }
 
 SrShape::~SrShape()
 {
-    printf("destroyed shape\n");
 }
 
 SrModel *

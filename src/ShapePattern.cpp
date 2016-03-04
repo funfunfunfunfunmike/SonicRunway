@@ -36,7 +36,6 @@ SrShapePattern::Update(const SrTime & now)
         if (shape->GetTime() < expiration) {
             iter = _shapes.erase(iter);
             delete shape;
-            printf("num shapes %zu\n", _shapes.size());
         } else {
             ++iter;
         }
@@ -49,19 +48,19 @@ SrShapePattern::Update(const SrTime & now)
         SrAudio::Event event = *iter;
         if (event == SrAudio::LowOnset) {
             SrShape *onsetShape =
-                new SrOnsetShape(GetModel(), now, ofColor(0, 50, 150, 255), 0.5);
+                new SrOnsetShape(GetModel(), now, ofColor(0, 100, 255, 255), 0.5);
             
             _shapes.insert(onsetShape);
-            printf("num shapes %zu\n", _shapes.size());
         }
-        if (event == SrAudio::Beat) {
+        /*
+        if (event == SrAudio::Beat and GetAudio()->GetBPM() < 200.0) {
             // XXX using OnsetShape for now
             SrShape *beatShape =
-                new SrOnsetShape(GetModel(), now, ofColor(255, 0, 100, 255), 0.5);
+                new SrOnsetShape(GetModel(), now, ofColor(50, 0, 90, 255), 0.5);
             
             _shapes.insert(beatShape);
-            printf("num shapes %zu\n", _shapes.size());
         }
+         */
     }
     
 }

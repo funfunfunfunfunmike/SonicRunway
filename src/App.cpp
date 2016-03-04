@@ -18,7 +18,8 @@ SrApp::SrApp() :
     _model(),
     _audio(_sampleRate, _bufferSize),
     _audioUI(&_audio, 10.0, 10.0),
-    _artnet(&_model)
+    _artnet(&_model),
+    _previs(&_model)
 {
     ofSoundStreamSetup(_numChannels, _numChannels,
                        _sampleRate, _bufferSize, 4);
@@ -58,12 +59,17 @@ SrApp::Update()
     }
     
     _audioUI.Update();
+    _previs.Update();
 }
 
 void
 SrApp::Draw()
 {
     SrTime now = std::chrono::system_clock::now();
+    
+    // XXX not sure why this isn't drawing...
+    //std::string fpsStr = "frame rate: " + ofToString(ofGetFrameRate(), 2);
+    //ofDrawBitmapStringHighlight(fpsStr, 5, 5);
     
     _model.Clear();
     _model.BeginDrawing();
@@ -77,9 +83,11 @@ SrApp::Draw()
     
     ofBackground(40,40,40);
     
-    _model.RenderFrameBuffer(10,300, 800, 200);
+    _model.RenderFrameBuffer(10,250, 800, 75);
     
     _audioUI.Draw();
+    
+    _previs.Draw(10,350,800,600);
     
     _artnet.UpdateLights();
 }

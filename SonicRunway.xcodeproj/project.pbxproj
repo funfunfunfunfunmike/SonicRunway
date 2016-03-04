@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		101D2DB773940813A5C898CD /* ofxAubioPitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93CAC8A94359FD331BAD8CFA /* ofxAubioPitch.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
+		3002E85E1C88F9C900689E57 /* Previs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3002E85C1C88F9C900689E57 /* Previs.cpp */; };
 		300CF0471C652BD800295FBF /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF03C1C652BD800295FBF /* libavcodec.a */; };
 		300CF0481C652BD800295FBF /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF03D1C652BD800295FBF /* libavformat.a */; };
 		300CF0491C652BD800295FBF /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF03E1C652BD800295FBF /* libavresample.a */; };
@@ -90,6 +91,8 @@
 		1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGuiGroup.h; path = ../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
 		238BB8FC8860C7A7012B2E27 /* ofxAubioMelBands.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAubioMelBands.h; path = ../../../addons/ofxAubio/src/ofxAubioMelBands.h; sourceTree = SOURCE_ROOT; };
 		2834D88A62CD23F3DE2C47D1 /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxButton.h; path = ../../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
+		3002E85C1C88F9C900689E57 /* Previs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Previs.cpp; sourceTree = "<group>"; };
+		3002E85D1C88F9C900689E57 /* Previs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Previs.hpp; sourceTree = "<group>"; };
 		300CF03C1C652BD800295FBF /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = ../../../../../../../../usr/local/lib/libavcodec.a; sourceTree = "<group>"; };
 		300CF03D1C652BD800295FBF /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = ../../../../../../../../usr/local/lib/libavformat.a; sourceTree = "<group>"; };
 		300CF03E1C652BD800295FBF /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavresample.a; path = ../../../../../../../../usr/local/lib/libavresample.a; sourceTree = "<group>"; };
@@ -364,6 +367,8 @@
 				3074F8D01C874AF2008BD5EF /* Pattern.hpp */,
 				3074F8D21C874BBA008BD5EF /* ShapePattern.cpp */,
 				3074F8D31C874BBA008BD5EF /* ShapePattern.hpp */,
+				3002E85C1C88F9C900689E57 /* Previs.cpp */,
+				3002E85D1C88F9C900689E57 /* Previs.hpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -484,6 +489,7 @@
 				308CEE5A1C48593A007C124A /* transmit.c in Sources */,
 				B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */,
 				308CEE571C48593A007C124A /* network.c in Sources */,
+				3002E85E1C88F9C900689E57 /* Previs.cpp in Sources */,
 				30C844391C42D110006452BE /* Model.cpp in Sources */,
 				3074F8D11C874AF2008BD5EF /* Pattern.cpp in Sources */,
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,

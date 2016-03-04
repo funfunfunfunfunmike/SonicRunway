@@ -15,6 +15,7 @@
 #include "AudioUI.hpp"
 #include "Model.hpp"
 #include "Artnet.hpp"
+#include "Previs.hpp"
 
 class SrPattern;
 
@@ -40,6 +41,7 @@ private:
     SrModel _model;
     SrAudio _audio;
     SrAudioUI _audioUI;
+    SrPrevis _previs;
     SrArtnet _artnet;
     
     std::vector<SrPattern *> _patterns;

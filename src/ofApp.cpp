@@ -9,7 +9,7 @@ void ofApp::setup(){
     _app = new SrApp();
     
     // set the size of the window
-    ofSetWindowShape(950, 550);
+    ofSetWindowShape(950, 950);
 }
 
 void ofApp::exit(){
