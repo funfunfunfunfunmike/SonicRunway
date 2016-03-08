@@ -18,7 +18,8 @@ class SrFftBuffer {
 public:
     SrFftBuffer(int numBands,
                 int sampleRate, int bufferSize,
-                int framesPerSecond);
+                int framesPerSecond,
+                float delayPerStation);
     virtual ~SrFftBuffer();
     
     // Input one buffer's fft results.  Called once
@@ -34,6 +35,7 @@ public:
     float GetBufferLengthInSeconds() const;
     
     const ofFloatPixels & GetData() const;
+    const ofFloatPixels & GetPerStationData() const;
     
 private:
     int _numBands;
@@ -42,10 +44,12 @@ private:
     int _framesPerSecond;
     float _buffersPerSecond;
     float _bufferLengthInSeconds;
+    float _delayPerStation;
     
     int _xPos;
     ofFloatPixels _rollingBuffer;
     ofFloatPixels _outputBuffer;
+    ofFloatPixels _perStationBuffer;
 };
 
 #endif

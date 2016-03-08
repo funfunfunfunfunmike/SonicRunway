@@ -13,7 +13,7 @@ SrModel::SrModel() :
     _lightsPerStation(59),
     _runwayLength(1000.0), // feet
     _speedOfSound(1126.0), // feet per second
-    //_speedOfSound(200.0), // feet per second
+    //_speedOfSound(400.0), // feet per second
     _archLength(30.0)      // feet
 {
     _frameBuffer.allocate(_numStations, _lightsPerStation, GL_RGBA);
@@ -77,6 +77,7 @@ void
 SrModel::BeginDrawing()
 {
     _frameBuffer.begin();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
 }
 
 void

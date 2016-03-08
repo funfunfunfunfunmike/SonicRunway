@@ -20,8 +20,7 @@ SrFftPattern::SrFftPattern(SrModel * model, SrAudio * audio,
                     GetModel()->GetLightsPerStation(),
                     3);
     
-    const ofFloatPixels & fftData = _fftBuffer->GetData();
-    _colorBuffer.allocate(fftData.getWidth(), fftData.getHeight(), 3);
+    _colorBuffer.allocate(model->GetNumStations(), model->GetLightsPerStation(), 3);
 }
 
 SrFftPattern::~SrFftPattern()
@@ -35,7 +34,7 @@ SrFftPattern::Update(const SrTime & now)
     const SrModel * model = GetModel();
     
     // Copy pixels
-    const ofFloatPixels & fftData = _fftBuffer->GetData();
+    const ofFloatPixels & fftData = _fftBuffer->GetPerStationData();
     
     for(int x = 0; x < _colorBuffer.getWidth(); x++) {
         for (int y=0; y < _colorBuffer.getHeight(); y++) {
@@ -68,5 +67,5 @@ SrFftPattern::Draw(const SrTime & now) const
     
     image.setFromPixels(_colorBuffer);
     
-    image.draw(0,0,scaledWidth,GetModel()->GetLightsPerStation());
+    image.draw(0,0,_colorBuffer.getWidth(),GetModel()->GetLightsPerStation());
 }

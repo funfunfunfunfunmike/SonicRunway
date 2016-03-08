@@ -20,7 +20,8 @@ SrApp::SrApp() :
     _model(),
     _audio(_sampleRate, _bufferSize),
     _fftBuffer(_audio.GetNumMelBands(),
-               _sampleRate, _bufferSize, _framesPerSecond),
+               _sampleRate, _bufferSize, _framesPerSecond,
+               _model.ComputeDelayPerStation()),
     _audioUI(&_audio, 10.0, 10.0),
     _artnet(&_model),
     _previs(&_model)
@@ -30,7 +31,7 @@ SrApp::SrApp() :
     ofSoundStreamSetup(_numChannels, _numChannels,
                        _sampleRate, _bufferSize, 4);
     
-    //_patterns.push_back(new SrShapePattern(&_model, &_audio));
+    _patterns.push_back(new SrShapePattern(&_model, &_audio));
     _patterns.push_back(new SrFftPattern(&_model, &_audio, &_fftBuffer));
 }
 
@@ -92,7 +93,7 @@ SrApp::Draw()
     ofBackground(40,40,40);
     
     _fftBuffer.Draw(10,150,800,75);
-    _model.RenderFrameBuffer(10,250, 800, 75);
+    _model.RenderFrameBuffer(10,250, 400, 75);
     
     _audioUI.Draw();
     
