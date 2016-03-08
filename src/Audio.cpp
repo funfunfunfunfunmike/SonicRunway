@@ -25,16 +25,18 @@ SrAudio::SrAudio(int sampleRate, int bufferSize) :
     essentia::init();
     AlgorithmFactory & factory = AlgorithmFactory::instance();
     
-    _lowPass = factory.create("LowPass",
+    _bandPass = factory.create("BandPass",
                                "sampleRate", _sampleRate,
-                               "cutoffFrequency", 1500);
+                            "bandwidth", 200,
+                               "cutoffFrequency", 500);
     _inputBuffer.resize(_bufferSize);
-    _lowPassBuffer.resize(_bufferSize);
+    _bandPassBuffer.resize(_bufferSize);
     
-    _lowPass->input("signal").set(_inputBuffer);
-    _lowPass->output("signal").set(_lowPassBuffer);
+    _bandPass->input("signal").set(_inputBuffer);
+    _bandPass->output("signal").set(_bandPassBuffer);
     
-    _lowOnset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
+    //_lowOnset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
+    _lowOnset.setup("mkl", _bufferSize, _bufferSize/2, _sampleRate);
     
     _beat.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
     _bands.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
@@ -42,7 +44,7 @@ SrAudio::SrAudio(int sampleRate, int bufferSize) :
 
 SrAudio::~SrAudio()
 {
-    delete _lowPass;
+    delete _bandPass;
     
     essentia::shutdown();
     
@@ -57,8 +59,8 @@ SrAudio::AudioIn(float *input, int bufferSize, int nChannels)
         _inputBuffer[i] = input[i * nChannels];
     }
     
-    _lowPass->compute();
-    _lowOnset.audioIn(&_lowPassBuffer[0], bufferSize, nChannels);
+    _bandPass->compute();
+    _lowOnset.audioIn(&_bandPassBuffer[0], bufferSize, nChannels);
     _beat.audioIn(input, bufferSize, nChannels);
     _bands.audioIn(input, bufferSize, nChannels);
 }
@@ -80,8 +82,8 @@ SrAudio::AudioOut(float *output, int bufferSize, int nChannels)
 {
     // XXX only handling mono for now.
     for(int i=0; i < bufferSize; i++) {
-        //output[i*nChannels] = _lowPassBuffer[i];
-        output[i*nChannels] = _inputBuffer[i];
+        output[i*nChannels] = _bandPassBuffer[i];
+        //output[i*nChannels] = _inputBuffer[i];
     }
 }
 
@@ -100,7 +102,7 @@ SrAudio::GetOnsetThreshold() const
 void
 SrAudio::SetOnsetThreshold(float threshold)
 {
-    _lowOnset.threshold = threshold;
+    _lowOnset.setThreshold(threshold);
 }
 
 float

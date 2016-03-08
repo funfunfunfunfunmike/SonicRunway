@@ -63,14 +63,14 @@ private:
     int _bufferSize;
     int _numMelBands;
     
-    essentia::standard::Algorithm *_lowPass;
+    essentia::standard::Algorithm *_bandPass;
     
     ofxAubioOnset _lowOnset;
     ofxAubioBeat _beat;
     ofxAubioMelBands _bands;
     
     vector<Real> _inputBuffer;
-    vector<Real> _lowPassBuffer;
+    vector<Real> _bandPassBuffer;
     
     std::vector<Event> _currentEvents;
 };

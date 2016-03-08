@@ -25,6 +25,7 @@ SrAudioUI::SrAudioUI(SrAudio * audio, float x, float y) :
     x += 250;
     _onsetGui.setup("SrAudioOnset", "settings.xml", x + 10, 10);
     _onsetGui.add(_gotOnsetSlider.setup("onset", 0, 0, 250));
+    _onsetGui.add(_onsetThresholdSlider.setup("threshold", 0, 0, 2));
     _onsetGui.add(_onsetNoveltySlider.setup(
                   "onset novelty", 0, 0, 10000));
     _onsetGui.add(_onsetThresholdedNoveltySlider.setup(
@@ -51,6 +52,7 @@ void
 SrAudioUI::Update()
 {
     // Not exactly MVC pattern!
+    printf("_onsetThresholdSlider %f\n", (float) _onsetThresholdSlider);
     _audio->SetOnsetThreshold(_onsetThresholdSlider);
     
     _onsetNoveltySlider = _audio->GetOnsetNovelty();
