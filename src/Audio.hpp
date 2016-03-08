@@ -38,7 +38,8 @@ public:
     // XXX should create subclasses to hold parameters..
     enum Event {
         Beat,
-        LowOnset
+        LowOnset,
+        Thump
     };
     
     void UpdateEvents(const SrTime &now);
@@ -62,6 +63,10 @@ private:
     int _sampleRate;
     int _bufferSize;
     int _numMelBands;
+    
+    uint64_t _lastLowOnsetTime;
+    uint64_t _lastBeatTime;
+    uint64_t _lastThumpTime;
     
     essentia::standard::Algorithm *_bandPass;
     

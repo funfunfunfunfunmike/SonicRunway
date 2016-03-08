@@ -24,6 +24,8 @@ public:
     
 private:
     std::set<SrShape *> _shapes;
+    
+    bool _isOddBeat;
 };
 
 #endif

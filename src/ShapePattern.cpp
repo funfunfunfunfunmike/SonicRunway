@@ -10,7 +10,8 @@
 #include "Audio.hpp"
 
 SrShapePattern::SrShapePattern(SrModel * model, SrAudio * audio) :
-    SrPattern(model, audio)
+    SrPattern(model, audio),
+    _isOddBeat(false)
 {
     
 }
@@ -48,19 +49,28 @@ SrShapePattern::Update(const SrTime & now)
         SrAudio::Event event = *iter;
         if (event == SrAudio::LowOnset) {
             SrShape *onsetShape =
-                new SrOnsetShape(GetModel(), now, ofColor(0, 100, 255, 255), 0.5);
+                new SrOnsetShape(GetModel(), now, ofColor(10, 0, 0, 255), 0.5);
             
             _shapes.insert(onsetShape);
         }
-        /*
         if (event == SrAudio::Beat and GetAudio()->GetBPM() < 200.0) {
             // XXX using OnsetShape for now
             SrShape *beatShape =
-                new SrOnsetShape(GetModel(), now, ofColor(50, 0, 90, 255), 0.5);
+                new SrOnsetShape(GetModel(), now, ofColor(0, 10, 0, 255), 0.5);
+            
+            _shapes.insert(beatShape);
+            _isOddBeat = !_isOddBeat;
+        }
+        if (event == SrAudio::Thump and GetAudio()->GetBPM() < 200.0) {
+            // XXX using OnsetShape for now
+            ofColor c = _isOddBeat ?
+                        ofColor(0,100,255,255) :
+                        ofColor(0,100,255,255); // XXX change this to alternate colors
+            SrShape *beatShape =
+                new SrOnsetShape(GetModel(), now, c, 0.5);
             
             _shapes.insert(beatShape);
         }
-         */
     }
     
 }

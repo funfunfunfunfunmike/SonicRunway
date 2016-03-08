@@ -72,11 +72,17 @@ SrOnsetShape::~SrOnsetShape()
 void
 SrOnsetShape::Draw(const SrTime &now) const
 {
-    ofSetColor(_color);
+    ofSetColor(_color * 2.0);
 
     float xPos = GetXPosition(now);
     
     float height = GetModel()->GetLightsPerStation();
-    float width = 2.0;
+    float width = 1.0;
     ofDrawRectangle(xPos - width, 0.0, width, height);
+    ofSetColor(_color * 0.8);
+    ofDrawRectangle(xPos - width * 2, 0.0, width, height);
+    ofSetColor(_color * 0.3);
+    ofDrawRectangle(xPos - width * 3, 0.0, width, height);
+    ofSetColor(_color * 0.1);
+    ofDrawRectangle(xPos - width * 4, 0.0, width, height);
 }

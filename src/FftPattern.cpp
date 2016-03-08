@@ -39,6 +39,7 @@ SrFftPattern::Update(const SrTime & now)
     for(int x = 0; x < _colorBuffer.getWidth(); x++) {
         for (int y=0; y < _colorBuffer.getHeight(); y++) {
             float fftValue = fftData.getColor(x,y).getLightness();
+            fftValue = pow(fftValue, 0.8);
             
             ofFloatColor c;
             float baseColor = 0.15;
@@ -46,7 +47,7 @@ SrFftPattern::Update(const SrTime & now)
             if (hue < 0.0) {
                 hue += 1.0;
             }
-            c.setHsb(hue, 1.0, fftValue * 3.0);
+            c.setHsb(hue, 1.0, fftValue * 2.0);
             
             _colorBuffer.setColor(x,y,c);
         }
@@ -68,4 +69,11 @@ SrFftPattern::Draw(const SrTime & now) const
     image.setFromPixels(_colorBuffer);
     
     image.draw(0,0,_colorBuffer.getWidth(),GetModel()->GetLightsPerStation());
+    
+    ofPushMatrix();
+    ofTranslate(0,GetModel()->GetLightsPerStation());
+    ofScale(1,-1);
+    
+    image.draw(0,0,_colorBuffer.getWidth(),GetModel()->GetLightsPerStation());
+    ofPopMatrix();
 }

@@ -13,14 +13,14 @@ SrPrevis::SrPrevis(SrModel * model) :
     _model(model),
     _lightRadius(0.2)
 {
-    _camera.setFov(45);
+    _camera.setFov(35);
     /*
     _camera.setOrientation(ofVec3f(0,180,0));
     _camera.setTarget(ofVec3f(0,5.8,50));
     _camera.setDistance(70.0);
      */
     _camera.lookAt(ofVec3f(0,0,60),ofVec3f(0,1,0));
-    _camera.setPosition(0,5.8,-15);
+    _camera.setPosition(0,5.8,-18);
 }
 
 SrPrevis::~SrPrevis()

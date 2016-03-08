@@ -20,7 +20,10 @@ using namespace standard;
 SrAudio::SrAudio(int sampleRate, int bufferSize) :
     _sampleRate(sampleRate),
     _bufferSize(bufferSize),
-    _numMelBands(40)  // hard coded in ofxAubio
+    _numMelBands(40), // hard coded in ofxAubio
+    _lastLowOnsetTime(0),
+    _lastBeatTime(0),
+    _lastThumpTime(0)
 {
     essentia::init();
     AlgorithmFactory & factory = AlgorithmFactory::instance();
@@ -36,7 +39,7 @@ SrAudio::SrAudio(int sampleRate, int bufferSize) :
     _bandPass->output("signal").set(_bandPassBuffer);
     
     //_lowOnset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
-    _lowOnset.setup("mkl", _bufferSize, _bufferSize/2, _sampleRate);
+    _lowOnset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
     
     _beat.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
     _bands.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
@@ -68,12 +71,24 @@ SrAudio::AudioIn(float *input, int bufferSize, int nChannels)
 void
 SrAudio::UpdateEvents(const SrTime & now)
 {
+    uint64_t elapsedTime = ofGetElapsedTimeMillis();
+    
     _currentEvents.clear();
     if (_beat.received()) {
         _currentEvents.push_back(Beat);
+        _lastBeatTime = elapsedTime;
     }
     if (_lowOnset.received()) {
         _currentEvents.push_back(LowOnset);
+        _lastLowOnsetTime = elapsedTime;
+    }
+    
+    if (elapsedTime - _lastThumpTime > 500) {
+        int diff = _lastBeatTime - _lastLowOnsetTime;
+        if (abs(diff) < 100) {
+            _currentEvents.push_back(Thump);
+            _lastThumpTime = elapsedTime;
+        }
     }
 }
 
@@ -82,8 +97,8 @@ SrAudio::AudioOut(float *output, int bufferSize, int nChannels)
 {
     // XXX only handling mono for now.
     for(int i=0; i < bufferSize; i++) {
-        output[i*nChannels] = _bandPassBuffer[i];
-        //output[i*nChannels] = _inputBuffer[i];
+        //output[i*nChannels] = _bandPassBuffer[i];
+        output[i*nChannels] = _inputBuffer[i];
     }
 }
 
