@@ -47,7 +47,6 @@ SrFftPattern::Update(const SrTime & now)
             if (hue < 0.0) {
                 hue += 1.0;
             }
-            //c.setHsb(0.0, (1.0 - fftValue) * 2, fftValue);
             c.setHsb(hue, 1.0, fftValue * 3.0);
             
             _colorBuffer.setColor(x,y,c);
@@ -70,7 +69,4 @@ SrFftPattern::Draw(const SrTime & now) const
     image.setFromPixels(_colorBuffer);
     
     image.draw(0,0,scaledWidth,GetModel()->GetLightsPerStation());
-    
-    
-    ofDrawRectangle(5,5,3,3);
 }

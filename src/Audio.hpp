@@ -38,9 +38,7 @@ public:
     // XXX should create subclasses to hold parameters..
     enum Event {
         Beat,
-        LowOnset,
-        MidOnset,
-        HighOnset
+        LowOnset
     };
     
     void UpdateEvents(const SrTime &now);
@@ -66,23 +64,15 @@ private:
     int _numMelBands;
     
     essentia::standard::Algorithm *_lowPass;
-    essentia::standard::Algorithm *_midPass;
-    essentia::standard::Algorithm *_highPass;
     
     ofxAubioOnset _lowOnset;
-    ofxAubioOnset _midOnset;
-    ofxAubioOnset _highOnset;
     ofxAubioBeat _beat;
     ofxAubioMelBands _bands;
     
     vector<Real> _inputBuffer;
     vector<Real> _lowPassBuffer;
-    vector<Real> _midPassBuffer;
-    vector<Real> _highPassBuffer;
     
     std::vector<Event> _currentEvents;
-    
-    ofMutex _audioMutex;
 };
 
 #endif

@@ -43,7 +43,6 @@ SrFftBuffer::FftIn(float * energies)
     
     for(int i = 0; i < _numBands; i++) {
         float energy = energies[i];
-        //_rollingBuffer.setColor(_xPos, i, ofColor(energy * 255));
         _rollingBuffer.setColor(_xPos, i, ofColor(energy * 255));
     }
 }

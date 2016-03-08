@@ -56,7 +56,7 @@ SrPrevis::Draw(float x, float y, float width, float height)
     
     //_DrawSpheres(_lightRadius * 1.5, 40);
     //_DrawSpheres(_lightRadius * 1.3, 40);
-    //_DrawSpheres(_lightRadius * 1.0, 255);
+    _DrawSpheres(_lightRadius * 1.0, 255);
     
     // End 3d stuff
     _camera.end();

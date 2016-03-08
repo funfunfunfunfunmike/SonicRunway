@@ -14,8 +14,7 @@
 
 SrApp::SrApp() :
     _sampleRate(44100),
-    //_bufferSize(512),
-    _bufferSize(1024),
+    _bufferSize(1024),  // XXX maybe 512?
     _numChannels(1),
     _framesPerSecond(60),
     _model(),
@@ -32,7 +31,7 @@ SrApp::SrApp() :
                        _sampleRate, _bufferSize, 4);
     
     //_patterns.push_back(new SrShapePattern(&_model, &_audio));
-    //_patterns.push_back(new SrFftPattern(&_model, &_audio, &_fftBuffer));
+    _patterns.push_back(new SrFftPattern(&_model, &_audio, &_fftBuffer));
 }
 
 SrApp::~SrApp()
@@ -46,7 +45,7 @@ void
 SrApp::AudioIn(float * input, int bufferSize, int nChannels)
 {
     _audio.AudioIn(input, bufferSize, nChannels);
-    //_fftBuffer.FftIn(_audio.GetBandsEnergies());
+    _fftBuffer.FftIn(_audio.GetBandsEnergies());
 }
 
 void
@@ -58,7 +57,6 @@ SrApp::AudioOut(float *output, int bufferSize, int nChannels)
 void
 SrApp::Update()
 {
-    /*
     SrTime now = std::chrono::system_clock::now();
     
     _audio.UpdateEvents(now);
@@ -68,12 +66,9 @@ SrApp::Update()
         SrPattern *pattern = *iter;
         pattern->Update(now);
     }
-     */
     
     _audioUI.Update();
-    /*
     _previs.Update();
-     */
     
     std::string fpsStr = "frame rate: " + ofToString(ofGetFrameRate(), 2);
     ofSetWindowTitle(fpsStr);
@@ -82,7 +77,6 @@ SrApp::Update()
 void
 SrApp::Draw()
 {
-    /*
     SrTime now = std::chrono::system_clock::now();
     
     _model.Clear();
@@ -99,11 +93,10 @@ SrApp::Draw()
     
     _fftBuffer.Draw(10,150,800,75);
     _model.RenderFrameBuffer(10,250, 800, 75);
-     */
     
     _audioUI.Draw();
     
-    //_previs.Draw(10,350,800,600);
+    _previs.Draw(10,350,800,600);
     
-    //_artnet.UpdateLights();
+    _artnet.UpdateLights();
 }
