@@ -39,16 +39,14 @@ the xcodeproj to get the header include path sorted.
 
 TODO:
 
-- Add EQ-based patterns
+- Look into Aubio warning about bucket sizes.
+
+- Investigate jitter
 
 - Consider integrating boost for smart ptrs..
 
 - Fix up anti-aliasing issues with rendering
 
 - Fix up artnet output to scrape the new Fbo
-
-- Improve 3d representation - glowing / camera navigation, etc.
-
-- Add beat-based patterns
 
 - Add some UI with knobs for various settings

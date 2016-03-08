@@ -19,8 +19,10 @@ using namespace standard;
 
 SrAudio::SrAudio(int sampleRate, int bufferSize) :
     _sampleRate(sampleRate),
-    _bufferSize(bufferSize)
+    _bufferSize(bufferSize),
+    _numMelBands(40)  // hard coded in ofxAubio
 {
+    /*
     essentia::init();
     AlgorithmFactory & factory = AlgorithmFactory::instance();
     
@@ -35,7 +37,9 @@ SrAudio::SrAudio(int sampleRate, int bufferSize) :
                                "sampleRate", _sampleRate,
                                "cutoffFrequency", 5000);
     
+     */
     _inputBuffer.resize(_bufferSize);
+    /*
     _lowPassBuffer.resize(_bufferSize);
     _midPassBuffer.resize(_bufferSize);
     _highPassBuffer.resize(_bufferSize);
@@ -50,43 +54,50 @@ SrAudio::SrAudio(int sampleRate, int bufferSize) :
     _lowOnset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
     _midOnset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
     _highOnset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
+     */
     _beat.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
     _bands.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
 }
 
 SrAudio::~SrAudio()
 {
+    /*
     delete _lowPass;
     delete _midPass;
     delete _highPass;
     
     essentia::shutdown();
+     */
     // XXX delete / exit aubio stuff?
 }
 
 void
 SrAudio::AudioIn(float *input, int bufferSize, int nChannels)
 {
+    _audioMutex.lock();
     // Copy left channel audio into mono input buffer
     for(int i=0; i < bufferSize; i++) {
         _inputBuffer[i] = input[i * nChannels];
     }
+    _audioMutex.unlock();
     
+    /*
     _lowPass->compute();
     _midPass->compute();
     _highPass->compute();
-    
     _lowOnset.audioIn(&_lowPassBuffer[0], bufferSize, nChannels);
     _midOnset.audioIn(&_midPassBuffer[0], bufferSize, nChannels);
     _highOnset.audioIn(&_highPassBuffer[0], bufferSize, nChannels);
     _beat.audioIn(input, bufferSize, nChannels);
     _bands.audioIn(input, bufferSize, nChannels);
+     */
     
 }
 
 void
-SrAudio::UpdateEvents()
+SrAudio::UpdateEvents(const SrTime & now)
 {
+    /*
     _currentEvents.clear();
     if (_beat.received()) {
         _currentEvents.push_back(Beat);
@@ -100,15 +111,25 @@ SrAudio::UpdateEvents()
     if (_highOnset.received()) {
         _currentEvents.push_back(HighOnset);
     }
+    
+    std::vector<float> bands(_numMelBands);
+    
+    for (size_t i=0; i < _numMelBands; i++) {
+        bands[i] = _bands.energies[i];
+    }
+     */
 }
 
 void
 SrAudio::AudioOut(float *output, int bufferSize, int nChannels)
 {
+    _audioMutex.lock();
     // XXX only handling mono for now.
     for(int i=0; i < bufferSize; i++) {
-        output[i*nChannels] = _lowPassBuffer[i];
+        //output[i*nChannels] = _lowPassBuffer[i];
+        output[i*nChannels] = _inputBuffer[i];
     }
+    _audioMutex.unlock();
 }
 
 float
@@ -145,6 +166,12 @@ float *
 SrAudio::GetBandsEnergies() const
 {
     return _bands.energies;
+}
+
+int
+SrAudio::GetNumMelBands() const
+{
+    return _numMelBands;
 }
 
 const std::vector<SrAudio::Event> &

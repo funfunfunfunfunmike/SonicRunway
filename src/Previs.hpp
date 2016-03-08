@@ -23,6 +23,9 @@ public:
     void Draw(float x, float y, float width, float height);
     
 private:
+    void _DrawSpheres(float radius, float transparency);
+    
+private:
     SrModel *_model;
     float _lightRadius;
     

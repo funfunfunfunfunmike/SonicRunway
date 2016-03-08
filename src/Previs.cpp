@@ -54,6 +54,19 @@ SrPrevis::Draw(float x, float y, float width, float height)
     ofDrawPlane(3000,3000);
     ofPopMatrix();
     
+    //_DrawSpheres(_lightRadius * 1.5, 40);
+    //_DrawSpheres(_lightRadius * 1.3, 40);
+    //_DrawSpheres(_lightRadius * 1.0, 255);
+    
+    // End 3d stuff
+    _camera.end();
+    
+    ofPopStyle();
+}
+
+void
+SrPrevis::_DrawSpheres(float lightRadius, float transparency)
+{
     float distanceBetweenStations =
         _model->GetRunwayLength() / _model->GetNumStations();
     float circumference = _model->GetArchLength() * 4.0 / 3.0;
@@ -68,7 +81,10 @@ SrPrevis::Draw(float x, float y, float width, float height)
     for(int station = 0; station < _model->GetNumStations(); station++) {
         for(int light = 0; light < _model->GetLightsPerStation(); light++) {
             
-            ofSetColor(pixels.getColor(station, light));
+            ofColor c = pixels.getColor(station, light);
+            ofColor drawColor(c[0], c[1], c[2], transparency);
+            
+            ofSetColor(drawColor);
             
             float angle = (float) light / lastStationIdx * 3 * M_PI / 2;
             angle -= M_PI / 4.0;
@@ -77,12 +93,8 @@ SrPrevis::Draw(float x, float y, float width, float height)
             float x = cos(angle) * radius;
             float y = sin(angle) * radius + groundToCenter;
            
-            ofDrawSphere(x,y,z,_lightRadius);
+            ofDrawSphere(x,y,z,lightRadius);
         }
     }
     
-    // End 3d stuff
-    _camera.end();
-    
-    ofPopStyle();
 }

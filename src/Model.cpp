@@ -12,7 +12,8 @@ SrModel::SrModel() :
     _numStations(30),
     _lightsPerStation(59),
     _runwayLength(1000.0), // feet
-    _speedOfSound(1126.0), // feet per second
+    //_speedOfSound(1126.0), // feet per second
+    _speedOfSound(500.0), // feet per second
     _archLength(30.0)      // feet
 {
     _frameBuffer.allocate(_numStations, _lightsPerStation, GL_RGBA);

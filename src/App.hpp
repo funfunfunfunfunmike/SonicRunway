@@ -12,6 +12,7 @@
 #include <stdio.h>
 
 #include "Audio.hpp"
+#include "FftBuffer.hpp"
 #include "AudioUI.hpp"
 #include "Model.hpp"
 #include "Artnet.hpp"
@@ -37,9 +38,11 @@ private:
     int _sampleRate;
     int _bufferSize;
     int _numChannels;
+    int _framesPerSecond;
     
     SrModel _model;
     SrAudio _audio;
+    SrFftBuffer _fftBuffer;
     SrAudioUI _audioUI;
     SrPrevis _previs;
     SrArtnet _artnet;

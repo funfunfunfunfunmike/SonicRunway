@@ -34,10 +34,12 @@
 		308CEE5A1C48593A007C124A /* transmit.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE541C48593A007C124A /* transmit.c */; };
 		308CEE5D1C48598D007C124A /* Artnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE5B1C48598D007C124A /* Artnet.cpp */; };
 		30AEA5981C4052A80034C794 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 30AEA5971C4052A80034C794 /* README.md */; };
+		30B8E7EB1C8C5B32006061E1 /* FftBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30B8E7E91C8C5B32006061E1 /* FftBuffer.cpp */; };
 		30C3F40A1C4046DE00184240 /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C3F4091C4046DE00184240 /* aubio.framework */; };
 		30C844331C422B01006452BE /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844311C422B01006452BE /* Audio.cpp */; };
 		30C844361C42C17E006452BE /* AudioUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844341C42C17E006452BE /* AudioUI.cpp */; };
 		30C844391C42D110006452BE /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844371C42D110006452BE /* Model.cpp */; };
+		30FDB28D1C8A65350079CE93 /* FftPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30FDB28B1C8A65350079CE93 /* FftPattern.cpp */; };
 		479DCA850DD8BB469A777AD4 /* ofxAubioBeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A96B8F6D2ECF14F9304EBD6C /* ofxAubioBeat.cpp */; };
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
 		5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C88333E71C9457E441C33474 /* ofxButton.cpp */; };
@@ -133,6 +135,8 @@
 		308CEE5F1C486177007C124A /* artnet_COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = artnet_COPYING; sourceTree = "<group>"; };
 		30AC5FEA1C448C7600B793E9 /* Types.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Types.hpp; sourceTree = "<group>"; };
 		30AEA5971C4052A80034C794 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		30B8E7E91C8C5B32006061E1 /* FftBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FftBuffer.cpp; sourceTree = "<group>"; };
+		30B8E7EA1C8C5B32006061E1 /* FftBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FftBuffer.hpp; sourceTree = "<group>"; };
 		30C3F4091C4046DE00184240 /* aubio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = aubio.framework; path = ../../../../../../Library/Frameworks/aubio.framework; sourceTree = "<group>"; };
 		30C844311C422B01006452BE /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
 		30C844321C422B01006452BE /* Audio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Audio.hpp; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 		30C844351C42C17E006452BE /* AudioUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AudioUI.hpp; sourceTree = "<group>"; };
 		30C844371C42D110006452BE /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
 		30C844381C42D110006452BE /* Model.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
+		30FDB28B1C8A65350079CE93 /* FftPattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FftPattern.cpp; sourceTree = "<group>"; };
+		30FDB28C1C8A65350079CE93 /* FftPattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FftPattern.hpp; sourceTree = "<group>"; };
 		3B6AFA97F893CE28547CFCDC /* ofxAubio.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAubio.h; path = ../../../addons/ofxAubio/src/ofxAubio.h; sourceTree = SOURCE_ROOT; };
 		4B17A983E507AB0B3F71A2D6 /* ofxAubioBlock.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAubioBlock.h; path = ../../../addons/ofxAubio/src/ofxAubioBlock.h; sourceTree = SOURCE_ROOT; };
 		52AFA1F08C420992CAAAE648 /* ofxSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSlider.h; path = ../../../addons/ofxGui/src/ofxSlider.h; sourceTree = SOURCE_ROOT; };
@@ -369,6 +375,10 @@
 				3074F8D31C874BBA008BD5EF /* ShapePattern.hpp */,
 				3002E85C1C88F9C900689E57 /* Previs.cpp */,
 				3002E85D1C88F9C900689E57 /* Previs.hpp */,
+				30FDB28B1C8A65350079CE93 /* FftPattern.cpp */,
+				30FDB28C1C8A65350079CE93 /* FftPattern.hpp */,
+				30B8E7E91C8C5B32006061E1 /* FftBuffer.cpp */,
+				30B8E7EA1C8C5B32006061E1 /* FftBuffer.hpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -497,6 +507,8 @@
 				F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */,
 				306DFD3F1C80100200AB9225 /* ofxArtnet.cpp in Sources */,
 				837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */,
+				30B8E7EB1C8C5B32006061E1 /* FftBuffer.cpp in Sources */,
+				30FDB28D1C8A65350079CE93 /* FftPattern.cpp in Sources */,
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
 				308CEE5D1C48598D007C124A /* Artnet.cpp in Sources */,
 				308CEE581C48593A007C124A /* receive.c in Sources */,

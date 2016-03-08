@@ -46,13 +46,14 @@ SrShapePattern::Update(const SrTime & now)
     
     for(auto iter = events.begin(); iter != events.end(); iter++) {
         SrAudio::Event event = *iter;
+        /*
         if (event == SrAudio::LowOnset) {
             SrShape *onsetShape =
                 new SrOnsetShape(GetModel(), now, ofColor(0, 100, 255, 255), 0.5);
             
             _shapes.insert(onsetShape);
         }
-        /*
+         */
         if (event == SrAudio::Beat and GetAudio()->GetBPM() < 200.0) {
             // XXX using OnsetShape for now
             SrShape *beatShape =
@@ -60,7 +61,6 @@ SrShapePattern::Update(const SrTime & now)
             
             _shapes.insert(beatShape);
         }
-         */
     }
     
 }

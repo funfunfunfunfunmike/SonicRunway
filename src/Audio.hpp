@@ -13,6 +13,8 @@
 
 #include <stdio.h>
 #include "ofxAubio.h"
+#include "Types.hpp"
+#include "ofMain.h"
 
 #include <essentia/essentia.h>
 #include <essentia/algorithmfactory.h>
@@ -41,7 +43,7 @@ public:
         HighOnset
     };
     
-    void UpdateEvents();
+    void UpdateEvents(const SrTime &now);
     
     const std::vector<Event> & GetCurrentEvents() const;
     
@@ -55,11 +57,13 @@ public:
     float GetOnsetNovelty() const;
     
     // Bands
+    int GetNumMelBands() const;
     float * GetBandsEnergies() const;
     
 private:
     int _sampleRate;
     int _bufferSize;
+    int _numMelBands;
     
     essentia::standard::Algorithm *_lowPass;
     essentia::standard::Algorithm *_midPass;
@@ -77,6 +81,8 @@ private:
     vector<Real> _highPassBuffer;
     
     std::vector<Event> _currentEvents;
+    
+    ofMutex _audioMutex;
 };
 
 #endif
