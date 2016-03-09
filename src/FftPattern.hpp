@@ -13,6 +13,7 @@
 
 #include "Pattern.hpp"
 #include "Shape.hpp"
+#include "Buffer.hpp"
 
 class SrFftBuffer;
 
@@ -34,6 +35,8 @@ private:
     ofFloatPixels _pixels;
     
     ofFloatPixels _colorBuffer;
+    
+    SrFloatBuffer _hueShiftBuffer;
 };
 
 #endif

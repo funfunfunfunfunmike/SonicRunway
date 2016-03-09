@@ -23,6 +23,10 @@ Mac install instructions:
     https://github.com/MTG/homebrew-essentia
     This should end up under /usr/local/
 
+- Install boost (with homebrew):
+    (XXX - not actually used... yet)
+    brew install boost --without-python
+
 - Clone this repo under (yourOpenFramworksDir)/apps/myApps/
 
 - Open SonicRunway.xcodeproj

@@ -38,7 +38,6 @@ private:
     int _sampleRate;
     int _bufferSize;
     int _numChannels;
-    int _framesPerSecond;
     
     SrModel _model;
     SrAudio _audio;

@@ -28,9 +28,11 @@ public:
     
     float GetRunwayLength() const; // in feet
     float GetSpeedOfSound() const; // in feet per second
-    float GetArchLength() const;
+    float GetArchLength() const;  // in feet
+    float GetFramesPerSecond() const;
     
     float ComputeDelayPerStation() const; // in seconds
+    
     
     
     void Clear();
@@ -46,6 +48,7 @@ private:
     float _runwayLength;
     float _speedOfSound;
     float _archLength;
+    float _framesPerSecond;
     
     ofFbo _frameBuffer;
     ofFloatPixels _floatPixelsCache;

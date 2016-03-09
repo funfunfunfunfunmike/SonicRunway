@@ -106,6 +106,7 @@
 		300CF0441C652BD800295FBF /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = ../../../../../../../../usr/local/lib/libswresample.a; sourceTree = "<group>"; };
 		300CF0451C652BD800295FBF /* libtag.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtag.dylib; path = ../../../../../../../../usr/local/lib/libtag.dylib; sourceTree = "<group>"; };
 		300CF0461C652BD800295FBF /* libyaml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyaml.a; path = ../../../../../../../../usr/local/lib/libyaml.a; sourceTree = "<group>"; };
+		302695351C8FEE1D007F749C /* Buffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Buffer.hpp; sourceTree = "<group>"; };
 		306565A11C472E7C00917ADB /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
 		306565A21C472E7C00917ADB /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
 		306DFD3D1C80100200AB9225 /* ofxArtnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxArtnet.cpp; sourceTree = "<group>"; };
@@ -379,6 +380,7 @@
 				30FDB28C1C8A65350079CE93 /* FftPattern.hpp */,
 				30B8E7E91C8C5B32006061E1 /* FftBuffer.cpp */,
 				30B8E7EA1C8C5B32006061E1 /* FftBuffer.hpp */,
+				302695351C8FEE1D007F749C /* Buffer.hpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

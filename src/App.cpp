@@ -16,17 +16,16 @@ SrApp::SrApp() :
     _sampleRate(44100),
     _bufferSize(1024),  // XXX maybe 512?
     _numChannels(1),
-    _framesPerSecond(60),
     _model(),
     _audio(_sampleRate, _bufferSize),
     _fftBuffer(_audio.GetNumMelBands(),
-               _sampleRate, _bufferSize, _framesPerSecond,
+               _sampleRate, _bufferSize, _model.GetFramesPerSecond(),
                _model.ComputeDelayPerStation()),
     _audioUI(&_audio, 10.0, 10.0),
     _artnet(&_model),
     _previs(&_model)
 {
-    ofSetFrameRate(_framesPerSecond);
+    ofSetFrameRate(_model.GetFramesPerSecond());
     
     ofSoundStreamSetup(_numChannels, _numChannels,
                        _sampleRate, _bufferSize, 4);

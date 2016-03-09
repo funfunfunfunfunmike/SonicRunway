@@ -14,7 +14,8 @@ SrModel::SrModel() :
     _runwayLength(1000.0), // feet
     _speedOfSound(1126.0), // feet per second
     //_speedOfSound(400.0), // feet per second
-    _archLength(30.0)      // feet
+    _archLength(30.0),      // feet
+    _framesPerSecond(60)
 {
     _frameBuffer.allocate(_numStations, _lightsPerStation, GL_RGBA);
 }
@@ -51,6 +52,12 @@ float
 SrModel::GetArchLength() const
 {
     return _archLength;
+}
+
+float
+SrModel::GetFramesPerSecond() const
+{
+    return _framesPerSecond;
 }
 
 const ofFloatPixels &
