@@ -13,22 +13,17 @@
 #include "FftPattern.hpp"
 
 SrApp::SrApp() :
-    _sampleRate(44100),
-    _bufferSize(1024),  // XXX maybe 512?
-    _numChannels(1),
     _model(),
-    _audio(_sampleRate, _bufferSize),
-    _fftBuffer(_audio.GetNumMelBands(),
-               _sampleRate, _bufferSize, _model.GetFramesPerSecond(),
-               _model.ComputeDelayPerStation()),
+    _audio(_model.GetSampleRate(), _model.GetBufferSize()),
+    _fftBuffer(&_model, &_audio),
     _audioUI(&_audio, 10.0, 10.0),
     _artnet(&_model),
     _previs(&_model)
 {
     ofSetFrameRate(_model.GetFramesPerSecond());
     
-    ofSoundStreamSetup(_numChannels, _numChannels,
-                       _sampleRate, _bufferSize, 4);
+    ofSoundStreamSetup(_model.GetNumChannels(), _model.GetNumChannels(),
+                       _model.GetSampleRate(), _model.GetBufferSize(), 4);
     
     _patterns.push_back(new SrShapePattern(&_model, &_audio));
     _patterns.push_back(new SrFftPattern(&_model, &_audio, &_fftBuffer));

@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <vector>
 
+#include "Model.hpp"
+
 //
 // SrBuffer is a templated class that implements a circular buffer.
 // It is intended to store a history of a given value and provide
@@ -23,12 +25,18 @@
 template <class T>
 class SrBuffer {
 public:
+    
+    enum PushFrequency {
+        OncePerAudioIn,
+        OncePerUpdate
+    };
+    
     // Construct the buffer.  Clients are expected to call 'Push'
     // at the frequency designated by 'entriesPerSecond'.
     //
     // The buffer is circular -- any access beyond 'bufferSizeInSeconds'
     // is prohibited.
-    SrBuffer(size_t entriesPerSecond, float sizeInSeconds);
+    SrBuffer(SrModel * model, PushFrequency freqency);
     virtual ~SrBuffer();
     
     // Push a new value into the buffer.  This should represent
@@ -54,12 +62,17 @@ private:
 
 
 template <class T>
-SrBuffer<T>::SrBuffer(size_t entriesPerSecond, float sizeInSeconds) :
-    _entriesPerSecond(entriesPerSecond),
-    _values(entriesPerSecond * sizeInSeconds),
+SrBuffer<T>::SrBuffer(SrModel * model, PushFrequency frequency) :
     _idx(0)
 {
+    if (frequency == OncePerAudioIn) {
+        _entriesPerSecond = model->GetBuffersPerSecond();
+    }
+    if (frequency == OncePerUpdate) {
+        _entriesPerSecond = model->GetFramesPerSecond();
+    }
     
+    _values.resize(_entriesPerSecond * model->GetMaxBufferDuration());
 }
 
 template <class T>

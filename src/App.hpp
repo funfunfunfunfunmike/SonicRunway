@@ -35,10 +35,6 @@ public:
     void AudioOut(float * output, int buferSize, int nChannels);
     
 private:
-    int _sampleRate;
-    int _bufferSize;
-    int _numChannels;
-    
     SrModel _model;
     SrAudio _audio;
     SrFftBuffer _fftBuffer;

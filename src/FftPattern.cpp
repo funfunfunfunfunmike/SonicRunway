@@ -15,7 +15,7 @@ SrFftPattern::SrFftPattern(SrModel * model, SrAudio * audio,
                            SrFftBuffer * fftBuffer) :
     SrPattern(model, audio),
     _fftBuffer(fftBuffer),
-    _hueShiftBuffer(model->GetFramesPerSecond(), 4.0)
+    _hueShiftBuffer(model, SrFloatBuffer::OncePerUpdate)
 {
     _pixels.allocate(GetModel()->GetNumStations(),
                     GetModel()->GetLightsPerStation(),
@@ -38,7 +38,7 @@ SrFftPattern::Update(const SrTime & now)
     
     // XXX disabled for now..
     //_hueShiftBuffer.Push(_hueShiftBuffer[0] + 0.0025);
-    _hueShiftBuffer.Push(_hueShiftBuffer[0] + 0.0);
+    _hueShiftBuffer.Push(_hueShiftBuffer[0] + 0.005);
     
     // Copy pixels
     const ofFloatPixels & fftData = _fftBuffer->GetPerStationData();
@@ -70,7 +70,7 @@ SrFftPattern::Draw(const SrTime & now) const
 {
     ofSetColor(255.0,255.0,255.0,255.0);
     
-    float scaledWidth = _fftBuffer->GetBufferLengthInSeconds() /
+    float scaledWidth = GetModel()->GetMaxBufferDuration() /
                             GetModel()->ComputeDelayPerStation();
     
     ofImage image;

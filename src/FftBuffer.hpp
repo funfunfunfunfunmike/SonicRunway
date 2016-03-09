@@ -13,16 +13,15 @@
 #include "ofMain.h"
 
 class SrModel;
+class SrAudio;
 
 ///
 /// A circular buffer of fft values.
 ///
 class SrFftBuffer {
 public:
-    SrFftBuffer(int numBands,
-                int sampleRate, int bufferSize,
-                int framesPerSecond,
-                float delayPerStation);
+    SrFftBuffer(SrModel * model,
+                SrAudio * audio);
     virtual ~SrFftBuffer();
     
     // Input one buffer's fft results.  Called once
@@ -41,13 +40,8 @@ public:
     const ofFloatPixels & GetPerStationData() const;
     
 private:
-    int _numBands;
-    int _sampleRate;
-    int _bufferSize;
-    int _framesPerSecond;
-    float _buffersPerSecond;
-    float _bufferLengthInSeconds;
-    float _delayPerStation;
+    SrModel * _model;
+    SrAudio * _audio;
     
     int _xPos;
     ofFloatPixels _rollingBuffer;

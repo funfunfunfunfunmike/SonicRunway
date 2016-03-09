@@ -8,27 +8,21 @@
 
 #include "FftBuffer.hpp"
 #include "Model.hpp"
+#include "Audio.hpp"
 
-SrFftBuffer::SrFftBuffer(int numBands,
-                         int sampleRate, int bufferSize,
-                         int framesPerSecond,
-                         float delayPerStation) :
-    _numBands(numBands),
-    _sampleRate(sampleRate),
-    _bufferSize(bufferSize),
-    _framesPerSecond(framesPerSecond),
-    _buffersPerSecond((float) _sampleRate / _bufferSize),
-    _xPos(0),
-    _bufferLengthInSeconds(4.0),
-    _delayPerStation(delayPerStation)
+SrFftBuffer::SrFftBuffer(SrModel * model,
+                         SrAudio * audio) :
+    _model(model),
+    _audio(audio),
+    _xPos(0)
 {
-    int width = _bufferLengthInSeconds * _buffersPerSecond;
+    float maxDuration = _model->GetMaxBufferDuration();
+    int width = maxDuration * _model->GetBuffersPerSecond();
+    int numBands = _audio->GetNumMelBands();
     
     _rollingBuffer.allocate(width, numBands, 1);
     _outputBuffer.allocate(width, numBands, 1);
-    float perStationWidth = (float) _bufferLengthInSeconds / _delayPerStation;
-    printf("delay per station %f, perStationWidth %f\n",
-           _delayPerStation, perStationWidth);
+    float perStationWidth = (float) maxDuration / _model->ComputeDelayPerStation();
     _perStationBuffer.allocate(perStationWidth, numBands, 1);
 }
 
@@ -47,7 +41,8 @@ SrFftBuffer::FftIn(float * energies)
         _xPos = _rollingBuffer.getWidth() - 1;
     }
     
-    for(int i = 0; i < _numBands; i++) {
+    int numBands = _audio->GetNumMelBands();
+    for(int i = 0; i < numBands; i++) {
         float energy = energies[i];
         _rollingBuffer.setColor(_xPos, i, ofColor(energy * 255));
     }
@@ -118,12 +113,6 @@ SrFftBuffer::Draw(float x, float y, float width, float height) const
     image.draw(x, y);
 }
 
-float
-SrFftBuffer::GetBuffersPerSecond() const
-{
-    return _buffersPerSecond;
-}
-
 const ofFloatPixels &
 SrFftBuffer::GetData() const
 {
@@ -134,10 +123,4 @@ const ofFloatPixels &
 SrFftBuffer::GetPerStationData() const
 {
     return _perStationBuffer;
-}
-
-float
-SrFftBuffer::GetBufferLengthInSeconds() const
-{
-    return _bufferLengthInSeconds;
 }

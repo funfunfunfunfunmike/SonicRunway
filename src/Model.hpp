@@ -23,6 +23,11 @@ public:
     
     void Update();
     
+    int GetSampleRate() const;
+    int GetBufferSize() const;
+    int GetNumChannels() const;
+    float GetBuffersPerSecond() const;
+    
     int GetNumStations() const;
     int GetLightsPerStation() const;
     
@@ -32,8 +37,7 @@ public:
     float GetFramesPerSecond() const;
     
     float ComputeDelayPerStation() const; // in seconds
-    
-    
+    float GetMaxBufferDuration() const; // in seconds
     
     void Clear();
     void BeginDrawing();
@@ -43,12 +47,18 @@ public:
     void RenderFrameBuffer(float x, float y, float width, float height);
     
 private:
+    int _sampleRate;
+    int _bufferSize;
+    int _numChannels;
+    float _buffersPerSecond;
+    
     int _numStations;
     int _lightsPerStation;
     float _runwayLength;
     float _speedOfSound;
     float _archLength;
     float _framesPerSecond;
+    
     
     ofFbo _frameBuffer;
     ofFloatPixels _floatPixelsCache;

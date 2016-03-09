@@ -9,6 +9,10 @@
 #include "Model.hpp"
 
 SrModel::SrModel() :
+    _sampleRate(44100), // samples per second
+    _bufferSize(1024),
+    _numChannels(1),
+    _buffersPerSecond((float) _sampleRate / _bufferSize),
     _numStations(30),
     _lightsPerStation(59),
     _runwayLength(1000.0), // feet
@@ -22,6 +26,30 @@ SrModel::SrModel() :
 
 SrModel::~SrModel()
 {
+}
+
+int
+SrModel::GetSampleRate() const
+{
+    return _sampleRate;
+}
+
+int
+SrModel::GetBufferSize() const
+{
+    return _bufferSize;
+}
+
+int
+SrModel::GetNumChannels() const
+{
+    return _numChannels;
+}
+
+float
+SrModel::GetBuffersPerSecond() const
+{
+    return _buffersPerSecond;
 }
 
 int
@@ -70,6 +98,12 @@ float
 SrModel::ComputeDelayPerStation() const
 {
     return GetRunwayLength() / GetNumStations() / GetSpeedOfSound();
+}
+
+float
+SrModel::GetMaxBufferDuration() const
+{
+    return _numStations * 1.5 * ComputeDelayPerStation();
 }
 
 void
