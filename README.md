@@ -39,11 +39,7 @@ the xcodeproj to get the header include path sorted.
 
 TODO:
 
-- Fix up artnet output to scrape the new Fbo
-
-- Investigate jitter
-
-- Consider integrating boost for smart ptrs / circular buffer
+- Consider implementing a circular buffer for arbitrary parameter history.  Or use boost?
 
 - Fix up anti-aliasing issues with rendering
 

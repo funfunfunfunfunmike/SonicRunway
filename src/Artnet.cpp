@@ -13,7 +13,7 @@ SrArtnet::SrArtnet(SrModel * model) :
     _model(model)
 {
     _artnet.setup("192.168.0.1");
-    _artnet.verbose = true;
+    _artnet.verbose = false;
 }
 
 void
@@ -28,9 +28,15 @@ SrArtnet::UpdateLights()
     const ofFloatPixels & pixels = _model->GetFloatPixels();
     
     for(int i=0; i < _model->GetNumStations(); i++) {
-        ofFloatColor color = pixels.getColor(i, 0);
+        int y = _model->GetLightsPerStation() / 3.0;
+        ofFloatColor color = pixels.getColor(i, y);
+        
+        // XXX hacking gamma correction by squaring the
+        // brightness.  Clearly there is a more accurate way...
+        color.setHsb(color.getHue(), color.getSaturation(),
+                     color.getBrightness() * color.getBrightness());
         data[i*3] = color[0] * 255;
-        data[i*3 + 1] = color[2] * 255;
+        data[i*3 + 1] = color[1] * 255;
         data[i*3 + 2] = color[2] * 255;
     }
     
