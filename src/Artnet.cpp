@@ -14,8 +14,6 @@ SrArtnet::SrArtnet(SrModel * model) :
 {
     _artnet.setup("192.168.0.1");
     _artnet.verbose = true;
-    
-    _fbo.allocate(512, 1, GL_RGB);
 }
 
 void
@@ -25,30 +23,22 @@ SrArtnet::UpdateLights()
         return;
     }
     
-    //create send buffer by ofFbo
-    {
-        _fbo.begin();
-        ofClear(0);
-       
-        /*
-        float colorR = (sin(ofGetElapsedTimeMillis() / 1000.f) / 2.f + 0.5f) * 255.f;
-        float colorG = (sin((ofGetElapsedTimeMillis() / 1000.f) + PI / 3.f) / 2.f + 0.5f) * 255.f;
-        float colorB = (sin((ofGetElapsedTimeMillis() / 1000.f)  + PI * 2.f / 3.f) / 2.f + 0.5f) * 255.f;
-        ofSetColor((int)colorR, (int)colorG, (int)colorB);
-         */
-        
-        /*
-        ofSetColor(_lightArray.GetColor(0,0));
-         */
-        ofRect(0, 0, 512, 1);
-        _fbo.end();
-        _fbo.readToPixels(_testImage.getPixelsRef());
+    std::vector<unsigned char> data(512 * 3);
+    
+    const ofFloatPixels & pixels = _model->GetFloatPixels();
+    
+    for(int i=0; i < _model->GetNumStations(); i++) {
+        ofFloatColor color = pixels.getColor(i, 0);
+        data[i*3] = color[0] * 255;
+        data[i*3 + 1] = color[2] * 255;
+        data[i*3 + 2] = color[2] * 255;
     }
     
     //list nodes for sending
     //with subnet / universe
     //    artnet.sendDmx("10.0.0.149", 0xf, 0xf, _testImage.getPixels(), 512);
-    _artnet.sendDmx("192.168.0.50", _testImage.getPixels(), 512);
+    
+    _artnet.sendDmx("192.168.0.50", &data[0], 512);
     
 }
 

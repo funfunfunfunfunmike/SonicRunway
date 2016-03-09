@@ -39,14 +39,12 @@ the xcodeproj to get the header include path sorted.
 
 TODO:
 
-- Look into Aubio warning about bucket sizes.
+- Fix up artnet output to scrape the new Fbo
 
 - Investigate jitter
 
-- Consider integrating boost for smart ptrs..
+- Consider integrating boost for smart ptrs / circular buffer
 
 - Fix up anti-aliasing issues with rendering
-
-- Fix up artnet output to scrape the new Fbo
 
 - Add some UI with knobs for various settings

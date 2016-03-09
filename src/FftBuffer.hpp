@@ -14,6 +14,9 @@
 
 class SrModel;
 
+///
+/// A circular buffer of fft values.
+///
 class SrFftBuffer {
 public:
     SrFftBuffer(int numBands,

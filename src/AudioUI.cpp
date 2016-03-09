@@ -52,7 +52,6 @@ void
 SrAudioUI::Update()
 {
     // Not exactly MVC pattern!
-    printf("_onsetThresholdSlider %f\n", (float) _onsetThresholdSlider);
     _audio->SetOnsetThreshold(_onsetThresholdSlider);
     
     _onsetNoveltySlider = _audio->GetOnsetNovelty();

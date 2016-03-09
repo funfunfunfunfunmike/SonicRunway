@@ -15,6 +15,9 @@
 
 class SrModel;
 
+///
+/// A shape primitive used by SrShape pattern
+///
 class SrShape {
 public:
     SrShape(SrModel * model, const SrTime & time);

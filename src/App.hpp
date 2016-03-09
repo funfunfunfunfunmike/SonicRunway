@@ -21,8 +21,8 @@
 class SrPattern;
 
 ///
-/// Main app.  Much like ofApp, but with constructor/destructor
-/// instead of setup/exit.
+/// Main app.
+/// Owns the audio buffer, patterns, etc.
 ///
 class SrApp {
 public:

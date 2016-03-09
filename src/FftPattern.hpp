@@ -16,6 +16,9 @@
 
 class SrFftBuffer;
 
+///
+/// A Pattern that renders the fftBuffer to the light array
+///
 class SrFftPattern : public SrPattern {
 public:
     SrFftPattern(SrModel * model, SrAudio * audio, SrFftBuffer * fftBuffer);

@@ -48,7 +48,9 @@ SrShape::GetXPosition(const SrTime &now) const
     
     float distanceFromSource = age * speedOfSound;
    
-    return distanceFromSource / nStations;
+    float distancePerStation = _model->GetRunwayLength() / _model->GetNumStations();
+    
+    return distanceFromSource / distancePerStation;
 }
 
 //-----------------------------------------------------------
@@ -79,10 +81,14 @@ SrOnsetShape::Draw(const SrTime &now) const
     float height = GetModel()->GetLightsPerStation();
     float width = 1.0;
     ofDrawRectangle(xPos - width, 0.0, width, height);
-    ofSetColor(_color * 0.8);
+    ofSetColor(_color * 0.6);
+    ofDrawTriangle(xPos, 0.0, xPos-8, 0.0, xPos, height * 0.8);
+    ofDrawTriangle(xPos, height, xPos-8, height, xPos, 0.2);
+    /*
     ofDrawRectangle(xPos - width * 2, 0.0, width, height);
     ofSetColor(_color * 0.3);
     ofDrawRectangle(xPos - width * 3, 0.0, width, height);
     ofSetColor(_color * 0.1);
     ofDrawRectangle(xPos - width * 4, 0.0, width, height);
+     */
 }

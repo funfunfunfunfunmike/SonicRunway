@@ -16,12 +16,27 @@
 class SrModel;
 class SrAudio;
 
+///
+/// Base class for patterns that draw themselves to the array
+/// of lights.  Subclasses should implement Update and Draw.
+///
 class SrPattern {
 public:
     SrPattern(SrModel * model, SrAudio * audio);
     virtual ~SrPattern();
     
+    // Update the pattern in response to the current audio.
+    // Prepare to draw.
     virtual void Update(const SrTime & now) = 0;
+    
+    // Draw the pattern.  By the time this is called, the render
+    // state will be set to draw to a frame buffer that represents
+    // the lights.
+    //   X coordinates are [0, numStations).
+    //   Y coordinates are [0, lightsPerStation).
+    //
+    // Blend mode is OF_BLENDMODE_ADD so the color values will
+    // sum together.
     virtual void Draw(const SrTime & now) const = 0;
     
     SrModel * GetModel() const;

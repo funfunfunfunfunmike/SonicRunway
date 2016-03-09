@@ -14,6 +14,9 @@
 #include "Pattern.hpp"
 #include "Shape.hpp"
 
+///
+/// A Pattern that draws shapes that coorespond to audio events.
+///
 class SrShapePattern : public SrPattern {
 public:
     SrShapePattern(SrModel * model, SrAudio * audio);
