@@ -13,36 +13,40 @@
 #include "ofMain.h"
 #include "ofxAubio.h"
 #include "ofxGui.h"
+#include "Model.hpp"
 
 using namespace essentia;
 using namespace standard;
 
-SrAudio::SrAudio(int sampleRate, int bufferSize) :
-    _sampleRate(sampleRate),
-    _bufferSize(bufferSize),
+SrAudio::SrAudio(SrModel * model) :
+    _model(model),
     _numMelBands(40), // hard coded in ofxAubio
     _lastLowOnsetTime(0),
     _lastBeatTime(0),
-    _lastThumpTime(0)
+    _lastThumpTime(0),
+    _lowOnsetBuffer(model, SrFloatBuffer::OncePerAudioIn)
 {
     essentia::init();
     AlgorithmFactory & factory = AlgorithmFactory::instance();
     
+    int sampleRate = _model->GetSampleRate();
+    int bufferSize = _model->GetBufferSize();
+    
     _bandPass = factory.create("BandPass",
-                               "sampleRate", _sampleRate,
+                               "sampleRate", sampleRate,
                             "bandwidth", 200,
                                "cutoffFrequency", 500);
-    _inputBuffer.resize(_bufferSize);
-    _bandPassBuffer.resize(_bufferSize);
+    _inputBuffer.resize(bufferSize);
+    _bandPassBuffer.resize(bufferSize);
     
     _bandPass->input("signal").set(_inputBuffer);
     _bandPass->output("signal").set(_bandPassBuffer);
     
-    //_lowOnset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
-    _lowOnset.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
+    int hopSize = bufferSize / 2;
+    _lowOnset.setup("default", bufferSize, hopSize, sampleRate);
     
-    _beat.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
-    _bands.setup("default", _bufferSize, _bufferSize/2, _sampleRate);
+    _beat.setup("default", bufferSize, hopSize, sampleRate);
+    _bands.setup("default", bufferSize, hopSize, sampleRate);
 }
 
 SrAudio::~SrAudio()
@@ -66,6 +70,16 @@ SrAudio::AudioIn(float *input, int bufferSize, int nChannels)
     _lowOnset.audioIn(&_bandPassBuffer[0], bufferSize, nChannels);
     _beat.audioIn(input, bufferSize, nChannels);
     _bands.audioIn(input, bufferSize, nChannels);
+    
+    /*
+    if (_lowOnset.received()) {
+        _lowOnsetBuffer.Push(0.0);
+    } else {
+        float timeSinceOffset =
+            _lowOnsetBuffer[0] + _lowOnsetBuffer.GetSecondsPerEntry();
+        _lowOnsetBuffer.Push(timeSinceOffset);
+    }
+     */
 }
 
 void

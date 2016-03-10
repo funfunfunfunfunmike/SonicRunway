@@ -14,12 +14,15 @@
 #include <stdio.h>
 #include "ofxAubio.h"
 #include "Types.hpp"
+#include "Buffer.hpp"
+
 #include "ofMain.h"
 
 #include <essentia/essentia.h>
 #include <essentia/algorithmfactory.h>
 
 class ofApp;
+class SrModel;
 
 // XXX this should be defined in essentia somewhere..
 typedef float Real;
@@ -29,7 +32,7 @@ typedef float Real;
 ///
 class SrAudio {
 public:
-    SrAudio(int sampleSize, int bufferSize);
+    SrAudio(SrModel * model);
     ~SrAudio();
     
     void AudioIn(float * input, int bufferSize, int nChannels);
@@ -59,9 +62,13 @@ public:
     int GetNumMelBands() const;
     float * GetBandsEnergies() const;
     
+    // Buffers
+    const vector<SrFloatBuffer> & GetFftBuffers() const { return _fftBuffers; }
+    const SrFloatBuffer & GetLowOnsetBuffer() const { return _lowOnsetBuffer; }
+    
 private:
-    int _sampleRate;
-    int _bufferSize;
+    SrModel * _model;
+    
     int _numMelBands;
     
     uint64_t _lastLowOnsetTime;
@@ -78,6 +85,9 @@ private:
     vector<Real> _bandPassBuffer;
     
     std::vector<Event> _currentEvents;
+    
+    vector<SrFloatBuffer> _fftBuffers;
+    SrFloatBuffer _lowOnsetBuffer;
 };
 
 #endif

@@ -40,10 +40,45 @@ You'll probably get some errors about 'aubio.h' not found.
 If so, you may need to delete and re-add 'aubio.framework' to 
 the xcodeproj to get the header include path sorted.
 
+OVERVIEW:
+
+The app uses OpenFrameworks, which is kinda like Processing but C++.
+It wraps OpenGL and other lower level libraries with a convenient
+API so you can set up a window, get audio, and draw stuff.  
+There are a lot of 'extensions' available to provide other 
+functionality.  
+
+Lots of good info on OpenFrameworks here:
+
+    http://openframeworks.cc/ofBook/chapters/foreword.html
+
+or the source for the book:
+
+    https://github.com/openframeworks/ofBook/
+
+Basically, the program:
+  - gets audio input
+  - processes the audio input to extract fft and other cues
+  - renders a bunch of patterns to a buffer
+  - broadcasts the buffer to the LEDs
+
+The 'SrBuffer' class is a generic circular buffer that can store
+samples of a parameter value.  It can then be queried per station.
+This provides the history necessary to make patterns that ripple
+down the runway at the speed of sound.  I'm in the middle of
+refactoring the existing patterns to leverage this class.
+
+It's important to note that the audio processing and render/draw
+functions are called from different thread and at different 
+intervals.  So far, I haven't bothered making things truly 
+thread safe because the various buffers are all statically allocated.
+So, we may see some tearing.  If this becomes problematic we can
+use ofMutex to make it thread safe.
+
 
 TODO:
 
-- Replace SrTime concepts with regular floats
+- Replace SrTime concepts with regular floats and ofGetElapsedTime
 
 - Refactor Onset and fft to use the new circular buffer.
 

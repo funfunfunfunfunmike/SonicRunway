@@ -27,7 +27,7 @@ public:
     SrPattern(const std::string & name, SrModel * model, SrAudio * audio);
     virtual ~SrPattern();
     
-    // Update the pattern in response to the current audio.
+    // Update the pattern in response to the current state.
     // Prepare to draw.
     virtual void Update(const SrTime & now) = 0;
     
@@ -45,10 +45,11 @@ public:
     void SetUIPosition(float x, float y);
     void DrawUI();
     
+protected:
+    
     SrModel * GetModel() const;
     SrAudio * GetAudio() const;
     
-protected:
     // Subclasses call this from their constructor to
     // Add UI elements to the panel for this pattern.
     void _AddUI(ofxBaseGui * item);

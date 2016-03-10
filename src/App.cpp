@@ -14,7 +14,7 @@
 
 SrApp::SrApp() :
     _model(),
-    _audio(_model.GetSampleRate(), _model.GetBufferSize()),
+    _audio(&_model),
     _fftBuffer(&_model, &_audio),
     _audioUI(&_audio, 10.0, 10.0),
     _artnet(&_model),

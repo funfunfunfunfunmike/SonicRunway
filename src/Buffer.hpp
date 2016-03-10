@@ -59,6 +59,10 @@ public:
     // will crash.
     T operator[](size_t idx) const;
     
+    // Return the fraction of a second per entry at the expected
+    // rate.
+    float GetSecondsPerEntry() const;
+    
 private:
     SrModel *_model;
     size_t _entriesPerSecond;
@@ -127,6 +131,13 @@ SrBuffer<T>::ComputeValueAtStation(size_t stationIdx) const
     float age = delayPerStation * stationIdx;
     
     return ComputeValue(age, delayPerStation);
+}
+
+template <class T>
+float
+SrBuffer<T>::GetSecondsPerEntry() const
+{
+    return 1.0 / _entriesPerSecond;
 }
 
 #endif

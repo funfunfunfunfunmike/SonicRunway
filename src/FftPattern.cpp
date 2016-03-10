@@ -85,13 +85,13 @@ SrFftPattern::Draw(const SrTime & now) const
     
     image.setFromPixels(_colorBuffer);
     
-    image.draw(0,0,_colorBuffer.getWidth(),GetModel()->GetLightsPerStation());
+    image.draw(0,0,_colorBuffer.getWidth(),GetModel()->GetLightsPerStation() * 1.5);
     
     ofPushMatrix();
     ofTranslate(0,GetModel()->GetLightsPerStation());
     ofScale(1,-1);
     
-    image.draw(0,0,_colorBuffer.getWidth(),GetModel()->GetLightsPerStation());
+    image.draw(0,0,_colorBuffer.getWidth(),GetModel()->GetLightsPerStation() * 1.5);
     ofPopMatrix();
 }
 
