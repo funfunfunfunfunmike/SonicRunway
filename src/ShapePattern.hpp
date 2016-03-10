@@ -19,7 +19,8 @@
 ///
 class SrShapePattern : public SrPattern {
 public:
-    SrShapePattern(SrModel * model, SrAudio * audio);
+    SrShapePattern(const std::string & name,
+                   SrModel * model, SrAudio * audio);
     virtual ~SrShapePattern();
     
     virtual void Update(const SrTime & now);

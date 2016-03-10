@@ -9,8 +9,9 @@
 #include "ShapePattern.hpp"
 #include "Audio.hpp"
 
-SrShapePattern::SrShapePattern(SrModel * model, SrAudio * audio) :
-    SrPattern(model, audio),
+SrShapePattern::SrShapePattern(const std::string & name,
+                               SrModel * model, SrAudio * audio) :
+    SrPattern(name, model, audio),
     _isOddBeat(false)
 {
     

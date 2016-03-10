@@ -48,6 +48,11 @@ public:
     // are interpolated or averaged given the filterWidth.
     T ComputeValue(float age, float filterWidthInSeconds) const;
     
+    // Access the value at the given station index, assuming
+    // that the buffer history corresponds to the speed of sound
+    // along the runway as specified in the model.
+    T ComputeValueAtStation(size_t stationIdx) const;
+    
     // Access a specific element in the buffer by index.
     // Index 0 is the most recent element pushed onto the array.
     // Attempting to index beyond entriesInSeconds * sizeInSeconds
@@ -55,6 +60,7 @@ public:
     T operator[](size_t idx) const;
     
 private:
+    SrModel *_model;
     size_t _entriesPerSecond;
     std::vector<T> _values;
     size_t _idx;
@@ -63,6 +69,7 @@ private:
 
 template <class T>
 SrBuffer<T>::SrBuffer(SrModel * model, PushFrequency frequency) :
+    _model(model),
     _idx(0)
 {
     if (frequency == OncePerAudioIn) {
@@ -104,10 +111,22 @@ template <class T>
 T
 SrBuffer<T>::ComputeValue(float age, float filterWidth) const
 {
+    // XXX TODO:  implement filtering...
+    
     int idx = age * _entriesPerSecond;
     return (*this)[idx];
 }
 
 typedef SrBuffer<float> SrFloatBuffer;
+
+template <class T>
+T
+SrBuffer<T>::ComputeValueAtStation(size_t stationIdx) const
+{
+    float delayPerStation = _model->ComputeDelayPerStation();
+    float age = delayPerStation * stationIdx;
+    
+    return ComputeValue(age, delayPerStation);
+}
 
 #endif

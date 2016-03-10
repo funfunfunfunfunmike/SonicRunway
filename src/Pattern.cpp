@@ -10,10 +10,13 @@
 #include "Model.hpp"
 #include "Audio.hpp"
 
-SrPattern::SrPattern(SrModel * model, SrAudio * audio) :
+SrPattern::SrPattern(const std::string & name,
+                     SrModel * model,
+                     SrAudio * audio) :
     _model(model),
     _audio(audio)
 {
+    _panel.setup(name);
     printf("constructed pattern\n");
 }
 
@@ -32,4 +35,22 @@ SrAudio *
 SrPattern::GetAudio() const
 {
     return _audio;
+}
+
+void
+SrPattern::SetUIPosition(float x, float y)
+{
+    _panel.setPosition(x, y);
+}
+
+void
+SrPattern::DrawUI()
+{
+    _panel.draw();
+}
+
+void
+SrPattern::_AddUI(ofxBaseGui * item)
+{
+    _panel.add(item);
 }

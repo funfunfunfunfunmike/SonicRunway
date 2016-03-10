@@ -22,21 +22,29 @@ class SrFftBuffer;
 ///
 class SrFftPattern : public SrPattern {
 public:
-    SrFftPattern(SrModel * model, SrAudio * audio, SrFftBuffer * fftBuffer);
+    SrFftPattern(const std::string & name,
+                 SrModel * model, SrAudio * audio,
+                 SrFftBuffer * fftBuffer);
     virtual ~SrFftPattern();
     
     virtual void Update(const SrTime & now);
     virtual void Draw(const SrTime & now) const;
     
+    float GetHueShift() const;
+    void SetHueShift(float hueShift);
+    
 private:
     SrModel *_model;
     SrFftBuffer *_fftBuffer;
+    float _hueShift;
     
     ofFloatPixels _pixels;
     
     ofFloatPixels _colorBuffer;
     
     SrFloatBuffer _hueShiftBuffer;
+    
+    ofxFloatSlider _hueShiftSlider;
 };
 
 #endif

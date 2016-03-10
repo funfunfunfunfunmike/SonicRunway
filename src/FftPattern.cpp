@@ -11,10 +11,12 @@
 #include "Model.hpp"
 #include "FftBuffer.hpp"
 
-SrFftPattern::SrFftPattern(SrModel * model, SrAudio * audio,
+SrFftPattern::SrFftPattern(const std::string & name,
+                           SrModel * model, SrAudio * audio,
                            SrFftBuffer * fftBuffer) :
-    SrPattern(model, audio),
+    SrPattern(name, model, audio),
     _fftBuffer(fftBuffer),
+    _hueShift(0.0),
     _hueShiftBuffer(model, SrFloatBuffer::OncePerUpdate)
 {
     _pixels.allocate(GetModel()->GetNumStations(),
@@ -23,7 +25,9 @@ SrFftPattern::SrFftPattern(SrModel * model, SrAudio * audio,
     
     _colorBuffer.allocate(model->GetNumStations(), model->GetLightsPerStation(), 3);
     
-    _hueShiftBuffer.Push(0.0);
+    _AddUI(_hueShiftSlider.setup("hue shift", 0.0, 1.0, _hueShift));
+    
+    _hueShiftBuffer.Push(_hueShift);
 }
 
 SrFftPattern::~SrFftPattern()
@@ -38,14 +42,16 @@ SrFftPattern::Update(const SrTime & now)
     
     // XXX disabled for now..
     //_hueShiftBuffer.Push(_hueShiftBuffer[0] + 0.0025);
-    _hueShiftBuffer.Push(_hueShiftBuffer[0] + 0.005);
+    //_hueShiftBuffer.Push(_hueShiftBuffer[0] + 0.005);
+    _hueShift = _hueShiftSlider;
+    _hueShiftBuffer.Push(_hueShift);
     
     // Copy pixels
     const ofFloatPixels & fftData = _fftBuffer->GetPerStationData();
     
     for(int x = 0; x < _colorBuffer.getWidth(); x++) {
         float hueShift =
-            _hueShiftBuffer.ComputeValue(x * GetModel()->ComputeDelayPerStation(), 0.0);
+            _hueShiftBuffer.ComputeValueAtStation(x);
         
         for (int y=0; y < _colorBuffer.getHeight(); y++) {
             float fftValue = fftData.getColor(x,y).getLightness();
@@ -87,4 +93,16 @@ SrFftPattern::Draw(const SrTime & now) const
     
     image.draw(0,0,_colorBuffer.getWidth(),GetModel()->GetLightsPerStation());
     ofPopMatrix();
+}
+
+void
+SrFftPattern::SetHueShift(float hueShift)
+{
+    _hueShift = hueShift;
+}
+
+float
+SrFftPattern::GetHueShift() const
+{
+    return _hueShift;
 }

@@ -25,8 +25,17 @@ SrApp::SrApp() :
     ofSoundStreamSetup(_model.GetNumChannels(), _model.GetNumChannels(),
                        _model.GetSampleRate(), _model.GetBufferSize(), 4);
     
-    _patterns.push_back(new SrShapePattern(&_model, &_audio));
-    _patterns.push_back(new SrFftPattern(&_model, &_audio, &_fftBuffer));
+    SrShapePattern * shapePattern =
+        new SrShapePattern("OnsetPattern", &_model, &_audio);
+    shapePattern->SetUIPosition(500,10);
+    
+    _patterns.push_back(shapePattern);
+    
+    SrFftPattern *fftPattern =
+        new SrFftPattern("FftPattern", &_model, &_audio, &_fftBuffer);
+    fftPattern->SetUIPosition(720,10);
+    
+    _patterns.push_back(fftPattern);
 }
 
 SrApp::~SrApp()
@@ -90,6 +99,11 @@ SrApp::Draw()
     _model.RenderFrameBuffer(10,250, 400, 75);
     
     _audioUI.Draw();
+    
+    for(auto iter = _patterns.begin(); iter != _patterns.end(); iter++) {
+        SrPattern *pattern = *iter;
+        pattern->DrawUI();
+    }
     
     _previs.Draw(10,350,800,600);
     

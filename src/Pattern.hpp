@@ -12,6 +12,8 @@
 #include <stdio.h>
 
 #include "Types.hpp"
+#include "ofxGui.h"
+#include <string>
 
 class SrModel;
 class SrAudio;
@@ -22,7 +24,7 @@ class SrAudio;
 ///
 class SrPattern {
 public:
-    SrPattern(SrModel * model, SrAudio * audio);
+    SrPattern(const std::string & name, SrModel * model, SrAudio * audio);
     virtual ~SrPattern();
     
     // Update the pattern in response to the current audio.
@@ -39,12 +41,23 @@ public:
     // sum together.
     virtual void Draw(const SrTime & now) const = 0;
     
+    // XXX dangerously mixing UI and implementation!
+    void SetUIPosition(float x, float y);
+    void DrawUI();
+    
     SrModel * GetModel() const;
     SrAudio * GetAudio() const;
+    
+protected:
+    // Subclasses call this from their constructor to
+    // Add UI elements to the panel for this pattern.
+    void _AddUI(ofxBaseGui * item);
     
 private:
     SrModel *_model;
     SrAudio *_audio;
+    
+    ofxPanel _panel;
 };
 
 #endif

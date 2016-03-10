@@ -43,7 +43,9 @@ the xcodeproj to get the header include path sorted.
 
 TODO:
 
-- Consider implementing a circular buffer for arbitrary parameter history.  Or use boost?
+- Replace SrTime concepts with regular floats
+
+- Refactor Onset and fft to use the new circular buffer.
 
 - Fix up anti-aliasing issues with rendering
 
