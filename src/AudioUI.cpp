@@ -32,15 +32,19 @@ SrAudioUI::SrAudioUI(SrAudio * audio, float x, float y) :
                   "thr. novelty", 0, -1000, 1000));
     
     // Set a default value for the slider (assignment op overloaded)
-    _onsetThresholdSlider = _audio->GetOnsetThreshold();
+    _onsetThresholdSlider =
+        _audio->GetLowOnset().GetThreshold()[0];
     
     x += 250;
     
     _bandsGui.setup("SrAudioMelBends", "settings.xml", x + 10, 115);
+    /*
     for (int i = 0; i < 40; i++) {
         _bandPlot.addVertex(50 + i * 650 / 40.,
-                            240 - 100 * _audio->GetBandsEnergies()[i]);
+                            240 - 100 *
+                            _audio->GetCurrentFftValues()[i]);
     }
+     */
 }
 
 SrAudioUI::~SrAudioUI()
@@ -51,13 +55,11 @@ SrAudioUI::~SrAudioUI()
 void
 SrAudioUI::Update()
 {
-    // Not exactly MVC pattern!
-    _audio->SetOnsetThreshold(_onsetThresholdSlider);
-    
-    _onsetNoveltySlider = _audio->GetOnsetNovelty();
+    _onsetNoveltySlider =
+        _audio->GetLowOnset().GetNovelty()[0];
     _onsetThresholdedNoveltySlider =
-        _audio->GetOnsetThresholdedNovelty();
-    _bpmSlider = _audio->GetBPM();
+        _audio->GetLowOnset().GetThresholdedNovelty()[0];
+    _bpmSlider = _audio->GetBpm()[0];
 }
 
 void
@@ -72,7 +74,7 @@ SrAudioUI::Draw()
     ofSetLineWidth(3.0);
     _bandsGui.draw();
     for (int i = 0; i < _bandPlot.size(); i++) {
-        _bandPlot[i].y = 240 - 100 * _audio->GetBandsEnergies()[i];
+        _bandPlot[i].y = 240 - 100 * _audio->GetCurrentFftValues()[i];
     }
     _bandPlot.draw();
     

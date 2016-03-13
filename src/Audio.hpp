@@ -15,6 +15,7 @@
 #include "ofxAubio.h"
 #include "Types.hpp"
 #include "Buffer.hpp"
+#include "OnsetDetect.hpp"
 
 #include "ofMain.h"
 
@@ -35,59 +36,28 @@ public:
     SrAudio(SrModel * model);
     ~SrAudio();
     
+    const SrOnsetDetect & GetLowOnset() const;
+    const SrFloatBuffer & GetBpm() const;
+    const vector<SrFloatBuffer> & GetFfts() const;
+    
     void AudioIn(float * input, int bufferSize, int nChannels);
     void AudioOut(float * output, int bufferSize, int nChannels);
     
-    // XXX should create subclasses to hold parameters..
-    enum Event {
-        Beat,
-        LowOnset,
-        Thump
-    };
-    
-    void UpdateEvents(const SrTime &now);
-    
-    const std::vector<Event> & GetCurrentEvents() const;
-    
-    // Beat
-    float GetBPM() const;
-    
-    // Onset
-    float GetOnsetThreshold() const;
-    void SetOnsetThreshold(float threshold);
-    float GetOnsetThresholdedNovelty() const;
-    float GetOnsetNovelty() const;
-    
-    // Bands
-    int GetNumMelBands() const;
-    float * GetBandsEnergies() const;
-    
-    // Buffers
-    const vector<SrFloatBuffer> & GetFftBuffers() const { return _fftBuffers; }
-    const SrFloatBuffer & GetLowOnsetBuffer() const { return _lowOnsetBuffer; }
+    std::vector<float> GetCurrentFftValues() const;
     
 private:
     SrModel * _model;
-    
-    int _numMelBands;
-    
-    uint64_t _lastLowOnsetTime;
-    uint64_t _lastBeatTime;
-    uint64_t _lastThumpTime;
+    SrOnsetDetect _lowOnsetDetect;
+    SrFloatBuffer _bpm;
+    vector<SrFloatBuffer> _ffts;
     
     essentia::standard::Algorithm *_bandPass;
     
-    ofxAubioOnset _lowOnset;
     ofxAubioBeat _beat;
     ofxAubioMelBands _bands;
     
     vector<Real> _inputBuffer;
     vector<Real> _bandPassBuffer;
-    
-    std::vector<Event> _currentEvents;
-    
-    vector<SrFloatBuffer> _fftBuffers;
-    SrFloatBuffer _lowOnsetBuffer;
 };
 
 #endif

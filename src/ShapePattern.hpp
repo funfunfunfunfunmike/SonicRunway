@@ -28,6 +28,7 @@ public:
     
 private:
     std::set<SrShape *> _shapes;
+    SrTime _timeOfLastShape;
     
     bool _isOddBeat;
 };

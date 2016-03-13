@@ -15,7 +15,6 @@
 SrApp::SrApp() :
     _model(),
     _audio(&_model),
-    _fftBuffer(&_model, &_audio),
     _audioUI(&_audio, 10.0, 10.0),
     _artnet(&_model),
     _previs(&_model)
@@ -32,7 +31,7 @@ SrApp::SrApp() :
     _patterns.push_back(shapePattern);
     
     SrFftPattern *fftPattern =
-        new SrFftPattern("FftPattern", &_model, &_audio, &_fftBuffer);
+        new SrFftPattern("FftPattern", &_model, &_audio);
     fftPattern->SetUIPosition(720,10);
     
     _patterns.push_back(fftPattern);
@@ -49,7 +48,6 @@ void
 SrApp::AudioIn(float * input, int bufferSize, int nChannels)
 {
     _audio.AudioIn(input, bufferSize, nChannels);
-    _fftBuffer.FftIn(_audio.GetBandsEnergies());
 }
 
 void
@@ -62,9 +60,6 @@ void
 SrApp::Update()
 {
     SrTime now = std::chrono::system_clock::now();
-    
-    _audio.UpdateEvents(now);
-    _fftBuffer.Update();
     
     for(auto iter = _patterns.begin(); iter != _patterns.end(); iter++) {
         SrPattern *pattern = *iter;
@@ -95,7 +90,6 @@ SrApp::Draw()
     
     ofBackground(40,40,40);
     
-    _fftBuffer.Draw(10,150,800,75);
     _model.RenderFrameBuffer(10,250, 400, 75);
     
     _audioUI.Draw();

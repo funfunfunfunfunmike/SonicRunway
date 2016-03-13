@@ -9,21 +9,15 @@
 #include "FftPattern.hpp"
 #include "Audio.hpp"
 #include "Model.hpp"
-#include "FftBuffer.hpp"
 
 SrFftPattern::SrFftPattern(const std::string & name,
-                           SrModel * model, SrAudio * audio,
-                           SrFftBuffer * fftBuffer) :
+                           SrModel * model, SrAudio * audio) :
     SrPattern(name, model, audio),
-    _fftBuffer(fftBuffer),
     _hueShift(0.0),
     _hueShiftBuffer(model, SrFloatBuffer::OncePerUpdate)
 {
     _pixels.allocate(GetModel()->GetNumStations(),
-                    GetModel()->GetLightsPerStation(),
-                    3);
-    
-    _colorBuffer.allocate(model->GetNumStations(), model->GetLightsPerStation(), 3);
+                     GetAudio()->GetFfts().size(), 3);
     
     _AddUI(_hueShiftSlider.setup("hue shift", 0.0, 1.0, _hueShift));
     
@@ -46,16 +40,14 @@ SrFftPattern::Update(const SrTime & now)
     _hueShift = _hueShiftSlider;
     _hueShiftBuffer.Push(_hueShift);
     
-    // Copy pixels
-    const ofFloatPixels & fftData = _fftBuffer->GetPerStationData();
+    const vector<SrFloatBuffer> & ffts = GetAudio()->GetFfts();
     
-    for(int x = 0; x < _colorBuffer.getWidth(); x++) {
-        float hueShift =
-            _hueShiftBuffer.ComputeValueAtStation(x);
-        
-        for (int y=0; y < _colorBuffer.getHeight(); y++) {
-            float fftValue = fftData.getColor(x,y).getLightness();
-            fftValue = pow(fftValue, 0.8);
+    for(int station = 0; station < model->GetNumStations(); station++) {
+        for(int band = 0; band < ffts.size(); band++) {
+            float hueShift =
+                _hueShiftBuffer.ComputeValueAtStation(station);
+            
+            float fftValue = ffts[band].ComputeValueAtStation(station);
             
             ofFloatColor c;
             float baseColor = 0.15 + hueShift;
@@ -66,7 +58,7 @@ SrFftPattern::Update(const SrTime & now)
             hue = fmod(hue, 1.0);
             c.setHsb(hue, 1.0, fftValue * 2.0);
             
-            _colorBuffer.setColor(x,y,c);
+            _pixels.setColor(station,band,c);
         }
     }
 }
@@ -76,22 +68,24 @@ SrFftPattern::Draw(const SrTime & now) const
 {
     ofSetColor(255.0,255.0,255.0,255.0);
     
+    int lightsPerStation = GetModel()->GetLightsPerStation();
+    
     float scaledWidth = GetModel()->GetMaxBufferDuration() /
-                            GetModel()->ComputeDelayPerStation();
+                        GetModel()->ComputeDelayPerStation();
     
     ofImage image;
     // XXX move this allocation to constructor to avoid re-allocating?
-    image.allocate(_colorBuffer.getWidth(), _colorBuffer.getHeight(), OF_IMAGE_COLOR);
+    image.allocate(_pixels.getWidth(), _pixels.getHeight(), OF_IMAGE_COLOR);
     
-    image.setFromPixels(_colorBuffer);
+    image.setFromPixels(_pixels);
     
-    image.draw(0,0,_colorBuffer.getWidth(),GetModel()->GetLightsPerStation() * 1.5);
+    image.draw(0,0,_pixels.getWidth(), lightsPerStation * 1.5);
     
     ofPushMatrix();
     ofTranslate(0,GetModel()->GetLightsPerStation());
     ofScale(1,-1);
     
-    image.draw(0,0,_colorBuffer.getWidth(),GetModel()->GetLightsPerStation() * 1.5);
+    image.draw(0,0,_pixels.getWidth(), lightsPerStation * 1.5);
     ofPopMatrix();
 }
 

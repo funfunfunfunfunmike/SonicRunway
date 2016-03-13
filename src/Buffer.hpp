@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "Model.hpp"
+#include "Types.hpp"
 
 //
 // SrBuffer is a templated class that implements a circular buffer.
@@ -55,7 +56,7 @@ public:
     
     // Access a specific element in the buffer by index.
     // Index 0 is the most recent element pushed onto the array.
-    // Attempting to index beyond entriesInSeconds * sizeInSeconds
+    // Attempting to index >= entriesInSeconds * sizeInSeconds
     // will crash.
     T operator[](size_t idx) const;
     
@@ -70,6 +71,9 @@ private:
     size_t _idx;
 };
 
+// Define some typedefs for convenience
+typedef SrBuffer<float> SrFloatBuffer;
+typedef SrBuffer<float> SrIntBuffer;
 
 template <class T>
 SrBuffer<T>::SrBuffer(SrModel * model, PushFrequency frequency) :
@@ -120,8 +124,6 @@ SrBuffer<T>::ComputeValue(float age, float filterWidth) const
     int idx = age * _entriesPerSecond;
     return (*this)[idx];
 }
-
-typedef SrBuffer<float> SrFloatBuffer;
 
 template <class T>
 T

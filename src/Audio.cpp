@@ -20,12 +20,15 @@ using namespace standard;
 
 SrAudio::SrAudio(SrModel * model) :
     _model(model),
-    _numMelBands(40), // hard coded in ofxAubio
-    _lastLowOnsetTime(0),
-    _lastBeatTime(0),
-    _lastThumpTime(0),
-    _lowOnsetBuffer(model, SrFloatBuffer::OncePerAudioIn)
+    _lowOnsetDetect(model),
+    _bpm(model, SrFloatBuffer::OncePerAudioIn)
 {
+    // Allocate one float buffer for each FFT band
+    for (size_t i = 0; i < 40; i++) {
+        _ffts.push_back(
+            SrFloatBuffer(model, SrFloatBuffer::OncePerAudioIn));
+    }
+    
     essentia::init();
     AlgorithmFactory & factory = AlgorithmFactory::instance();
     
@@ -43,7 +46,6 @@ SrAudio::SrAudio(SrModel * model) :
     _bandPass->output("signal").set(_bandPassBuffer);
     
     int hopSize = bufferSize / 2;
-    _lowOnset.setup("default", bufferSize, hopSize, sampleRate);
     
     _beat.setup("default", bufferSize, hopSize, sampleRate);
     _bands.setup("default", bufferSize, hopSize, sampleRate);
@@ -58,6 +60,33 @@ SrAudio::~SrAudio()
     // XXX delete / exit aubio stuff?
 }
 
+const SrOnsetDetect &
+SrAudio::GetLowOnset() const
+{
+    return _lowOnsetDetect;
+}
+
+const SrFloatBuffer &
+SrAudio::GetBpm() const
+{
+    return _bpm;
+}
+
+const vector<SrFloatBuffer> &
+SrAudio::GetFfts() const
+{
+    return _ffts;
+}
+
+std::vector<float>
+SrAudio::GetCurrentFftValues() const
+{
+    std::vector<float> ret;
+    for(size_t i=0; i < _ffts.size(); i++) {
+        ret.push_back(_ffts[i][0]);
+    }
+}
+
 void
 SrAudio::AudioIn(float *input, int bufferSize, int nChannels)
 {
@@ -66,43 +95,21 @@ SrAudio::AudioIn(float *input, int bufferSize, int nChannels)
         _inputBuffer[i] = input[i * nChannels];
     }
     
+    // Run audio analysis
     _bandPass->compute();
-    _lowOnset.audioIn(&_bandPassBuffer[0], bufferSize, nChannels);
+    
+    _lowOnsetDetect.AudioIn(&_bandPassBuffer[0],
+                            bufferSize, nChannels);
+    
     _beat.audioIn(input, bufferSize, nChannels);
     _bands.audioIn(input, bufferSize, nChannels);
     
-    /*
-    if (_lowOnset.received()) {
-        _lowOnsetBuffer.Push(0.0);
-    } else {
-        float timeSinceOffset =
-            _lowOnsetBuffer[0] + _lowOnsetBuffer.GetSecondsPerEntry();
-        _lowOnsetBuffer.Push(timeSinceOffset);
-    }
-     */
-}
-
-void
-SrAudio::UpdateEvents(const SrTime & now)
-{
-    uint64_t elapsedTime = ofGetElapsedTimeMillis();
+    // Push current values into buffers.
+    _bpm.Push(_beat.bpm);
     
-    _currentEvents.clear();
-    if (_beat.received()) {
-        _currentEvents.push_back(Beat);
-        _lastBeatTime = elapsedTime;
-    }
-    if (_lowOnset.received()) {
-        _currentEvents.push_back(LowOnset);
-        _lastLowOnsetTime = elapsedTime;
-    }
-    
-    if (elapsedTime - _lastThumpTime > 500) {
-        int diff = _lastBeatTime - _lastLowOnsetTime;
-        if (abs(diff) < 100) {
-            _currentEvents.push_back(Thump);
-            _lastThumpTime = elapsedTime;
-        }
+    float *energies = _bands.energies;
+    for (size_t i = 0; i < _ffts.size(); i++) {
+        _ffts[i].Push(energies[i]);
     }
 }
 
@@ -114,52 +121,4 @@ SrAudio::AudioOut(float *output, int bufferSize, int nChannels)
         //output[i*nChannels] = _bandPassBuffer[i];
         output[i*nChannels] = _inputBuffer[i];
     }
-}
-
-float
-SrAudio::GetBPM() const
-{
-    return _beat.bpm;
-}
-
-float
-SrAudio::GetOnsetThreshold() const
-{
-    return _lowOnset.threshold;
-}
-
-void
-SrAudio::SetOnsetThreshold(float threshold)
-{
-    _lowOnset.setThreshold(threshold);
-}
-
-float
-SrAudio::GetOnsetNovelty() const
-{
-    return _lowOnset.novelty;
-}
-
-float
-SrAudio::GetOnsetThresholdedNovelty() const
-{
-    return _lowOnset.thresholdedNovelty;
-}
-
-float *
-SrAudio::GetBandsEnergies() const
-{
-    return _bands.energies;
-}
-
-int
-SrAudio::GetNumMelBands() const
-{
-    return _numMelBands;
-}
-
-const std::vector<SrAudio::Event> &
-SrAudio::GetCurrentEvents() const
-{
-    return _currentEvents;
 }

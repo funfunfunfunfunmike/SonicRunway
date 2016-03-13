@@ -12,7 +12,6 @@
 #include <stdio.h>
 
 #include "Audio.hpp"
-#include "FftBuffer.hpp"
 #include "AudioUI.hpp"
 #include "Model.hpp"
 #include "Artnet.hpp"
@@ -37,7 +36,6 @@ public:
 private:
     SrModel _model;
     SrAudio _audio;
-    SrFftBuffer _fftBuffer;
     SrAudioUI _audioUI;
     SrPrevis _previs;
     SrArtnet _artnet;
