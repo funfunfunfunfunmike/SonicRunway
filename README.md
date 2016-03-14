@@ -1,6 +1,9 @@
 # SonicRunway
 
-Experimenting with OpenFrameworks/Aubio/ArtNet for an LED sound visualization project.
+Software control for Sonic Runway art installation, a visualization of the
+speed of sound.  
+
+See http://sonicrunway.net
 
 Mac install instructions:
 
@@ -76,6 +79,9 @@ problematic we can use ofMutex to make it thread safe.
 
 
 TODO:
+
+- Move audio output to Previs class.  Use a buffer to delay audio playback
+  so we can see what it looks like from the other end of the runway.
 
 - Replace SrTime concepts with regular floats and ofGetElapsedTime?
 
