@@ -10,16 +10,15 @@
 
 SrModel::SrModel() :
     _sampleRate(44100), // samples per second
-    _bufferSize(1024),
+    _bufferSize(1024),  // for audio input
     _numChannels(1),
     _buffersPerSecond((float) _sampleRate / _bufferSize),
     _numStations(30),
     _lightsPerStation(59),
     _runwayLength(1000.0), // feet
     _speedOfSound(1126.0), // feet per second
-    //_speedOfSound(400.0), // feet per second
-    _archLength(30.0),      // feet
-    _framesPerSecond(60)
+    _archLength(30.0),     // feet
+    _framesPerSecond(60)   // Approx. frequency that Update/Draw is called
 {
     _frameBuffer.allocate(_numStations, _lightsPerStation, GL_RGBA);
 }

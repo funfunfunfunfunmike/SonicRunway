@@ -97,3 +97,6 @@ TODO:
   buffered alpha value.
 
 - Make Fft and other filters automatically adjust to global volume level.
+
+- Hook up a second station and figure out how to broadcast to multiple
+  boards.
