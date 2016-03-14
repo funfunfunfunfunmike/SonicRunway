@@ -121,10 +121,10 @@
 		306DFD3E1C80100200AB9225 /* ofxArtnet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ofxArtnet.hpp; sourceTree = "<group>"; };
 		3074F8CC1C8744A8008BD5EF /* Shape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shape.cpp; sourceTree = "<group>"; };
 		3074F8CD1C8744A8008BD5EF /* Shape.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shape.hpp; sourceTree = "<group>"; };
-		3074F8CF1C874AF2008BD5EF /* Pattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pattern.cpp; sourceTree = "<group>"; };
-		3074F8D01C874AF2008BD5EF /* Pattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pattern.hpp; sourceTree = "<group>"; };
-		3074F8D21C874BBA008BD5EF /* ShapePattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShapePattern.cpp; sourceTree = "<group>"; };
-		3074F8D31C874BBA008BD5EF /* ShapePattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShapePattern.hpp; sourceTree = "<group>"; };
+		3074F8CF1C874AF2008BD5EF /* Pattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Pattern.cpp; path = Patterns/Pattern.cpp; sourceTree = "<group>"; };
+		3074F8D01C874AF2008BD5EF /* Pattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Pattern.hpp; path = Patterns/Pattern.hpp; sourceTree = "<group>"; };
+		3074F8D21C874BBA008BD5EF /* ShapePattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShapePattern.cpp; path = Patterns/ShapePattern.cpp; sourceTree = "<group>"; };
+		3074F8D31C874BBA008BD5EF /* ShapePattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ShapePattern.hpp; path = Patterns/ShapePattern.hpp; sourceTree = "<group>"; };
 		308CEE481C48593A007C124A /* artnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = artnet.c; sourceTree = "<group>"; };
 		308CEE491C48593A007C124A /* artnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = artnet.h; sourceTree = "<group>"; };
 		308CEE4A1C48593A007C124A /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
@@ -151,8 +151,8 @@
 		30C844351C42C17E006452BE /* AudioUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AudioUI.hpp; sourceTree = "<group>"; };
 		30C844371C42D110006452BE /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
 		30C844381C42D110006452BE /* Model.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
-		30FDB28B1C8A65350079CE93 /* FftPattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FftPattern.cpp; sourceTree = "<group>"; };
-		30FDB28C1C8A65350079CE93 /* FftPattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FftPattern.hpp; sourceTree = "<group>"; };
+		30FDB28B1C8A65350079CE93 /* FftPattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FftPattern.cpp; path = Patterns/FftPattern.cpp; sourceTree = "<group>"; };
+		30FDB28C1C8A65350079CE93 /* FftPattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FftPattern.hpp; path = Patterns/FftPattern.hpp; sourceTree = "<group>"; };
 		3B6AFA97F893CE28547CFCDC /* ofxAubio.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAubio.h; path = ../../../addons/ofxAubio/src/ofxAubio.h; sourceTree = SOURCE_ROOT; };
 		4B17A983E507AB0B3F71A2D6 /* ofxAubioBlock.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAubioBlock.h; path = ../../../addons/ofxAubio/src/ofxAubioBlock.h; sourceTree = SOURCE_ROOT; };
 		52AFA1F08C420992CAAAE648 /* ofxSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSlider.h; path = ../../../addons/ofxGui/src/ofxSlider.h; sourceTree = SOURCE_ROOT; };
@@ -266,6 +266,19 @@
 			path = artnet;
 			sourceTree = "<group>";
 		};
+		30B88B7F1C9745D80068F4C1 /* Patterns */ = {
+			isa = PBXGroup;
+			children = (
+				30FDB28B1C8A65350079CE93 /* FftPattern.cpp */,
+				30FDB28C1C8A65350079CE93 /* FftPattern.hpp */,
+				3074F8CF1C874AF2008BD5EF /* Pattern.cpp */,
+				3074F8D01C874AF2008BD5EF /* Pattern.hpp */,
+				3074F8D21C874BBA008BD5EF /* ShapePattern.cpp */,
+				3074F8D31C874BBA008BD5EF /* ShapePattern.hpp */,
+			);
+			name = Patterns;
+			sourceTree = "<group>";
+		};
 		480A780D8D0308AE4A368801 /* ofxGui */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +373,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				30B88B7F1C9745D80068F4C1 /* Patterns */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
@@ -376,14 +390,8 @@
 				308CEE5C1C48598D007C124A /* Artnet.hpp */,
 				3074F8CC1C8744A8008BD5EF /* Shape.cpp */,
 				3074F8CD1C8744A8008BD5EF /* Shape.hpp */,
-				3074F8CF1C874AF2008BD5EF /* Pattern.cpp */,
-				3074F8D01C874AF2008BD5EF /* Pattern.hpp */,
-				3074F8D21C874BBA008BD5EF /* ShapePattern.cpp */,
-				3074F8D31C874BBA008BD5EF /* ShapePattern.hpp */,
 				3002E85C1C88F9C900689E57 /* Previs.cpp */,
 				3002E85D1C88F9C900689E57 /* Previs.hpp */,
-				30FDB28B1C8A65350079CE93 /* FftPattern.cpp */,
-				30FDB28C1C8A65350079CE93 /* FftPattern.hpp */,
 				302695351C8FEE1D007F749C /* Buffer.hpp */,
 				302F35931C93CA39001D5E51 /* OnsetHistory.cpp */,
 				302F35941C93CA39001D5E51 /* OnsetHistory.hpp */,
