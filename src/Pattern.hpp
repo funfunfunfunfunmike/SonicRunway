@@ -18,10 +18,12 @@
 class SrModel;
 class SrAudio;
 
-///
-/// Base class for patterns that draw themselves to the array
-/// of lights.  Subclasses should implement Update and Draw.
-///
+//
+// Base class for patterns that draw themselves to the array
+// of lights.  Subclasses should implement Update and Draw.
+//
+// Pattern instances are created and owned by SrApp.
+//
 class SrPattern {
 public:
     SrPattern(const std::string & name, SrModel * model, SrAudio * audio);

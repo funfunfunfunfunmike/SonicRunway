@@ -14,7 +14,7 @@ SrFftPattern::SrFftPattern(const std::string & name,
                            SrModel * model, SrAudio * audio) :
     SrPattern(name, model, audio),
     _hueShift(0.0),
-    _hueShiftBuffer(model, SrFloatBuffer::OncePerUpdate)
+    _hueShiftBuffer(model, SrFrequencyOncePerUpdate)
 {
     _pixels.allocate(GetModel()->GetNumStations(),
                      GetAudio()->GetFfts().size(), 3);

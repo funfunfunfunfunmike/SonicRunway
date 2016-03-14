@@ -15,7 +15,8 @@
 #include "ofxAubio.h"
 #include "Types.hpp"
 #include "Buffer.hpp"
-#include "OnsetDetect.hpp"
+#include "OnsetHistory.hpp"
+#include "BeatHistory.hpp"
 
 #include "ofMain.h"
 
@@ -28,16 +29,16 @@ class SrModel;
 // XXX this should be defined in essentia somewhere..
 typedef float Real;
 
-///
-/// SrAudio - Audio input and processing.
-///
+//
+// SrAudio - Audio input and processing.
+//
 class SrAudio {
 public:
     SrAudio(SrModel * model);
     ~SrAudio();
     
-    const SrOnsetDetect & GetLowOnset() const;
-    const SrFloatBuffer & GetBpm() const;
+    const SrOnsetHistory & GetLowOnsetHistory() const;
+    const SrBeatHistory & GetBeatHistory() const;
     const vector<SrFloatBuffer> & GetFfts() const;
     
     void AudioIn(float * input, int bufferSize, int nChannels);
@@ -47,13 +48,12 @@ public:
     
 private:
     SrModel * _model;
-    SrOnsetDetect _lowOnsetDetect;
-    SrFloatBuffer _bpm;
+    SrOnsetHistory _lowOnsetHistory;
+    SrBeatHistory _beatHistory;
     vector<SrFloatBuffer> _ffts;
     
     essentia::standard::Algorithm *_bandPass;
     
-    ofxAubioBeat _beat;
     ofxAubioMelBands _bands;
     
     vector<Real> _inputBuffer;

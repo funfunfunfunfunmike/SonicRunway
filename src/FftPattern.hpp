@@ -15,9 +15,9 @@
 #include "Shape.hpp"
 #include "Buffer.hpp"
 
-///
-/// A Pattern that renders the fftBuffer to the light array
-///
+//
+// A Pattern that renders the fftBuffer to the light array
+//
 class SrFftPattern : public SrPattern {
 public:
     SrFftPattern(const std::string & name,

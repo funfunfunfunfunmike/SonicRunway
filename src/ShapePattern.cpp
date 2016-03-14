@@ -43,20 +43,28 @@ SrShapePattern::Update(const SrTime & now)
         }
     }
     
-    const SrOnsetDetect & lowOnset = GetAudio()->GetLowOnset();
-    SrTime timeOfLastOnset = lowOnset.GetTimeOfLastOnset();
+    const SrOnsetHistory & lowOnset = GetAudio()->GetLowOnsetHistory();
+    SrTime timeOfLastOnset = lowOnset.GetTimeOfLastEvent();
     
-    // If no new onsets have been detected, we are done.
-    if (timeOfLastOnset == _timeOfLastShape) {
-        return;
+    const SrBeatHistory & beats = GetAudio()->GetBeatHistory();
+    SrTime timeOfLastBeat = beats.GetTimeOfLastEvent();
+    
+    if (timeOfLastOnset != _timeOfLastOnset) {
+        SrShape * newShape =
+            new SrOnsetShape(GetModel(), now, ofColor(10, 0, 0, 255), 0.5);
+        
+        _shapes.insert(newShape);
+        
+        _timeOfLastOnset = timeOfLastOnset;
     }
-    
-    SrShape * newShape =
-        new SrOnsetShape(GetModel(), now, ofColor(10, 0, 0, 255), 0.5);
-    
-    _shapes.insert(newShape);
-    
-    _timeOfLastShape = timeOfLastOnset;
+    if (timeOfLastBeat != _timeOfLastBeat) {
+        SrShape * newShape =
+            new SrOnsetShape(GetModel(), now, ofColor(0, 100, 255, 255), 0.5);
+        
+        _shapes.insert(newShape);
+        
+        _timeOfLastBeat = timeOfLastBeat;
+    }
 }
 
 void

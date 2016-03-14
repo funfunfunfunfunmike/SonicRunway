@@ -20,13 +20,13 @@ using namespace standard;
 
 SrAudio::SrAudio(SrModel * model) :
     _model(model),
-    _lowOnsetDetect(model),
-    _bpm(model, SrFloatBuffer::OncePerAudioIn)
+    _lowOnsetHistory(model),
+    _beatHistory(model)
 {
     // Allocate one float buffer for each FFT band
     for (size_t i = 0; i < 40; i++) {
         _ffts.push_back(
-            SrFloatBuffer(model, SrFloatBuffer::OncePerAudioIn));
+            SrFloatBuffer(model, SrFrequencyOncePerAudioIn));
     }
     
     essentia::init();
@@ -47,7 +47,6 @@ SrAudio::SrAudio(SrModel * model) :
     
     int hopSize = bufferSize / 2;
     
-    _beat.setup("default", bufferSize, hopSize, sampleRate);
     _bands.setup("default", bufferSize, hopSize, sampleRate);
 }
 
@@ -60,16 +59,16 @@ SrAudio::~SrAudio()
     // XXX delete / exit aubio stuff?
 }
 
-const SrOnsetDetect &
-SrAudio::GetLowOnset() const
+const SrOnsetHistory &
+SrAudio::GetLowOnsetHistory() const
 {
-    return _lowOnsetDetect;
+    return _lowOnsetHistory;
 }
 
-const SrFloatBuffer &
-SrAudio::GetBpm() const
+const SrBeatHistory &
+SrAudio::GetBeatHistory() const
 {
-    return _bpm;
+    return _beatHistory;
 }
 
 const vector<SrFloatBuffer> &
@@ -95,17 +94,15 @@ SrAudio::AudioIn(float *input, int bufferSize, int nChannels)
         _inputBuffer[i] = input[i * nChannels];
     }
     
-    // Run audio analysis
-    _bandPass->compute();
-    
-    _lowOnsetDetect.AudioIn(&_bandPassBuffer[0],
+    _lowOnsetHistory.AudioIn(&_bandPassBuffer[0],
                             bufferSize, nChannels);
     
-    _beat.audioIn(input, bufferSize, nChannels);
+    _beatHistory.AudioIn(input, bufferSize, nChannels);
+    
     _bands.audioIn(input, bufferSize, nChannels);
     
-    // Push current values into buffers.
-    _bpm.Push(_beat.bpm);
+    // Run audio analysis
+    _bandPass->compute();
     
     float *energies = _bands.energies;
     for (size_t i = 0; i < _ffts.size(); i++) {

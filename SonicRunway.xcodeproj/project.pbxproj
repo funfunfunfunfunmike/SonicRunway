@@ -21,7 +21,9 @@
 		300CF04F1C652BD800295FBF /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0441C652BD800295FBF /* libswresample.a */; };
 		300CF0501C652BD800295FBF /* libtag.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0451C652BD800295FBF /* libtag.dylib */; };
 		300CF0511C652BD800295FBF /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0461C652BD800295FBF /* libyaml.a */; };
-		302F35951C93CA39001D5E51 /* OnsetDetect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302F35931C93CA39001D5E51 /* OnsetDetect.cpp */; };
+		302F35951C93CA39001D5E51 /* OnsetHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302F35931C93CA39001D5E51 /* OnsetHistory.cpp */; };
+		302F35981C972BE2001D5E51 /* BeatHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302F35961C972BE2001D5E51 /* BeatHistory.cpp */; };
+		302F359B1C972DE6001D5E51 /* EventHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302F35991C972DE6001D5E51 /* EventHistory.cpp */; };
 		306565A31C472E7C00917ADB /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306565A11C472E7C00917ADB /* App.cpp */; };
 		306DFD3F1C80100200AB9225 /* ofxArtnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306DFD3D1C80100200AB9225 /* ofxArtnet.cpp */; };
 		3074F8CE1C8744A8008BD5EF /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3074F8CC1C8744A8008BD5EF /* Shape.cpp */; };
@@ -107,8 +109,12 @@
 		300CF0451C652BD800295FBF /* libtag.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtag.dylib; path = ../../../../../../../../usr/local/lib/libtag.dylib; sourceTree = "<group>"; };
 		300CF0461C652BD800295FBF /* libyaml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyaml.a; path = ../../../../../../../../usr/local/lib/libyaml.a; sourceTree = "<group>"; };
 		302695351C8FEE1D007F749C /* Buffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Buffer.hpp; sourceTree = "<group>"; };
-		302F35931C93CA39001D5E51 /* OnsetDetect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OnsetDetect.cpp; sourceTree = "<group>"; };
-		302F35941C93CA39001D5E51 /* OnsetDetect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OnsetDetect.hpp; sourceTree = "<group>"; };
+		302F35931C93CA39001D5E51 /* OnsetHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OnsetHistory.cpp; sourceTree = "<group>"; };
+		302F35941C93CA39001D5E51 /* OnsetHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OnsetHistory.hpp; sourceTree = "<group>"; };
+		302F35961C972BE2001D5E51 /* BeatHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BeatHistory.cpp; sourceTree = "<group>"; };
+		302F35971C972BE2001D5E51 /* BeatHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BeatHistory.hpp; sourceTree = "<group>"; };
+		302F35991C972DE6001D5E51 /* EventHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventHistory.cpp; sourceTree = "<group>"; };
+		302F359A1C972DE6001D5E51 /* EventHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EventHistory.hpp; sourceTree = "<group>"; };
 		306565A11C472E7C00917ADB /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
 		306565A21C472E7C00917ADB /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
 		306DFD3D1C80100200AB9225 /* ofxArtnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxArtnet.cpp; sourceTree = "<group>"; };
@@ -379,8 +385,12 @@
 				30FDB28B1C8A65350079CE93 /* FftPattern.cpp */,
 				30FDB28C1C8A65350079CE93 /* FftPattern.hpp */,
 				302695351C8FEE1D007F749C /* Buffer.hpp */,
-				302F35931C93CA39001D5E51 /* OnsetDetect.cpp */,
-				302F35941C93CA39001D5E51 /* OnsetDetect.hpp */,
+				302F35931C93CA39001D5E51 /* OnsetHistory.cpp */,
+				302F35941C93CA39001D5E51 /* OnsetHistory.hpp */,
+				302F35961C972BE2001D5E51 /* BeatHistory.cpp */,
+				302F35971C972BE2001D5E51 /* BeatHistory.hpp */,
+				302F35991C972DE6001D5E51 /* EventHistory.cpp */,
+				302F359A1C972DE6001D5E51 /* EventHistory.hpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -489,10 +499,12 @@
 				67383740F5CC47ED5F955A76 /* ofxAubioMelBands.cpp in Sources */,
 				9C7B8B4D99CDFC508E76CC3A /* ofxAubioOnset.cpp in Sources */,
 				30AEA5981C4052A80034C794 /* README.md in Sources */,
+				302F35981C972BE2001D5E51 /* BeatHistory.cpp in Sources */,
 				306565A31C472E7C00917ADB /* App.cpp in Sources */,
 				3074F8CE1C8744A8008BD5EF /* Shape.cpp in Sources */,
 				30C844361C42C17E006452BE /* AudioUI.cpp in Sources */,
 				101D2DB773940813A5C898CD /* ofxAubioPitch.cpp in Sources */,
+				302F359B1C972DE6001D5E51 /* EventHistory.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
 				308CEE561C48593A007C124A /* misc.c in Sources */,
 				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,
@@ -501,7 +513,7 @@
 				308CEE5A1C48593A007C124A /* transmit.c in Sources */,
 				B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */,
 				308CEE571C48593A007C124A /* network.c in Sources */,
-				302F35951C93CA39001D5E51 /* OnsetDetect.cpp in Sources */,
+				302F35951C93CA39001D5E51 /* OnsetHistory.cpp in Sources */,
 				3002E85E1C88F9C900689E57 /* Previs.cpp in Sources */,
 				30C844391C42D110006452BE /* Model.cpp in Sources */,
 				3074F8D11C874AF2008BD5EF /* Pattern.cpp in Sources */,

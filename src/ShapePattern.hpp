@@ -14,9 +14,13 @@
 #include "Pattern.hpp"
 #include "Shape.hpp"
 
-///
-/// A Pattern that draws shapes that coorespond to audio events.
-///
+//
+// A Pattern that draws shapes that coorespond to audio events.
+//
+// XXX this may be retired in favor of something 'fuzzier', since
+// the boolean detection of onsets and beats is prone to errors that
+// make the visualization unsatisfying.
+//
 class SrShapePattern : public SrPattern {
 public:
     SrShapePattern(const std::string & name,
@@ -28,7 +32,8 @@ public:
     
 private:
     std::set<SrShape *> _shapes;
-    SrTime _timeOfLastShape;
+    SrTime _timeOfLastOnset;
+    SrTime _timeOfLastBeat;
     
     bool _isOddBeat;
 };

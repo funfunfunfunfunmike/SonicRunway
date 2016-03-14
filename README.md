@@ -65,23 +65,29 @@ Basically, the program:
 The 'SrBuffer' class is a generic circular buffer that can store
 samples of a parameter value.  It can then be queried per station.
 This provides the history necessary to make patterns that ripple
-down the runway at the speed of sound.  I'm in the middle of
-refactoring the existing patterns to leverage this class.
+down the runway at the speed of sound.  
 
 It's important to note that the audio processing and render/draw
 functions are called from different thread and at different 
 intervals.  So far, I haven't bothered making things truly 
-thread safe because the various buffers are all statically allocated.
-So, we may see some tearing.  If this becomes problematic we can
-use ofMutex to make it thread safe.
+thread safe because the various buffers are all statically 
+allocated. So, we may see some visual tearing.  If this becomes 
+problematic we can use ofMutex to make it thread safe.
 
 
 TODO:
 
-- Replace SrTime concepts with regular floats and ofGetElapsedTime
+- Replace SrTime concepts with regular floats and ofGetElapsedTime?
 
-- Refactor Onset and fft to use the new circular buffer.
+- Provide a generic UI widget for graphing a buffer.  Allow patterns
+  to publish these values for debugging.
 
-- Fix up anti-aliasing issues with rendering
+- Replace binary 'onset' and beat detection with something fuzzier --
+  perhaps a few band-pass filters piped into RMS?
 
 - Add some UI with knobs for various settings
+
+- Allow patterns to be turned on/off.  Or perhaps pass them a history-
+  buffered alpha value.
+
+- Make Fft and other filters automatically adjust to global volume level.

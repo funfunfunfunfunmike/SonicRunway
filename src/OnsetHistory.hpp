@@ -1,28 +1,27 @@
 //
-//  OnsetDetect.hpp
+//  OnsetHistory.hpp
 //  SonicRunway
 //
 //  Created by Rob Jensen on 3/11/16.
 //
 //
 
-#ifndef SR_ONSET_DETECT_HPP
-#define SR_ONSET_DETECT_HPP
+#ifndef SR_ONSET_HISTORY_HPP
+#define SR_ONSET_HISTORY_HPP
 
-#include <stdio.h>
-#include "Buffer.hpp"
+#include "EventHistory.hpp"
 #include "ofxAubio.h"
-#include "Types.hpp"
 
-class SrOnsetDetect {
+//
+// SrOnsetHistory - an SrEventHistory that records onset detections.
+//
+class SrOnsetHistory : public SrEventHistory {
 public:
-    SrOnsetDetect(SrModel *model);
-    ~SrOnsetDetect();
+    SrOnsetHistory(SrModel *model);
+    virtual ~SrOnsetHistory();
     
     void AudioIn(float * input, int bufferSize, int nChannels);
     void SetCurrentThreshold(float currentThreshold);
-    
-    SrTime GetTimeOfLastOnset() const;
     
     // XXX possible multi-threading issues returning const refs
     // to data structures that may be updated in a different thread.
@@ -35,11 +34,9 @@ public:
     
 private:
     float _currentThreshold;
-    SrFloatBuffer _secondsSinceOnset;
     SrFloatBuffer _threshold;
     SrFloatBuffer _thresholdedNovelty;
     SrFloatBuffer _novelty;
-    SrTime _timeOfLastOnset;
     
     ofxAubioOnset _onset;
 };

@@ -14,9 +14,9 @@
 
 class SrModel;
 
-///
-/// A 3d respresntation of the tunnel of lights.
-///
+//
+// A 3d respresntation of the tunnel of lights.
+//
 class SrPrevis {
 public:
     SrPrevis(SrModel * model);

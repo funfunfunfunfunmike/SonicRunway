@@ -19,10 +19,10 @@
 
 class SrPattern;
 
-///
-/// Main app.
-/// Owns the audio buffer, patterns, etc.
-///
+//
+// Main app.
+// Owns the audio buffer, patterns, etc.
+//
 class SrApp {
 public:
     SrApp();

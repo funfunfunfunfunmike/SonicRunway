@@ -18,26 +18,26 @@
 //
 // SrBuffer is a templated class that implements a circular buffer.
 // It is intended to store a history of a given value and provide
-// access to that value at some time in the past.
+// filtered access to that value at some time in the past.
 //
 // Clients promise to Push new elements into the buffer at a specified
 // frequency.  They can then access elements in the buffer by time.
+// For convenience, the buffer is initialized with the SrModel, so
+// it can provide values relative to a given station given the
+// delay of the speed of sound.
+//
+// XXX currently only using Float -- maybe the template is overkill?
 //
 template <class T>
 class SrBuffer {
 public:
-    
-    enum PushFrequency {
-        OncePerAudioIn,
-        OncePerUpdate
-    };
     
     // Construct the buffer.  Clients are expected to call 'Push'
     // at the frequency designated by 'entriesPerSecond'.
     //
     // The buffer is circular -- any access beyond 'bufferSizeInSeconds'
     // is prohibited.
-    SrBuffer(SrModel * model, PushFrequency freqency);
+    SrBuffer(SrModel * model, SrFrequency freqency);
     virtual ~SrBuffer();
     
     // Push a new value into the buffer.  This should represent
@@ -66,7 +66,7 @@ public:
     
 private:
     SrModel *_model;
-    size_t _entriesPerSecond;
+    float _entriesPerSecond;
     std::vector<T> _values;
     size_t _idx;
 };
@@ -76,14 +76,14 @@ typedef SrBuffer<float> SrFloatBuffer;
 typedef SrBuffer<float> SrIntBuffer;
 
 template <class T>
-SrBuffer<T>::SrBuffer(SrModel * model, PushFrequency frequency) :
+SrBuffer<T>::SrBuffer(SrModel * model, SrFrequency frequency) :
     _model(model),
     _idx(0)
 {
-    if (frequency == OncePerAudioIn) {
+    if (frequency == SrFrequencyOncePerAudioIn) {
         _entriesPerSecond = model->GetBuffersPerSecond();
     }
-    if (frequency == OncePerUpdate) {
+    if (frequency == SrFrequencyOncePerUpdate) {
         _entriesPerSecond = model->GetFramesPerSecond();
     }
     
@@ -117,12 +117,41 @@ SrBuffer<T>::operator[](size_t idx) const
 
 template <class T>
 T
-SrBuffer<T>::ComputeValue(float age, float filterWidth) const
+SrBuffer<T>::ComputeValue(float age, float filterWidthInSeconds) const
 {
-    // XXX TODO:  implement filtering...
+    // XXX averaging and interpolating imposes some requirements on templated
+    // class.  May require some work to generalize..
     
-    int idx = age * _entriesPerSecond;
-    return (*this)[idx];
+    float floatIdx = age * _entriesPerSecond;
+    float windowSize = filterWidthInSeconds / GetSecondsPerEntry();
+    
+    // If the desired filter width is less than the width of the buffer,
+    // then linearly interpolate the neighboring entries.
+    if (windowSize < 1.0) {
+        int minIdx = floor(floatIdx);
+        int maxIdx = ceil(floatIdx);
+        float t = fmod(floatIdx, 1.0);
+       
+        T a = (*this)[minIdx];
+        T b = (*this)[maxIdx];
+        return (1.0 - t) * a + t * b;
+    }
+    
+    // Otherwise, average the samples inside the filter region.
+    // XXX this should really do some kind of gaussian filter...
+    int minIdx = (int) floatIdx - windowSize / 2;
+    int maxIdx = (int) floatIdx + windowSize / 2;
+    
+    if (minIdx < 0) {
+        minIdx = 0;
+    }
+    
+    T sum = 0;
+    for(int i = minIdx; i <= maxIdx; i++) {
+        sum += (*this)[i];
+    }
+    
+    return sum / (maxIdx - minIdx + 1);
 }
 
 template <class T>
@@ -132,7 +161,8 @@ SrBuffer<T>::ComputeValueAtStation(size_t stationIdx) const
     float delayPerStation = _model->ComputeDelayPerStation();
     float age = delayPerStation * stationIdx;
     
-    return ComputeValue(age, delayPerStation);
+    float filterWidthInSeconds = delayPerStation;
+    return ComputeValue(age, filterWidthInSeconds);
 }
 
 template <class T>

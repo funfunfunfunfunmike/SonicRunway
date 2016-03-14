@@ -15,6 +15,10 @@
 
 class SrModel;
 
+//
+// Artnet output - translates the current buffer into Artnet/DMX signals
+// to update the LED colors.
+//
 class SrArtnet {
 public:
     SrArtnet(SrModel * model);

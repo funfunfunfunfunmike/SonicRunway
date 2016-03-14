@@ -20,4 +20,13 @@ typedef std::chrono::time_point<std::chrono::system_clock> SrTime;
 typedef std::chrono::seconds SrSeconds;
 typedef std::chrono::duration<float> SrFloatDuration;
 
+//
+// Frequency type used to specify events that happen once
+// per audio input, or once per frame update.
+//
+enum SrFrequency {
+    SrFrequencyOncePerAudioIn,
+    SrFrequencyOncePerUpdate
+};
+
 #endif

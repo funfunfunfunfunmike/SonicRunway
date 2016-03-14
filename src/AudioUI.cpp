@@ -33,7 +33,7 @@ SrAudioUI::SrAudioUI(SrAudio * audio, float x, float y) :
     
     // Set a default value for the slider (assignment op overloaded)
     _onsetThresholdSlider =
-        _audio->GetLowOnset().GetThreshold()[0];
+        _audio->GetLowOnsetHistory().GetThreshold()[0];
     
     x += 250;
     
@@ -55,11 +55,12 @@ SrAudioUI::~SrAudioUI()
 void
 SrAudioUI::Update()
 {
-    _onsetNoveltySlider =
-        _audio->GetLowOnset().GetNovelty()[0];
-    _onsetThresholdedNoveltySlider =
-        _audio->GetLowOnset().GetThresholdedNovelty()[0];
-    _bpmSlider = _audio->GetBpm()[0];
+    const SrOnsetHistory & onset =
+        _audio->GetLowOnsetHistory();
+    
+    _onsetNoveltySlider = onset.GetNovelty()[0];
+    _onsetThresholdedNoveltySlider = onset.GetThresholdedNovelty()[0];
+    _bpmSlider = _audio->GetBeatHistory().GetBpm()[0];
 }
 
 void

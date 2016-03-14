@@ -12,10 +12,10 @@
 #include <stdio.h>
 #include "ofMain.h"
 
-///
-/// Model class for the app.  Holds global settings and
-/// the main frame buffer that store the color of all the lights.
-///
+//
+// Model class for the app.  Holds global settings and
+// the main frame buffer that store the color of all the lights.
+//
 class SrModel {
 public:
     SrModel();
