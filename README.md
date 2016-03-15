@@ -7,7 +7,8 @@ See http://sonicrunway.net
 
 Mac install instructions:
 
-- Download and install XCode from the app store
+- Download and install XCode from the app store.  I'm using 7.2:
+    https://developer.apple.com/xcode/download/
 
 - Install OpenFrameworks:  http://www.openframeworks.cc/download/
   follow xcode install documentation:  http://www.openframeworks.cc/setup/xcode/
@@ -71,7 +72,7 @@ This provides the history necessary to make patterns that ripple
 down the runway at the speed of sound.  
 
 It's important to note that the audio processing and render/draw
-functions are called from different thread and at different 
+functions are called from different threads and at different 
 intervals.  So far, I haven't bothered making things truly 
 thread safe because the various buffers are all statically 
 allocated. So, we may see some visual tearing.  If this becomes 

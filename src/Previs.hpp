@@ -19,11 +19,13 @@ class SrModel;
 //
 class SrPrevis {
 public:
-    SrPrevis(SrModel * model);
+    SrPrevis(SrModel * model, SrAudio * audio);
     ~SrPrevis();
     
     void Update();
     void Draw(float x, float y, float width, float height);
+    
+    void AudioOut(float * output, int bufferSize, int nChannels);
     
 private:
     void _DrawSpheres(float radius, float transparency);

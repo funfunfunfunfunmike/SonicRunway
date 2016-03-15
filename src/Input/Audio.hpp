@@ -37,9 +37,12 @@ public:
     SrAudio(SrModel * model);
     ~SrAudio();
     
+    typedef vector<vector<float> > AudioVecBuffer;
+    
     const SrOnsetHistory & GetLowOnsetHistory() const;
     const SrBeatHistory & GetBeatHistory() const;
     const vector<SrFloatBuffer> & GetFfts() const;
+    const AudioVecBuffer & GetFullAudioBuffer(float delayInSeconds) const;
     
     void AudioIn(float * input, int bufferSize, int nChannels);
     void AudioOut(float * output, int bufferSize, int nChannels);
@@ -51,6 +54,9 @@ private:
     SrOnsetHistory _lowOnsetHistory;
     SrBeatHistory _beatHistory;
     vector<SrFloatBuffer> _ffts;
+    int _fullAudioBufferIndex;
+    
+    AudioVecBuffer _fullAudioBuffer;
     
     essentia::standard::Algorithm *_bandPass;
     

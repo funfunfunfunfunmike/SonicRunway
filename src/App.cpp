@@ -17,7 +17,7 @@ SrApp::SrApp() :
     _audio(&_model),
     _audioUI(&_audio, 10.0, 10.0),
     _artnet(&_model),
-    _previs(&_model)
+    _previs(&_model, &_audio)
 {
     ofSetFrameRate(_model.GetFramesPerSecond());
     

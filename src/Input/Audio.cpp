@@ -21,12 +21,21 @@ using namespace standard;
 SrAudio::SrAudio(SrModel * model) :
     _model(model),
     _lowOnsetHistory(model),
-    _beatHistory(model)
+    _beatHistory(model),
+    _fullAudioBufferIndex(0)
 {
     // Allocate one float buffer for each FFT band
     for (size_t i = 0; i < 40; i++) {
         _ffts.push_back(
             SrFloatBuffer(model, SrFrequencyOncePerAudioIn));
+    }
+    
+    // Allocate the full audio buffer, with enough space to
+    // store delayed audio for the full length of the runway.
+    _fullAudioBuffer.resize(model->GetBuffersPerSecond() *
+                            model->GetMaxBufferDuration());
+    for(size_t i=0; i<_fullAudioBuffer.size(); i++) {
+        _fullAudioBuffer[i].resize(model->GetBufferSize());
     }
     
     essentia::init();
