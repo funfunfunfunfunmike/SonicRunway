@@ -109,18 +109,18 @@
 		300CF0451C652BD800295FBF /* libtag.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtag.dylib; path = ../../../../../../../../usr/local/lib/libtag.dylib; sourceTree = "<group>"; };
 		300CF0461C652BD800295FBF /* libyaml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyaml.a; path = ../../../../../../../../usr/local/lib/libyaml.a; sourceTree = "<group>"; };
 		302695351C8FEE1D007F749C /* Buffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Buffer.hpp; sourceTree = "<group>"; };
-		302F35931C93CA39001D5E51 /* OnsetHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OnsetHistory.cpp; sourceTree = "<group>"; };
-		302F35941C93CA39001D5E51 /* OnsetHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OnsetHistory.hpp; sourceTree = "<group>"; };
-		302F35961C972BE2001D5E51 /* BeatHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BeatHistory.cpp; sourceTree = "<group>"; };
-		302F35971C972BE2001D5E51 /* BeatHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BeatHistory.hpp; sourceTree = "<group>"; };
-		302F35991C972DE6001D5E51 /* EventHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventHistory.cpp; sourceTree = "<group>"; };
-		302F359A1C972DE6001D5E51 /* EventHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EventHistory.hpp; sourceTree = "<group>"; };
+		302F35931C93CA39001D5E51 /* OnsetHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OnsetHistory.cpp; path = Input/OnsetHistory.cpp; sourceTree = "<group>"; };
+		302F35941C93CA39001D5E51 /* OnsetHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = OnsetHistory.hpp; path = Input/OnsetHistory.hpp; sourceTree = "<group>"; };
+		302F35961C972BE2001D5E51 /* BeatHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BeatHistory.cpp; path = Input/BeatHistory.cpp; sourceTree = "<group>"; };
+		302F35971C972BE2001D5E51 /* BeatHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BeatHistory.hpp; path = Input/BeatHistory.hpp; sourceTree = "<group>"; };
+		302F35991C972DE6001D5E51 /* EventHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventHistory.cpp; path = Input/EventHistory.cpp; sourceTree = "<group>"; };
+		302F359A1C972DE6001D5E51 /* EventHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventHistory.hpp; path = Input/EventHistory.hpp; sourceTree = "<group>"; };
 		306565A11C472E7C00917ADB /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
 		306565A21C472E7C00917ADB /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
 		306DFD3D1C80100200AB9225 /* ofxArtnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxArtnet.cpp; sourceTree = "<group>"; };
 		306DFD3E1C80100200AB9225 /* ofxArtnet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ofxArtnet.hpp; sourceTree = "<group>"; };
-		3074F8CC1C8744A8008BD5EF /* Shape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shape.cpp; sourceTree = "<group>"; };
-		3074F8CD1C8744A8008BD5EF /* Shape.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shape.hpp; sourceTree = "<group>"; };
+		3074F8CC1C8744A8008BD5EF /* Shape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shape.cpp; path = Patterns/Shape.cpp; sourceTree = "<group>"; };
+		3074F8CD1C8744A8008BD5EF /* Shape.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Shape.hpp; path = Patterns/Shape.hpp; sourceTree = "<group>"; };
 		3074F8CF1C874AF2008BD5EF /* Pattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Pattern.cpp; path = Patterns/Pattern.cpp; sourceTree = "<group>"; };
 		3074F8D01C874AF2008BD5EF /* Pattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Pattern.hpp; path = Patterns/Pattern.hpp; sourceTree = "<group>"; };
 		3074F8D21C874BBA008BD5EF /* ShapePattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShapePattern.cpp; path = Patterns/ShapePattern.cpp; sourceTree = "<group>"; };
@@ -145,10 +145,10 @@
 		30AC5FEA1C448C7600B793E9 /* Types.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Types.hpp; sourceTree = "<group>"; };
 		30AEA5971C4052A80034C794 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		30C3F4091C4046DE00184240 /* aubio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = aubio.framework; path = ../../../../../../Library/Frameworks/aubio.framework; sourceTree = "<group>"; };
-		30C844311C422B01006452BE /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
-		30C844321C422B01006452BE /* Audio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Audio.hpp; sourceTree = "<group>"; };
-		30C844341C42C17E006452BE /* AudioUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioUI.cpp; sourceTree = "<group>"; };
-		30C844351C42C17E006452BE /* AudioUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AudioUI.hpp; sourceTree = "<group>"; };
+		30C844311C422B01006452BE /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Audio.cpp; path = Input/Audio.cpp; sourceTree = "<group>"; };
+		30C844321C422B01006452BE /* Audio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Audio.hpp; path = Input/Audio.hpp; sourceTree = "<group>"; };
+		30C844341C42C17E006452BE /* AudioUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioUI.cpp; path = Input/AudioUI.cpp; sourceTree = "<group>"; };
+		30C844351C42C17E006452BE /* AudioUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AudioUI.hpp; path = Input/AudioUI.hpp; sourceTree = "<group>"; };
 		30C844371C42D110006452BE /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
 		30C844381C42D110006452BE /* Model.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
 		30FDB28B1C8A65350079CE93 /* FftPattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FftPattern.cpp; path = Patterns/FftPattern.cpp; sourceTree = "<group>"; };
@@ -273,10 +273,29 @@
 				3074F8D01C874AF2008BD5EF /* Pattern.hpp */,
 				30FDB28B1C8A65350079CE93 /* FftPattern.cpp */,
 				30FDB28C1C8A65350079CE93 /* FftPattern.hpp */,
+				3074F8CC1C8744A8008BD5EF /* Shape.cpp */,
+				3074F8CD1C8744A8008BD5EF /* Shape.hpp */,
 				3074F8D21C874BBA008BD5EF /* ShapePattern.cpp */,
 				3074F8D31C874BBA008BD5EF /* ShapePattern.hpp */,
 			);
 			name = Patterns;
+			sourceTree = "<group>";
+		};
+		30E025671C97739500C42FFB /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				30C844311C422B01006452BE /* Audio.cpp */,
+				30C844321C422B01006452BE /* Audio.hpp */,
+				30C844341C42C17E006452BE /* AudioUI.cpp */,
+				30C844351C42C17E006452BE /* AudioUI.hpp */,
+				302F35931C93CA39001D5E51 /* OnsetHistory.cpp */,
+				302F35941C93CA39001D5E51 /* OnsetHistory.hpp */,
+				302F35961C972BE2001D5E51 /* BeatHistory.cpp */,
+				302F35971C972BE2001D5E51 /* BeatHistory.hpp */,
+				302F35991C972DE6001D5E51 /* EventHistory.cpp */,
+				302F359A1C972DE6001D5E51 /* EventHistory.hpp */,
+			);
+			name = Input;
 			sourceTree = "<group>";
 		};
 		480A780D8D0308AE4A368801 /* ofxGui */ = {
@@ -376,28 +395,17 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
-				30C844311C422B01006452BE /* Audio.cpp */,
-				30C844321C422B01006452BE /* Audio.hpp */,
-				30C844341C42C17E006452BE /* AudioUI.cpp */,
-				30C844351C42C17E006452BE /* AudioUI.hpp */,
+				306565A11C472E7C00917ADB /* App.cpp */,
+				306565A21C472E7C00917ADB /* App.hpp */,
 				30C844371C42D110006452BE /* Model.cpp */,
 				30C844381C42D110006452BE /* Model.hpp */,
 				30AC5FEA1C448C7600B793E9 /* Types.hpp */,
-				306565A11C472E7C00917ADB /* App.cpp */,
-				306565A21C472E7C00917ADB /* App.hpp */,
-				308CEE5B1C48598D007C124A /* Artnet.cpp */,
-				308CEE5C1C48598D007C124A /* Artnet.hpp */,
-				3074F8CC1C8744A8008BD5EF /* Shape.cpp */,
-				3074F8CD1C8744A8008BD5EF /* Shape.hpp */,
+				302695351C8FEE1D007F749C /* Buffer.hpp */,
 				3002E85C1C88F9C900689E57 /* Previs.cpp */,
 				3002E85D1C88F9C900689E57 /* Previs.hpp */,
-				302695351C8FEE1D007F749C /* Buffer.hpp */,
-				302F35931C93CA39001D5E51 /* OnsetHistory.cpp */,
-				302F35941C93CA39001D5E51 /* OnsetHistory.hpp */,
-				302F35961C972BE2001D5E51 /* BeatHistory.cpp */,
-				302F35971C972BE2001D5E51 /* BeatHistory.hpp */,
-				302F35991C972DE6001D5E51 /* EventHistory.cpp */,
-				302F359A1C972DE6001D5E51 /* EventHistory.hpp */,
+				308CEE5B1C48598D007C124A /* Artnet.cpp */,
+				308CEE5C1C48598D007C124A /* Artnet.hpp */,
+				30E025671C97739500C42FFB /* Input */,
 				30B88B7F1C9745D80068F4C1 /* Patterns */,
 			);
 			path = src;
@@ -637,6 +645,8 @@
 					../../../addons/ofxAubio/src,
 					../../../addons/ofxGui/src,
 					/usr/local/include,
+					Input,
+					Patterns,
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -670,6 +680,8 @@
 					../../../addons/ofxAubio/src,
 					../../../addons/ofxGui/src,
 					/usr/local/include,
+					Input,
+					Patterns,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";

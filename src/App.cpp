@@ -9,8 +9,8 @@
 #include "App.hpp"
 #include "ofApp.h"
 
-#include "Patterns/ShapePattern.hpp"
-#include "Patterns/FftPattern.hpp"
+#include "ShapePattern.hpp"
+#include "FftPattern.hpp"
 
 SrApp::SrApp() :
     _model(),
