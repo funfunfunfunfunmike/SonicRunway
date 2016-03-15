@@ -30,7 +30,7 @@ SrFftPattern::~SrFftPattern()
 }
 
 void
-SrFftPattern::Update(const SrTime & now)
+SrFftPattern::_Update(const SrTime & now)
 {
     const SrModel * model = GetModel();
     
@@ -43,6 +43,11 @@ SrFftPattern::Update(const SrTime & now)
     const vector<SrFloatBuffer> & ffts = GetAudio()->GetFfts();
     
     for(int station = 0; station < model->GetNumStations(); station++) {
+        float enabled = GetEnabled().ComputeValueAtStation(station);
+        if (not enabled) {
+            continue;
+        }
+        
         for(int band = 0; band < ffts.size(); band++) {
             float hueShift =
                 _hueShiftBuffer.ComputeValueAtStation(station);
@@ -64,7 +69,7 @@ SrFftPattern::Update(const SrTime & now)
 }
 
 void
-SrFftPattern::Draw(const SrTime & now) const
+SrFftPattern::_Draw(const SrTime & now) const
 {
     ofSetColor(255.0,255.0,255.0,255.0);
     

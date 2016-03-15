@@ -12,6 +12,7 @@
 #include <stdio.h>
 
 #include "Types.hpp"
+#include "Buffer.hpp"
 #include "ofxGui.h"
 #include <string>
 
@@ -29,9 +30,33 @@ public:
     SrPattern(const std::string & name, SrModel * model, SrAudio * audio);
     virtual ~SrPattern();
     
+    // Called by the main app to update state.
+    // Subclasses should implement _Update()
+    void Update(const SrTime & now);
+    
+    // Called by the main app to render the pattern to the
+    // light buffer.  Subclasses should implement _Draw()
+    void Draw(const SrTime & now);
+    
+    // This is called by the app to draw the UI elements.
+    // Subclasses can add sliders and other controls
+    // with _AddUI
+    void DrawUI();
+    
+    // Sets the global window position of the UI for
+    // this pattern.  (huh, would be nice to have some
+    // proper UI layouts...)
+    void SetUIPosition(float x, float y);
+    
+    // Get a buffer that contains the history of the
+    // 'enabled' parameter (the checkbox that turns it on/off)
+    const SrFloatBuffer & GetEnabled() const;
+    
+protected:
+    
     // Update the pattern in response to the current state.
     // Prepare to draw.
-    virtual void Update(const SrTime & now) = 0;
+    virtual void _Update(const SrTime & now) = 0;
     
     // Draw the pattern.  By the time this is called, the render
     // state will be set to draw to a frame buffer that represents
@@ -41,13 +66,7 @@ public:
     //
     // Blend mode is OF_BLENDMODE_ADD so the color values will
     // sum together.
-    virtual void Draw(const SrTime & now) const = 0;
-    
-    // XXX dangerously mixing UI and implementation!
-    void SetUIPosition(float x, float y);
-    void DrawUI();
-    
-protected:
+    virtual void _Draw(const SrTime & now) const = 0;
     
     SrModel * GetModel() const;
     SrAudio * GetAudio() const;
@@ -59,8 +78,11 @@ protected:
 private:
     SrModel *_model;
     SrAudio *_audio;
+    SrFloatBuffer _enabledBuffer;
+    ofParameter<bool> _enabledParam;
     
     ofxPanel _panel;
+    ofxToggle _enabledToggle;
 };
 
 #endif

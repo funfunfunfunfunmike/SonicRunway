@@ -28,7 +28,7 @@ SrShapePattern::~SrShapePattern()
 }
 
 void
-SrShapePattern::Update(const SrTime & now)
+SrShapePattern::_Update(const SrTime & now)
 {
     SrTime expiration = now - SrSeconds(3);
     
@@ -49,6 +49,12 @@ SrShapePattern::Update(const SrTime & now)
     const SrBeatHistory & beats = GetAudio()->GetBeatHistory();
     SrTime timeOfLastBeat = beats.GetTimeOfLastEvent();
     
+    // If we're not enabled at the beginning, don't launch any
+    // new shapes.
+    if (not (bool) GetEnabled()[0]) {
+        return;
+    }
+    
     if (timeOfLastOnset != _timeOfLastOnset) {
         SrShape * newShape =
             new SrOnsetShape(GetModel(), now, ofColor(10, 0, 0, 255), 0.5);
@@ -68,7 +74,7 @@ SrShapePattern::Update(const SrTime & now)
 }
 
 void
-SrShapePattern::Draw(const SrTime & now) const
+SrShapePattern::_Draw(const SrTime & now) const
 {
     for(auto iter = _shapes.begin(); iter != _shapes.end(); iter++) {
         SrShape *shape = *iter;

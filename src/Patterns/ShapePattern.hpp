@@ -27,8 +27,9 @@ public:
                    SrModel * model, SrAudio * audio);
     virtual ~SrShapePattern();
     
-    virtual void Update(const SrTime & now);
-    virtual void Draw(const SrTime & now) const;
+protected:
+    virtual void _Update(const SrTime & now);
+    virtual void _Draw(const SrTime & now) const;
     
 private:
     std::set<SrShape *> _shapes;

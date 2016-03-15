@@ -24,11 +24,12 @@ public:
                  SrModel * model, SrAudio * audio);
     virtual ~SrFftPattern();
     
-    virtual void Update(const SrTime & now);
-    virtual void Draw(const SrTime & now) const;
-    
     float GetHueShift() const;
     void SetHueShift(float hueShift);
+    
+protected:
+    virtual void _Update(const SrTime & now);
+    virtual void _Draw(const SrTime & now) const;
     
 private:
     SrModel *_model;
