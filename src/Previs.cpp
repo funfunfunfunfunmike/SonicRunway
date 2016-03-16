@@ -8,19 +8,22 @@
 
 #include "Previs.hpp"
 #include "Model.hpp"
+#include "Audio.hpp"
 
-SrPrevis::SrPrevis(SrModel * model) :
+SrPrevis::SrPrevis(SrModel * model, SrAudio * audio) :
     _model(model),
+    _audio(audio),
     _lightRadius(0.2)
 {
     _camera.setFov(35);
     /*
-    _camera.setOrientation(ofVec3f(0,180,0));
-    _camera.setTarget(ofVec3f(0,5.8,50));
-    _camera.setDistance(70.0);
-     */
     _camera.lookAt(ofVec3f(0,0,60),ofVec3f(0,1,0));
     _camera.setPosition(0,5.8,-18);
+     */
+    
+    _camera.lookAt(ofVec3f(0,0,-60),ofVec3f(0,1,0));
+    _camera.setPosition(0,5.8,1018);
+    
 }
 
 SrPrevis::~SrPrevis()
@@ -67,8 +70,9 @@ SrPrevis::Draw(float x, float y, float width, float height)
 void
 SrPrevis::_DrawSpheres(float lightRadius, float transparency)
 {
+    int numSpacesBetweenStations = _model->GetNumStations() - 1;
     float distanceBetweenStations =
-        _model->GetRunwayLength() / _model->GetNumStations();
+        _model->GetRunwayLength() / numSpacesBetweenStations;
     float circumference = _model->GetArchLength() * 4.0 / 3.0;
     float radius = circumference / (M_PI * 2.0);
     
@@ -97,4 +101,13 @@ SrPrevis::_DrawSpheres(float lightRadius, float transparency)
         }
     }
     
+}
+
+void
+SrPrevis::AudioOut(float * output, int bufferSize, int nChannels) const
+{
+    float cameraDist = _camera.getPosition().length();
+    float delay = cameraDist / _model->GetSpeedOfSound();
+    
+    _audio->AudioOutDelayed(output, bufferSize, nChannels, delay);
 }

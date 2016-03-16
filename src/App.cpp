@@ -53,7 +53,7 @@ SrApp::AudioIn(float * input, int bufferSize, int nChannels)
 void
 SrApp::AudioOut(float *output, int bufferSize, int nChannels)
 {
-    _audio.AudioOut(output, bufferSize, nChannels);
+    _previs.AudioOut(output, bufferSize, nChannels);
 }
 
 void

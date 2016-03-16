@@ -98,8 +98,17 @@ SrAudio::GetCurrentFftValues() const
 void
 SrAudio::AudioIn(float *input, int bufferSize, int nChannels)
 {
+    // Increment full audio buffer index, and loop around if
+    // we get to the end.
+    _fullAudioBufferIndex--;
+    if (_fullAudioBufferIndex < 0) {
+        _fullAudioBufferIndex = _fullAudioBuffer.size() - 1;
+    }
+    
     // Copy left channel audio into mono input buffer
+    // XXX could maybe memcpy to be faster?
     for(int i=0; i < bufferSize; i++) {
+        _fullAudioBuffer[_fullAudioBufferIndex][i] = input[i * nChannels];
         _inputBuffer[i] = input[i * nChannels];
     }
     
@@ -119,12 +128,30 @@ SrAudio::AudioIn(float *input, int bufferSize, int nChannels)
     }
 }
 
+/*
 void
-SrAudio::AudioOut(float *output, int bufferSize, int nChannels)
+SrAudio::AudioOut(float *output, int bufferSize, int nChannels) const
 {
     // XXX only handling mono for now.
     for(int i=0; i < bufferSize; i++) {
         //output[i*nChannels] = _bandPassBuffer[i];
         output[i*nChannels] = _inputBuffer[i];
+    }
+}
+ */
+
+void
+SrAudio::AudioOutDelayed(float * output, int bufferSize, int nChannels,
+                         float delayInSeconds) const
+{
+    int bufferOffset = delayInSeconds * _model->GetBuffersPerSecond();
+    int thisIndex = _fullAudioBufferIndex + bufferOffset;
+    thisIndex %= _fullAudioBuffer.size();
+   
+    const vector<float> & thisBuffer = _fullAudioBuffer[thisIndex];
+    
+    // XXX memcpy for speed?
+    for(int i=0; i < bufferSize; i++) {
+        output[i*nChannels] = thisBuffer[i];
     }
 }

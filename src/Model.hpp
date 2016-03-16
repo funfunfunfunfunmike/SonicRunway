@@ -16,6 +16,7 @@
 // Model class for the app.  Holds global settings and
 // the main frame buffer that store the color of all the lights.
 //
+//
 class SrModel {
 public:
     SrModel();
@@ -28,6 +29,10 @@ public:
     int GetNumChannels() const;
     float GetBuffersPerSecond() const;
     
+    // XXX Station 0 is assumed to be at the sound source, though it
+    // probably won't exist in the actual installation.  So this
+    // number may be higher than the number of physical stations by
+    // one or two.
     int GetNumStations() const;
     int GetLightsPerStation() const;
     
@@ -36,6 +41,8 @@ public:
     float GetArchLength() const;  // in feet
     float GetFramesPerSecond() const;
     
+    // XXX maybe replace this with DelayAtStation to prevent
+    // assumptions about the distance to the first station??
     float ComputeDelayPerStation() const; // in seconds
     float GetMaxBufferDuration() const; // in seconds
     

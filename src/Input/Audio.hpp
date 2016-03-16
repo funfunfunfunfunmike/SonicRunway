@@ -37,15 +37,17 @@ public:
     SrAudio(SrModel * model);
     ~SrAudio();
     
-    typedef vector<vector<float> > AudioVecBuffer;
-    
     const SrOnsetHistory & GetLowOnsetHistory() const;
     const SrBeatHistory & GetBeatHistory() const;
     const vector<SrFloatBuffer> & GetFfts() const;
-    const AudioVecBuffer & GetFullAudioBuffer(float delayInSeconds) const;
     
     void AudioIn(float * input, int bufferSize, int nChannels);
-    void AudioOut(float * output, int bufferSize, int nChannels);
+    //void AudioOut(float * output, int bufferSize, int nChannels) const;
+    void AudioOutDelayed(float * output, int bufferSize, int nChannels,
+                         float delayInSeconds) const;
+    
+    typedef vector<vector<float> > AudioVecBuffer;
+    const AudioVecBuffer & GetFullAudioBuffer(float delayInSeconds) const;
     
     std::vector<float> GetCurrentFftValues() const;
     

@@ -13,6 +13,7 @@
 #include "ofMain.h"
 
 class SrModel;
+class SrAudio;
 
 //
 // A 3d respresntation of the tunnel of lights.
@@ -25,13 +26,14 @@ public:
     void Update();
     void Draw(float x, float y, float width, float height);
     
-    void AudioOut(float * output, int bufferSize, int nChannels);
+    void AudioOut(float * output, int bufferSize, int nChannels) const;
     
 private:
     void _DrawSpheres(float radius, float transparency);
     
 private:
     SrModel *_model;
+    SrAudio *_audio;
     float _lightRadius;
     
     //ofEasyCam _camera;

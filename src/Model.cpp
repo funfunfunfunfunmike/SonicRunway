@@ -96,7 +96,11 @@ SrModel::GetFloatPixels() const
 float
 SrModel::ComputeDelayPerStation() const
 {
-    return GetRunwayLength() / GetNumStations() / GetSpeedOfSound();
+    // If the runway is 1000 ft and it has 4 stations, those
+    // stations would be at 0, 333, 666, and 1000.  So we need
+    // to subtract 1 to find the number of intervals between stations.
+    int spacesBetweenStations = GetNumStations() - 1;
+    return GetRunwayLength() / spacesBetweenStations / GetSpeedOfSound();
 }
 
 float
