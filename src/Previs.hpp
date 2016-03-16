@@ -19,7 +19,7 @@ class SrAudio;
 //
 // A 3d respresntation of the tunnel of lights.
 //
-class SrPrevis : public UiMixin {
+class SrPrevis : public SrUiMixin {
 public:
     SrPrevis(SrModel * model, SrAudio * audio);
     ~SrPrevis();

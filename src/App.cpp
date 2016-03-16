@@ -15,42 +15,47 @@
 SrApp::SrApp() :
     _model(),
     _audio(&_model),
-    _audioUI(&_audio, 10.0, 10.0),
+    _audioUI(&_audio),
     _artnet(&_model),
-    _previs(&_model, &_audio)
+    _previs(&_model, &_audio),
+    _uiColumnWidth(220),
+    _uiMargin(10)
 {
     ofSetFrameRate(_model.GetFramesPerSecond());
     
     _globalPanel.setup("Global");
-    _globalPanel.setPosition(10,10);
+    _globalPanel.setPosition(_uiMargin,_uiMargin);
     
     _patternPanel.setup("Patterns");
-    _patternPanel.setPosition(60,10);
+    _patternPanel.setPosition(_uiMargin + _uiColumnWidth, _uiMargin);
     
     ofSoundStreamSetup(_model.GetNumChannels(), _model.GetNumChannels(),
                        _model.GetSampleRate(), _model.GetBufferSize(), 4);
     
-    
     _globalPanel.add(_previs.GetUiPanel());
+    _globalPanel.add(_audioUI.GetUiPanel());
     
     SrShapePattern * shapePattern =
         new SrShapePattern("OnsetPattern", &_model, &_audio);
-    shapePattern->SetUIPosition(500,10);
-    
-    _patterns.push_back(shapePattern);
+    _AddPattern(shapePattern);
     
     SrFftPattern *fftPattern =
         new SrFftPattern("FftPattern", &_model, &_audio);
-    fftPattern->SetUIPosition(720,10);
+    _AddPattern(fftPattern);
     
     _patterns.push_back(fftPattern);
 }
 
 SrApp::~SrApp()
 {
+    // XXX remove panels first?
+    // XXX need to figure out clean pattern for deleting...
+    
+    /*
     for(auto iter = _patterns.begin(); iter != _patterns.end(); iter++) {
         delete *iter;
     }
+     */
 }
 
 void
@@ -106,14 +111,14 @@ SrApp::Draw()
     
     ofBackground(40,40,40);
     
-    _model.RenderFrameBuffer(10,250, 400, 75);
-    
-    _audioUI.Draw();
+    _model.RenderFrameBuffer(_uiMargin + _uiColumnWidth * 2, _uiMargin,
+                             _uiColumnWidth * 2, 75);
     
     _globalPanel.draw();
     _patternPanel.draw();
     
-    _previs.Draw(10,350,800,600);
+    _previs.Draw(_uiMargin + _uiColumnWidth * 2, 100,
+                 _uiColumnWidth * 4, 750);
     
     _artnet.UpdateLights();
 }

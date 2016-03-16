@@ -11,7 +11,7 @@
 #include "Audio.hpp"
 
 SrPrevis::SrPrevis(SrModel * model, SrAudio * audio) :
-    UiMixin("Previs"),
+    SrUiMixin("Previs"),
     _model(model),
     _audio(audio),
     _lightRadius(0.2),

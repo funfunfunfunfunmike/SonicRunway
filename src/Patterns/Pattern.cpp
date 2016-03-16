@@ -13,7 +13,7 @@
 SrPattern::SrPattern(const std::string & name,
                      SrModel * model,
                      SrAudio * audio) :
-    UiMixin(name),
+    SrUiMixin(name),
     _model(model),
     _audio(audio),
     _enabledBuffer(model, SrFrequencyOncePerUpdate),

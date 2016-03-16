@@ -25,7 +25,7 @@ class SrAudio;
 //
 // Pattern instances are created and owned by SrApp.
 //
-class SrPattern : public UiMixin {
+class SrPattern : public SrUiMixin {
 public:
     SrPattern(const std::string & name, SrModel * model, SrAudio * audio);
     virtual ~SrPattern();

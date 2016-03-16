@@ -13,19 +13,19 @@
 
 #include <stdio.h>
 #include "ofxGui.h"
+#include "UiMixin.hpp"
 
 class SrAudio;
 
 //
 // SrAudioUI - Draw some sliders showing audio algorithm settings
 //
-class SrAudioUI {
+class SrAudioUI : public SrUiMixin {
 public:
-    SrAudioUI(SrAudio * audio, float x, float y);
+    SrAudioUI(SrAudio * audio);
     ~SrAudioUI();
     
     void Update();
-    void Draw();
     
 private:
     

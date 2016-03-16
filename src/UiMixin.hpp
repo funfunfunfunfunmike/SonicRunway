@@ -12,10 +12,10 @@
 #include <stdio.h>
 #include "ofxGui.h"
 
-class UiMixin {
+class SrUiMixin {
 public:
-    UiMixin(const std::string & name);
-    virtual ~UiMixin();
+    SrUiMixin(const std::string & name);
+    virtual ~SrUiMixin();
     
     void SetUIPosition(float x, float y);
     ofxPanel * GetUiPanel() const;

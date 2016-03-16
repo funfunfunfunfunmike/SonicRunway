@@ -8,31 +8,33 @@
 
 #include "UIMixin.hpp"
 
-UiMixin::UiMixin(const std::string & name)
+SrUiMixin::SrUiMixin(const std::string & name)
 {
     _panel = new ofxPanel();
     _panel->setup(name);
 }
 
-UiMixin::~UiMixin()
+SrUiMixin::~SrUiMixin()
 {
-    delete _panel;
+    // XXX should delete, but need to figure out how
+    // to cleanly unwind the ui structures.
+    //delete _panel;
 }
 
 ofxPanel *
-UiMixin::GetUiPanel() const
+SrUiMixin::GetUiPanel() const
 {
     return _panel;
 }
 
 void
-UiMixin::SetUIPosition(float x, float y)
+SrUiMixin::SetUIPosition(float x, float y)
 {
     _panel->setPosition(x, y);
 }
     
 void
-UiMixin::_AddUI(ofxBaseGui * item)
+SrUiMixin::_AddUI(ofxBaseGui * item)
 {
     _panel->add(item);
 }

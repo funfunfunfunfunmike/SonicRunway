@@ -46,6 +46,8 @@ private:
     std::vector<SrPattern *> _patterns;
     ofxPanel _globalPanel;
     ofxPanel _patternPanel;
+    float _uiColumnWidth;
+    float _uiMargin;
 };
 
 #endif
