@@ -12,6 +12,11 @@
 #include <stdio.h>
 #include "ofxGui.h"
 
+//
+// Ui Mixin -- classes can derive from this and call
+// _AddUI and _AddUIParameter to generate sliders, toggles,
+// etc.
+//
 class SrUiMixin {
 public:
     SrUiMixin(const std::string & name);
