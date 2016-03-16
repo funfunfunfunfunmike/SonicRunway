@@ -16,7 +16,7 @@ Mac install instructions:
 - Install ofxAubio addon:  https://github.com/aubio/ofxAubio
   Follow git install instructions
 
-- ** Temporary note: ** The most recent version of ofxAubio is incompatible with
+- **Temporary note:** The most recent version of ofxAubio is incompatible with
   our current code. You must adjust your local install to use an older version,
   like so:
 ```
