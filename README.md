@@ -14,7 +14,9 @@ Mac install instructions:
   follow xcode install documentation:  http://www.openframeworks.cc/setup/xcode/
 
 - Install ofxAubio addon:  https://github.com/aubio/ofxAubio
-  Follow git install instructions
+  Just clone the repository into the addons directory.
+  Don't do the the fetch_aubio_framework.sh part
+
 
 - Install aubio library:
   Download and unzip aubio framework.
@@ -42,7 +44,12 @@ Mac install instructions:
 
 You'll probably get some errors about 'aubio.h' not found.  
 If so, you may need to delete and re-add 'aubio.framework' to 
-the xcodeproj to get the header include path sorted.
+the xcodeproj to get the header include path sorted.  To do 
+that:
+  - in Xcode, right click 'aubio.framework' and choose 'Delete'
+  - choose 'Remove Reference' (don't move to trash)
+  - Find aubio.framework wherefer you put it and drag it from
+    the finder into the Xcode panel.
 
 OVERVIEW:
 
