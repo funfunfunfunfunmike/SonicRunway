@@ -22,7 +22,7 @@ Mac install instructions:
 ```
 git checkout -b withreceive b493b9f8ab982a96911fe69eaebb198fa23f6022
 ```
-  This creates a local branch called 'withreceive' that tracks the remote commit.
+  This creates a local branch called `withreceive` that tracks the remote commit.
   Rob will fix this soon.
 
 - Install aubio library:
