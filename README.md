@@ -97,6 +97,10 @@ problematic we can use ofMutex to make it thread safe.
 
 TODO:
 
+- Sync latest aubio repository and fix up our code.
+
+- Fix or standardize path to aubio.framework in project file?
+
 - Move audio output to Previs class.  Use a buffer to delay audio playback
   so we can see what it looks like from the other end of the runway.
 

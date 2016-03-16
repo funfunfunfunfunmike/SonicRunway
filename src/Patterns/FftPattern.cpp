@@ -47,13 +47,14 @@ SrFftPattern::_Update(const SrTime & now)
     
     for(int station = 0; station < model->GetNumStations(); station++) {
         float enabled = GetEnabled().ComputeValueAtStation(station);
-        if (not enabled) {
-            continue;
-        }
+        float hueShift =
+            _hueShiftBuffer.ComputeValueAtStation(station);
         
         for(int band = 0; band < ffts.size(); band++) {
-            float hueShift =
-                _hueShiftBuffer.ComputeValueAtStation(station);
+            if (not enabled) {
+                _pixels.setColor(station, band, ofColor(0.0,0.0,0.0));
+                continue;
+            }
             
             float fftValue = ffts[band].ComputeValueAtStation(station);
             

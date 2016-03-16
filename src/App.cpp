@@ -42,8 +42,6 @@ SrApp::SrApp() :
     SrFftPattern *fftPattern =
         new SrFftPattern("FftPattern", &_model, &_audio);
     _AddPattern(fftPattern);
-    
-    _patterns.push_back(fftPattern);
 }
 
 SrApp::~SrApp()
