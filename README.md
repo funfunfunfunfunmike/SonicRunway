@@ -17,7 +17,6 @@ Mac install instructions:
   Just clone the repository into the addons directory.
   Don't do the the fetch_aubio_framework.sh part
 
-
 - **Temporary note:** The most recent version of ofxAubio is incompatible with
   our current code. You must adjust your local install to use an older version,
   like so:
