@@ -11,9 +11,11 @@
 #include "Audio.hpp"
 
 SrPrevis::SrPrevis(SrModel * model, SrAudio * audio) :
+    UiMixin("Previs"),
     _model(model),
     _audio(audio),
-    _lightRadius(0.2)
+    _lightRadius(0.2),
+    _reverseAngleParam(true)
 {
     _camera.setFov(35);
     /*
@@ -24,6 +26,8 @@ SrPrevis::SrPrevis(SrModel * model, SrAudio * audio) :
     _camera.lookAt(ofVec3f(0,0,-60),ofVec3f(0,1,0));
     _camera.setPosition(0,5.8,1018);
     
+    _reverseAngleToggle.setup(_reverseAngleParam);
+    _AddUI(&_reverseAngleToggle);
 }
 
 SrPrevis::~SrPrevis()
@@ -34,7 +38,13 @@ SrPrevis::~SrPrevis()
 void
 SrPrevis::Update()
 {
-    
+    if (_reverseAngleToggle) {
+        _camera.lookAt(ofVec3f(0,0,-60),ofVec3f(0,1,0));
+        _camera.setPosition(0,5.8,1018);
+    } else {
+        _camera.lookAt(ofVec3f(0,0,60),ofVec3f(0,1,0));
+        _camera.setPosition(0,5.8,-18);
+    }
 }
 
 void

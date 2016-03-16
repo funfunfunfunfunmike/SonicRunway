@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "ofMain.h"
+#include "UiMixin.hpp"
 
 class SrModel;
 class SrAudio;
@@ -18,7 +19,7 @@ class SrAudio;
 //
 // A 3d respresntation of the tunnel of lights.
 //
-class SrPrevis {
+class SrPrevis : public UiMixin {
 public:
     SrPrevis(SrModel * model, SrAudio * audio);
     ~SrPrevis();
@@ -38,6 +39,9 @@ private:
     
     //ofEasyCam _camera;
     ofCamera _camera;
+    
+    ofParameter<bool>_reverseAngleParam;
+    ofxToggle _reverseAngleToggle;
 };
 
 #endif

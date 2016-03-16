@@ -13,15 +13,15 @@
 SrPattern::SrPattern(const std::string & name,
                      SrModel * model,
                      SrAudio * audio) :
+    UiMixin(name),
     _model(model),
     _audio(audio),
     _enabledBuffer(model, SrFrequencyOncePerUpdate),
     _enabledParam(true)
 {
-    _panel.setup(name);
+    printf("constructed pattern\n");
     _enabledToggle.setup(_enabledParam);
     _AddUI(&_enabledToggle);
-    printf("constructed pattern\n");
 }
 
 SrPattern::~SrPattern()
@@ -48,12 +48,6 @@ SrPattern::GetEnabled() const
 }
 
 void
-SrPattern::SetUIPosition(float x, float y)
-{
-    _panel.setPosition(x, y);
-}
-
-void
 SrPattern::Update(const SrTime & now)
 {
     bool value = (bool) _enabledToggle;
@@ -70,16 +64,4 @@ SrPattern::Draw(const SrTime & now)
     
     // Call subclass draw
     _Draw(now);
-}
-
-void
-SrPattern::DrawUI()
-{
-    _panel.draw();
-}
-
-void
-SrPattern::_AddUI(ofxBaseGui * item)
-{
-    _panel.add(item);
 }

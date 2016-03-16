@@ -13,7 +13,7 @@
 
 #include "Types.hpp"
 #include "Buffer.hpp"
-#include "ofxGui.h"
+#include "UiMixin.hpp"
 #include <string>
 
 class SrModel;
@@ -25,7 +25,7 @@ class SrAudio;
 //
 // Pattern instances are created and owned by SrApp.
 //
-class SrPattern {
+class SrPattern : public UiMixin {
 public:
     SrPattern(const std::string & name, SrModel * model, SrAudio * audio);
     virtual ~SrPattern();
@@ -37,16 +37,6 @@ public:
     // Called by the main app to render the pattern to the
     // light buffer.  Subclasses should implement _Draw()
     void Draw(const SrTime & now);
-    
-    // This is called by the app to draw the UI elements.
-    // Subclasses can add sliders and other controls
-    // with _AddUI
-    void DrawUI();
-    
-    // Sets the global window position of the UI for
-    // this pattern.  (huh, would be nice to have some
-    // proper UI layouts...)
-    void SetUIPosition(float x, float y);
     
     // Get a buffer that contains the history of the
     // 'enabled' parameter (the checkbox that turns it on/off)
@@ -71,17 +61,12 @@ protected:
     SrModel * GetModel() const;
     SrAudio * GetAudio() const;
     
-    // Subclasses call this from their constructor to
-    // Add UI elements to the panel for this pattern.
-    void _AddUI(ofxBaseGui * item);
-    
 private:
     SrModel *_model;
     SrAudio *_audio;
     SrFloatBuffer _enabledBuffer;
     ofParameter<bool> _enabledParam;
     
-    ofxPanel _panel;
     ofxToggle _enabledToggle;
 };
 

@@ -24,6 +24,8 @@ SrApp::SrApp() :
     ofSoundStreamSetup(_model.GetNumChannels(), _model.GetNumChannels(),
                        _model.GetSampleRate(), _model.GetBufferSize(), 4);
     
+    _previs.SetUIPosition(500, 50);
+    
     SrShapePattern * shapePattern =
         new SrShapePattern("OnsetPattern", &_model, &_audio);
     shapePattern->SetUIPosition(500,10);
@@ -99,6 +101,7 @@ SrApp::Draw()
         pattern->DrawUI();
     }
     
+    _previs.DrawUI();
     _previs.Draw(10,350,800,600);
     
     _artnet.UpdateLights();
