@@ -21,10 +21,17 @@ SrApp::SrApp() :
 {
     ofSetFrameRate(_model.GetFramesPerSecond());
     
+    _globalPanel.setup("Global");
+    _globalPanel.setPosition(10,10);
+    
+    _patternPanel.setup("Patterns");
+    _patternPanel.setPosition(60,10);
+    
     ofSoundStreamSetup(_model.GetNumChannels(), _model.GetNumChannels(),
                        _model.GetSampleRate(), _model.GetBufferSize(), 4);
     
-    _previs.SetUIPosition(500, 50);
+    
+    _globalPanel.add(_previs.GetUiPanel());
     
     SrShapePattern * shapePattern =
         new SrShapePattern("OnsetPattern", &_model, &_audio);
@@ -44,6 +51,13 @@ SrApp::~SrApp()
     for(auto iter = _patterns.begin(); iter != _patterns.end(); iter++) {
         delete *iter;
     }
+}
+
+void
+SrApp::_AddPattern(SrPattern * pattern)
+{
+    _patterns.push_back(pattern);
+    _patternPanel.add(pattern->GetUiPanel());
 }
 
 void
@@ -96,12 +110,9 @@ SrApp::Draw()
     
     _audioUI.Draw();
     
-    for(auto iter = _patterns.begin(); iter != _patterns.end(); iter++) {
-        SrPattern *pattern = *iter;
-        pattern->DrawUI();
-    }
+    _globalPanel.draw();
+    _patternPanel.draw();
     
-    _previs.DrawUI();
     _previs.Draw(10,350,800,600);
     
     _artnet.UpdateLights();

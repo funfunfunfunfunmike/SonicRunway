@@ -34,6 +34,9 @@ public:
     void AudioOut(float * output, int buferSize, int nChannels);
     
 private:
+    void _AddPattern(SrPattern * pattern);
+    
+private:
     SrModel _model;
     SrAudio _audio;
     SrAudioUI _audioUI;
@@ -41,6 +44,8 @@ private:
     SrArtnet _artnet;
     
     std::vector<SrPattern *> _patterns;
+    ofxPanel _globalPanel;
+    ofxPanel _patternPanel;
 };
 
 #endif

@@ -13,15 +13,19 @@
 SrFftPattern::SrFftPattern(const std::string & name,
                            SrModel * model, SrAudio * audio) :
     SrPattern(name, model, audio),
-    _hueShift(0.0),
+    _hueShiftParam(0.0),
     _hueShiftBuffer(model, SrFrequencyOncePerUpdate)
 {
     _pixels.allocate(GetModel()->GetNumStations(),
                      GetAudio()->GetFfts().size(), 3);
     
-    _AddUI(_hueShiftSlider.setup("hue shift", 0.0, 1.0, _hueShift));
+    _hueShiftParam.setName("Hue Shift");
+    _hueShiftParam.setMin(0.0);
+    _hueShiftParam.setMax(1.0);
     
-    _hueShiftBuffer.Push(_hueShift);
+    _AddUIParameter(_hueShiftParam);
+    
+    _hueShiftBuffer.Push((float) _hueShiftParam);
 }
 
 SrFftPattern::~SrFftPattern()
@@ -37,8 +41,7 @@ SrFftPattern::_Update(const SrTime & now)
     // XXX disabled for now..
     //_hueShiftBuffer.Push(_hueShiftBuffer[0] + 0.0025);
     //_hueShiftBuffer.Push(_hueShiftBuffer[0] + 0.005);
-    _hueShift = _hueShiftSlider;
-    _hueShiftBuffer.Push(_hueShift);
+    _hueShiftBuffer.Push((float) _hueShiftParam);
     
     const vector<SrFloatBuffer> & ffts = GetAudio()->GetFfts();
     
@@ -92,16 +95,4 @@ SrFftPattern::_Draw(const SrTime & now) const
     
     image.draw(0,0,_pixels.getWidth(), lightsPerStation * 1.5);
     ofPopMatrix();
-}
-
-void
-SrFftPattern::SetHueShift(float hueShift)
-{
-    _hueShift = hueShift;
-}
-
-float
-SrFftPattern::GetHueShift() const
-{
-    return _hueShift;
 }

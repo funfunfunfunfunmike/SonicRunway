@@ -24,21 +24,17 @@ public:
                  SrModel * model, SrAudio * audio);
     virtual ~SrFftPattern();
     
-    float GetHueShift() const;
-    void SetHueShift(float hueShift);
-    
 protected:
     virtual void _Update(const SrTime & now);
     virtual void _Draw(const SrTime & now) const;
     
 private:
     SrModel *_model;
-    float _hueShift;
+    ofParameter<float> _hueShiftParam;
     
     ofFloatPixels _pixels;
     
     SrFloatBuffer _hueShiftBuffer;
-    ofxFloatSlider _hueShiftSlider;
 };
 
 #endif

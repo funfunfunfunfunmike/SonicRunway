@@ -41,7 +41,6 @@ private:
     ofCamera _camera;
     
     ofParameter<bool>_reverseAngleParam;
-    ofxToggle _reverseAngleToggle;
 };
 
 #endif

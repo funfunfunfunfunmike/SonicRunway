@@ -10,28 +10,29 @@
 
 UiMixin::UiMixin(const std::string & name)
 {
-    _panel.setup(name);
+    _panel = new ofxPanel();
+    _panel->setup(name);
 }
 
 UiMixin::~UiMixin()
 {
-    
+    delete _panel;
+}
+
+ofxPanel *
+UiMixin::GetUiPanel() const
+{
+    return _panel;
 }
 
 void
-UiMixin::DrawUI()
-{
-    _panel.draw();
-}
-    
-void
 UiMixin::SetUIPosition(float x, float y)
 {
-    _panel.setPosition(x, y);
+    _panel->setPosition(x, y);
 }
     
 void
 UiMixin::_AddUI(ofxBaseGui * item)
 {
-    _panel.add(item);
+    _panel->add(item);
 }

@@ -18,7 +18,7 @@ public:
     virtual ~UiMixin();
     
     void SetUIPosition(float x, float y);
-    void DrawUI();
+    ofxPanel * GetUiPanel() const;
     
 protected:
     // Subclasses call this from their constructor to
@@ -26,12 +26,12 @@ protected:
     void _AddUI(ofxBaseGui * item);
     
     template<typename T>
-    void _AddParameter(ofParameter<T> & parameter) {
-        _panel.add(parameter);
+    void _AddUIParameter(ofParameter<T> & parameter) {
+        _panel->add(parameter);
     }
     
 private:
-    ofxPanel _panel;
+    ofxPanel * _panel;
 };
 
 #endif

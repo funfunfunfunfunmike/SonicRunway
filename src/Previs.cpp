@@ -26,8 +26,8 @@ SrPrevis::SrPrevis(SrModel * model, SrAudio * audio) :
     _camera.lookAt(ofVec3f(0,0,-60),ofVec3f(0,1,0));
     _camera.setPosition(0,5.8,1018);
     
-    _reverseAngleToggle.setup(_reverseAngleParam);
-    _AddUI(&_reverseAngleToggle);
+    _reverseAngleParam.setName("Reverse Angle");
+    _AddUIParameter(_reverseAngleParam);
 }
 
 SrPrevis::~SrPrevis()
@@ -38,7 +38,7 @@ SrPrevis::~SrPrevis()
 void
 SrPrevis::Update()
 {
-    if (_reverseAngleToggle) {
+    if (_reverseAngleParam) {
         _camera.lookAt(ofVec3f(0,0,-60),ofVec3f(0,1,0));
         _camera.setPosition(0,5.8,1018);
     } else {
