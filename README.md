@@ -19,9 +19,9 @@ Mac install instructions:
 - ** Temporary note: ** The most recent version of ofxAubio is incompatible with
   our current code. You must adjust your local install to use an older version,
   like so:
-'''
+```
 git checkout -b withreceive b493b9f8ab982a96911fe69eaebb198fa23f6022
-'''
+```
   This creates a local branch that tracks the remote commit.
   Rob will fix this soon.
 
