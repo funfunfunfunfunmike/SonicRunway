@@ -25,7 +25,11 @@ public:
     const SrFloatBuffer & GetBpm() const;
     
 private:
+    void _OnBeatEvent(float & time);
+    
+private:
     SrFloatBuffer _bpm;
+    bool _gotBeat;
     
     ofxAubioBeat _beat;
 };

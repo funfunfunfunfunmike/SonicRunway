@@ -11,6 +11,7 @@
 
 SrOnsetHistory::SrOnsetHistory(SrModel * model) :
     SrEventHistory(model, SrFrequencyOncePerAudioIn),
+    _gotOnset(false),
     _currentThreshold(0.3),
     _threshold(model, SrFrequencyOncePerAudioIn),
     _thresholdedNovelty(model, SrFrequencyOncePerAudioIn),
@@ -20,6 +21,9 @@ SrOnsetHistory::SrOnsetHistory(SrModel * model) :
     int hopSize = bufferSize / 2;
     _onset.setup("default", model->GetBufferSize(), hopSize,
                  model->GetSampleRate());
+    
+    // Set up listener for onset event
+    ofAddListener(_onset.gotOnset, this, &SrOnsetHistory::_OnOnsetEvent);
 }
 
 SrOnsetHistory::~SrOnsetHistory()
@@ -28,11 +32,21 @@ SrOnsetHistory::~SrOnsetHistory()
 }
 
 void
+SrOnsetHistory::_OnOnsetEvent(float & time)
+{
+    _gotOnset = true;
+}
+
+void
 SrOnsetHistory::AudioIn(float * input, int bufferSize, int nChannels)
 {
     _onset.audioIn(input, bufferSize, nChannels);
     
-    _Push(_onset.received());
+    // Push the current value
+    _Push(_gotOnset);
+    
+    // Reset the flag
+    _gotOnset = false;
     
     _threshold.Push(_onset.threshold);
     _thresholdedNovelty.Push(_onset.thresholdedNovelty);

@@ -11,13 +11,17 @@
 
 SrBeatHistory::SrBeatHistory(SrModel * model) :
     SrEventHistory(model, SrFrequencyOncePerAudioIn),
-    _bpm(model, SrFrequencyOncePerAudioIn)
+    _bpm(model, SrFrequencyOncePerAudioIn),
+    _gotBeat(false)
 {
     int bufferSize = model->GetBufferSize();
     int hopSize = bufferSize / 2;
     int sampleRate = model->GetSampleRate();
     
     _beat.setup("default", bufferSize, hopSize, sampleRate);
+    
+    // Set up listener for beat event
+    ofAddListener(_beat.gotBeat, this, &SrBeatHistory::_OnBeatEvent);
 }
 
 SrBeatHistory::~SrBeatHistory()
@@ -26,11 +30,21 @@ SrBeatHistory::~SrBeatHistory()
 }
 
 void
+SrBeatHistory::_OnBeatEvent(float & time)
+{
+    _gotBeat = true;
+}
+
+void
 SrBeatHistory::AudioIn(float * input, int bufferSize, int nChannels)
 {
     _beat.audioIn(input, bufferSize, nChannels);
     
-    _Push(_beat.received());
+    // Push the current beat
+    _Push(_gotBeat);
+    
+    // Reset the flag
+    _gotBeat = false;
           
     _bpm.Push(_beat.bpm);
 }

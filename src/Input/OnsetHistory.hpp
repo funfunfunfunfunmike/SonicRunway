@@ -33,6 +33,10 @@ public:
     const SrFloatBuffer & GetNovelty() const;
     
 private:
+    void _OnOnsetEvent(float & time);
+    
+private:
+    bool _gotOnset;
     float _currentThreshold;
     SrFloatBuffer _threshold;
     SrFloatBuffer _thresholdedNovelty;

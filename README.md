@@ -17,15 +17,6 @@ Mac install instructions:
   Just clone the repository into the addons directory.
   Don't do the the fetch_aubio_framework.sh part
 
-- **Temporary note:** The most recent version of ofxAubio is incompatible with
-  our current code. You must adjust your local install to use an older version,
-  like so:
-```
-git checkout -b withreceive b493b9f8ab982a96911fe69eaebb198fa23f6022
-```
-  This creates a local branch called `withreceive` that tracks the remote commit.
-  Rob will fix this soon.
-
 - Install aubio library:
   Download and unzip aubio framework.
   http://aubio.org/bin/0.4.2/aubio-0.4.2.darwin_framework.zip
@@ -95,8 +86,6 @@ problematic we can use ofMutex to make it thread safe.
 
 
 TODO:
-
-- Sync latest aubio repository and fix up our code.
 
 - Fix or standardize path to aubio.framework in project file?
 
