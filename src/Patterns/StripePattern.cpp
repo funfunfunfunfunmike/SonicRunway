@@ -49,6 +49,11 @@ SrStripePattern::_Draw(const SrTime & now) const
     for(int i = 0; i < numStations; i++) {
         
         // Extract the values for each parameter for this station
+        float enabled = GetEnabled().ComputeValueAtStation(i);
+        if (not (bool) enabled) {
+            continue;
+        }
+        
         float hue = _hueBuffer.ComputeValueAtStation(i);
         float angle = _angleBuffer.ComputeValueAtStation(i);
         
