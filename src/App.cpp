@@ -11,6 +11,7 @@
 
 #include "ShapePattern.hpp"
 #include "FftPattern.hpp"
+#include "StripePattern.hpp"
 
 SrApp::SrApp() :
     _model(),
@@ -42,6 +43,10 @@ SrApp::SrApp() :
     SrFftPattern *fftPattern =
         new SrFftPattern("FftPattern", &_model, &_audio);
     _AddPattern(fftPattern);
+    
+    SrStripePattern *stripePattern =
+        new SrStripePattern("StripePattern", &_model, &_audio);
+    _AddPattern(stripePattern);
 }
 
 SrApp::~SrApp()

@@ -29,7 +29,6 @@ protected:
     virtual void _Draw(const SrTime & now) const;
     
 private:
-    SrModel *_model;
     ofParameter<float> _hueShiftParam;
     
     ofFloatPixels _pixels;
