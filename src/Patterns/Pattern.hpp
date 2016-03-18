@@ -56,6 +56,9 @@ protected:
     //
     // Blend mode is OF_BLENDMODE_ADD so the color values will
     // sum together.
+    //
+    // Patterns should respect per-station values from the 'Enabled'
+    // buffer, and not draw anything when/where they are disabled.
     virtual void _Draw(const SrTime & now) const = 0;
     
     SrModel * GetModel() const;
