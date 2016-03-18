@@ -21,6 +21,7 @@ SrPattern::SrPattern(const std::string & name,
 {
     printf("constructed pattern\n");
     _enabledToggle.setup(_enabledParam);
+    _enabledParam.setName("Enabled");
     _AddUI(&_enabledToggle);
 }
 
