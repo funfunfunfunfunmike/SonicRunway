@@ -42,6 +42,10 @@ public:
     // 'enabled' parameter (the checkbox that turns it on/off)
     const SrFloatBuffer & GetEnabled() const;
     
+    // Set the current value of 'enabled'.  This will be
+    // buffered across time.
+    void SetEnabled(bool enabled);
+    
 protected:
     
     // Update the pattern in response to the current state.

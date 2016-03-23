@@ -42,6 +42,12 @@ SrPattern::GetAudio() const
     return _audio;
 }
 
+void
+SrPattern::SetEnabled(bool enabled)
+{
+    _enabledParam = enabled;
+}
+
 const SrFloatBuffer &
 SrPattern::GetEnabled() const
 {

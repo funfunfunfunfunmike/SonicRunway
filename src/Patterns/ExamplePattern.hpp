@@ -6,24 +6,24 @@
 //
 //
 
-#ifndef SR_STRIPE_PATTERN_HPP
-#define SR_STRIPE_PATTERN_HPP
+#ifndef SR_EXAMPLE_PATTERN_HPP
+#define SR_EXAMPLE_PATTERN_HPP
 
 #include <stdio.h>
 #include "Pattern.hpp"
 #include "Buffer.hpp"
 
 //
-// SrStripePattern is a really simple pattern that just illuminates
+// SrExamplePattern is a really simple pattern that just illuminates
 // a single LED for each station.  It is meant to demonstrate how
 // to set up parameters and buffer their values across the length
 // of the runway.
 //
-class SrStripePattern : public SrPattern {
+class SrExamplePattern : public SrPattern {
 public:
-    SrStripePattern(const std::string & name,
+    SrExamplePattern(const std::string & name,
                     SrModel * model, SrAudio * audio);
-    virtual ~SrStripePattern();
+    virtual ~SrExamplePattern();
     
 protected:
     virtual void _Update(const SrTime & now);

@@ -21,7 +21,7 @@
 		300CF04F1C652BD800295FBF /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0441C652BD800295FBF /* libswresample.a */; };
 		300CF0501C652BD800295FBF /* libtag.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0451C652BD800295FBF /* libtag.dylib */; };
 		300CF0511C652BD800295FBF /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0461C652BD800295FBF /* libyaml.a */; };
-		3012AAAD1C9BAA2A005B2B46 /* StripePattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3012AAAB1C9BAA2A005B2B46 /* StripePattern.cpp */; };
+		3012AAAD1C9BAA2A005B2B46 /* ExamplePattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3012AAAB1C9BAA2A005B2B46 /* ExamplePattern.cpp */; };
 		302F35951C93CA39001D5E51 /* OnsetHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302F35931C93CA39001D5E51 /* OnsetHistory.cpp */; };
 		302F35981C972BE2001D5E51 /* BeatHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302F35961C972BE2001D5E51 /* BeatHistory.cpp */; };
 		302F359B1C972DE6001D5E51 /* EventHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302F35991C972DE6001D5E51 /* EventHistory.cpp */; };
@@ -110,8 +110,8 @@
 		300CF0441C652BD800295FBF /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = ../../../../../../../../usr/local/lib/libswresample.a; sourceTree = "<group>"; };
 		300CF0451C652BD800295FBF /* libtag.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtag.dylib; path = ../../../../../../../../usr/local/lib/libtag.dylib; sourceTree = "<group>"; };
 		300CF0461C652BD800295FBF /* libyaml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyaml.a; path = ../../../../../../../../usr/local/lib/libyaml.a; sourceTree = "<group>"; };
-		3012AAAB1C9BAA2A005B2B46 /* StripePattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StripePattern.cpp; path = Patterns/StripePattern.cpp; sourceTree = "<group>"; };
-		3012AAAC1C9BAA2A005B2B46 /* StripePattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = StripePattern.hpp; path = Patterns/StripePattern.hpp; sourceTree = "<group>"; };
+		3012AAAB1C9BAA2A005B2B46 /* ExamplePattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExamplePattern.cpp; path = Patterns/ExamplePattern.cpp; sourceTree = "<group>"; };
+		3012AAAC1C9BAA2A005B2B46 /* ExamplePattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ExamplePattern.hpp; path = Patterns/ExamplePattern.hpp; sourceTree = "<group>"; };
 		302695351C8FEE1D007F749C /* Buffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Buffer.hpp; sourceTree = "<group>"; };
 		302F35931C93CA39001D5E51 /* OnsetHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OnsetHistory.cpp; path = Input/OnsetHistory.cpp; sourceTree = "<group>"; };
 		302F35941C93CA39001D5E51 /* OnsetHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = OnsetHistory.hpp; path = Input/OnsetHistory.hpp; sourceTree = "<group>"; };
@@ -283,8 +283,8 @@
 				3074F8CD1C8744A8008BD5EF /* Shape.hpp */,
 				3074F8D21C874BBA008BD5EF /* ShapePattern.cpp */,
 				3074F8D31C874BBA008BD5EF /* ShapePattern.hpp */,
-				3012AAAB1C9BAA2A005B2B46 /* StripePattern.cpp */,
-				3012AAAC1C9BAA2A005B2B46 /* StripePattern.hpp */,
+				3012AAAB1C9BAA2A005B2B46 /* ExamplePattern.cpp */,
+				3012AAAC1C9BAA2A005B2B46 /* ExamplePattern.hpp */,
 			);
 			name = Patterns;
 			sourceTree = "<group>";
@@ -536,7 +536,7 @@
 				308CEE561C48593A007C124A /* misc.c in Sources */,
 				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,
 				30C844331C422B01006452BE /* Audio.cpp in Sources */,
-				3012AAAD1C9BAA2A005B2B46 /* StripePattern.cpp in Sources */,
+				3012AAAD1C9BAA2A005B2B46 /* ExamplePattern.cpp in Sources */,
 				3074F8D41C874BBA008BD5EF /* ShapePattern.cpp in Sources */,
 				308CEE5A1C48593A007C124A /* transmit.c in Sources */,
 				B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */,

@@ -1,14 +1,14 @@
 //
-//  StripePattern.cpp
+//  ExamplePattern.cpp
 //  SonicRunway
 //
 //  Created by Rob Jensen on 3/17/16.
 //
 //
 
-#include "StripePattern.hpp"
+#include "ExamplePattern.hpp"
 
-SrStripePattern::SrStripePattern(const std::string & name,
+SrExamplePattern::SrExamplePattern(const std::string & name,
                                  SrModel * model, SrAudio * audio) :
     SrPattern(name, model, audio),
     _hueParam(0.0),
@@ -27,13 +27,13 @@ SrStripePattern::SrStripePattern(const std::string & name,
     _AddUIParameter(_angleParam);
 }
 
-SrStripePattern::~SrStripePattern()
+SrExamplePattern::~SrExamplePattern()
 {
     
 }
 
 void
-SrStripePattern::_Update(const SrTime & now)
+SrExamplePattern::_Update(const SrTime & now)
 {
     // Push the current values of the parameters into the buffers.
     _hueBuffer.Push((float) _hueParam);
@@ -41,7 +41,7 @@ SrStripePattern::_Update(const SrTime & now)
 }
 
 void
-SrStripePattern::_Draw(const SrTime & now) const
+SrExamplePattern::_Draw(const SrTime & now) const
 {
     const SrModel * model = GetModel();
     int numStations = model->GetNumStations();
