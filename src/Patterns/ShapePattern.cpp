@@ -56,10 +56,12 @@ SrShapePattern::_Update(const SrTime & now)
     }
     
     if (timeOfLastOnset != _timeOfLastOnset) {
+        /*
         SrShape * newShape =
             new SrOnsetShape(GetModel(), now, ofColor(10, 0, 0, 255), 0.5);
         
         _shapes.insert(newShape);
+         */
         
         _timeOfLastOnset = timeOfLastOnset;
     }

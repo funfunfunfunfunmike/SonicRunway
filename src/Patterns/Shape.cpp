@@ -83,7 +83,7 @@ SrOnsetShape::Draw(const SrTime &now) const
     ofDrawRectangle(xPos - width, 0.0, width, height);
     ofSetColor(_color * 0.6);
     ofDrawTriangle(xPos, 0.0, xPos-8, 0.0, xPos, height * 0.8);
-    ofDrawTriangle(xPos, height, xPos-8, height, xPos, 0.2);
+    ofDrawTriangle(xPos, height, xPos-8, height, xPos, height * 0.2);
     /*
     ofDrawRectangle(xPos - width * 2, 0.0, width, height);
     ofSetColor(_color * 0.3);
