@@ -17,12 +17,8 @@ Mac install instructions:
   Just clone the repository into the addons directory.
   Don't do the the fetch_aubio_framework.sh part
 
-- Install aubio library:
-  Download and unzip aubio framework.
-  http://aubio.org/bin/0.4.2/aubio-0.4.2.darwin_framework.zip
-
-  Find 'aubio.framework' (under the parent directory)
-  Move it to /Users/youruserid/Library/Frameworks (create directory if necessary)
+- Install aubio library (with homebrew):
+   brew install aubio
 
 - Install essentia audio analysis library (with homebrew):
     https://github.com/MTG/homebrew-essentia
@@ -40,15 +36,6 @@ Mac install instructions:
   'Sonic Runway Debug' build target is selected.
 
 - Build and run! 
-
-You'll probably get some errors about 'aubio.h' not found.  
-If so, you may need to delete and re-add 'aubio.framework' to 
-the xcodeproj to get the header include path sorted.  To do 
-that:
-  - in Xcode, right click 'aubio.framework' and choose 'Delete'
-  - choose 'Remove Reference' (don't move to trash)
-  - Find aubio.framework wherefer you put it and drag it from
-    the finder into the Xcode panel.
 
 OVERVIEW:
 

@@ -12,6 +12,7 @@
 #include "ShapePattern.hpp"
 #include "FftPattern.hpp"
 #include "ExamplePattern.hpp"
+#include "StripesPattern.hpp"
 
 SrApp::SrApp() :
     _model(),
@@ -36,6 +37,11 @@ SrApp::SrApp() :
     _globalPanel.add(_previs.GetUiPanel());
     _globalPanel.add(_audioUI.GetUiPanel());
     
+    SrExamplePattern *examplePattern =
+        new SrExamplePattern("Example Pattern", &_model, &_audio);
+    _AddPattern(examplePattern);
+    examplePattern->SetEnabled(false);
+    
     SrShapePattern * shapePattern =
         new SrShapePattern("Onset Pattern", &_model, &_audio);
     _AddPattern(shapePattern);
@@ -44,10 +50,10 @@ SrApp::SrApp() :
         new SrFftPattern("Fft Pattern", &_model, &_audio);
     _AddPattern(fftPattern);
     
-    SrExamplePattern *examplePattern =
-        new SrExamplePattern("Example Pattern", &_model, &_audio);
-    _AddPattern(examplePattern);
-    examplePattern->SetEnabled(false);
+    SrStripesPattern *stripesPattern =
+        new SrStripesPattern("Stripes Pattern", &_model, &_audio);
+    _AddPattern(stripesPattern);
+    stripesPattern->SetEnabled(false);
 }
 
 SrApp::~SrApp()

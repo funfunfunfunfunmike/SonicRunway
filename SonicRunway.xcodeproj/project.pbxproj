@@ -22,9 +22,11 @@
 		300CF0501C652BD800295FBF /* libtag.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0451C652BD800295FBF /* libtag.dylib */; };
 		300CF0511C652BD800295FBF /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF0461C652BD800295FBF /* libyaml.a */; };
 		3012AAAD1C9BAA2A005B2B46 /* ExamplePattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3012AAAB1C9BAA2A005B2B46 /* ExamplePattern.cpp */; };
+		301742261CAE3140007F3D32 /* libaubio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 301742251CAE3140007F3D32 /* libaubio.dylib */; };
 		302F35951C93CA39001D5E51 /* OnsetHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302F35931C93CA39001D5E51 /* OnsetHistory.cpp */; };
 		302F35981C972BE2001D5E51 /* BeatHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302F35961C972BE2001D5E51 /* BeatHistory.cpp */; };
 		302F359B1C972DE6001D5E51 /* EventHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302F35991C972DE6001D5E51 /* EventHistory.cpp */; };
+		303B2BD61CA24D4F00322318 /* StripesPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 303B2BD41CA24D4F00322318 /* StripesPattern.cpp */; };
 		305892A41C9921240030F338 /* UiMixin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 305892A21C9921240030F338 /* UiMixin.cpp */; };
 		306565A31C472E7C00917ADB /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306565A11C472E7C00917ADB /* App.cpp */; };
 		306DFD3F1C80100200AB9225 /* ofxArtnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306DFD3D1C80100200AB9225 /* ofxArtnet.cpp */; };
@@ -39,7 +41,6 @@
 		308CEE5A1C48593A007C124A /* transmit.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE541C48593A007C124A /* transmit.c */; };
 		308CEE5D1C48598D007C124A /* Artnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE5B1C48598D007C124A /* Artnet.cpp */; };
 		30AEA5981C4052A80034C794 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 30AEA5971C4052A80034C794 /* README.md */; };
-		30C3F40A1C4046DE00184240 /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C3F4091C4046DE00184240 /* aubio.framework */; };
 		30C844331C422B01006452BE /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844311C422B01006452BE /* Audio.cpp */; };
 		30C844361C42C17E006452BE /* AudioUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844341C42C17E006452BE /* AudioUI.cpp */; };
 		30C844391C42D110006452BE /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844371C42D110006452BE /* Model.cpp */; };
@@ -112,6 +113,7 @@
 		300CF0461C652BD800295FBF /* libyaml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyaml.a; path = ../../../../../../../../usr/local/lib/libyaml.a; sourceTree = "<group>"; };
 		3012AAAB1C9BAA2A005B2B46 /* ExamplePattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExamplePattern.cpp; path = Patterns/ExamplePattern.cpp; sourceTree = "<group>"; };
 		3012AAAC1C9BAA2A005B2B46 /* ExamplePattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ExamplePattern.hpp; path = Patterns/ExamplePattern.hpp; sourceTree = "<group>"; };
+		301742251CAE3140007F3D32 /* libaubio.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaubio.dylib; path = ../../../../../../../../usr/local/Cellar/aubio/0.4.2/lib/libaubio.dylib; sourceTree = "<group>"; };
 		302695351C8FEE1D007F749C /* Buffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Buffer.hpp; sourceTree = "<group>"; };
 		302F35931C93CA39001D5E51 /* OnsetHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OnsetHistory.cpp; path = Input/OnsetHistory.cpp; sourceTree = "<group>"; };
 		302F35941C93CA39001D5E51 /* OnsetHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = OnsetHistory.hpp; path = Input/OnsetHistory.hpp; sourceTree = "<group>"; };
@@ -119,6 +121,8 @@
 		302F35971C972BE2001D5E51 /* BeatHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BeatHistory.hpp; path = Input/BeatHistory.hpp; sourceTree = "<group>"; };
 		302F35991C972DE6001D5E51 /* EventHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventHistory.cpp; path = Input/EventHistory.cpp; sourceTree = "<group>"; };
 		302F359A1C972DE6001D5E51 /* EventHistory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventHistory.hpp; path = Input/EventHistory.hpp; sourceTree = "<group>"; };
+		303B2BD41CA24D4F00322318 /* StripesPattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StripesPattern.cpp; path = Patterns/StripesPattern.cpp; sourceTree = "<group>"; };
+		303B2BD51CA24D4F00322318 /* StripesPattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = StripesPattern.hpp; path = Patterns/StripesPattern.hpp; sourceTree = "<group>"; };
 		305892A21C9921240030F338 /* UiMixin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UiMixin.cpp; sourceTree = "<group>"; };
 		305892A31C9921240030F338 /* UiMixin.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UiMixin.hpp; sourceTree = "<group>"; };
 		306565A11C472E7C00917ADB /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
@@ -150,7 +154,6 @@
 		308CEE5F1C486177007C124A /* artnet_COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = artnet_COPYING; sourceTree = "<group>"; };
 		30AC5FEA1C448C7600B793E9 /* Types.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Types.hpp; sourceTree = "<group>"; };
 		30AEA5971C4052A80034C794 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		30C3F4091C4046DE00184240 /* aubio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = aubio.framework; path = ../../../../../../Library/Frameworks/aubio.framework; sourceTree = "<group>"; };
 		30C844311C422B01006452BE /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Audio.cpp; path = Input/Audio.cpp; sourceTree = "<group>"; };
 		30C844321C422B01006452BE /* Audio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Audio.hpp; path = Input/Audio.hpp; sourceTree = "<group>"; };
 		30C844341C42C17E006452BE /* AudioUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioUI.cpp; path = Input/AudioUI.cpp; sourceTree = "<group>"; };
@@ -197,10 +200,10 @@
 			files = (
 				300CF04A1C652BD800295FBF /* libavutil.a in Frameworks */,
 				300CF0511C652BD800295FBF /* libyaml.a in Frameworks */,
+				301742261CAE3140007F3D32 /* libaubio.dylib in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 				300CF04D1C652BD800295FBF /* libfftw3f.a in Frameworks */,
 				300CF04C1C652BD800295FBF /* libfftw3.a in Frameworks */,
-				30C3F40A1C4046DE00184240 /* aubio.framework in Frameworks */,
 				300CF04B1C652BD800295FBF /* libessentia.dylib in Frameworks */,
 				300CF0471C652BD800295FBF /* libavcodec.a in Frameworks */,
 				300CF04E1C652BD800295FBF /* libsamplerate.a in Frameworks */,
@@ -285,6 +288,8 @@
 				3074F8D31C874BBA008BD5EF /* ShapePattern.hpp */,
 				3012AAAB1C9BAA2A005B2B46 /* ExamplePattern.cpp */,
 				3012AAAC1C9BAA2A005B2B46 /* ExamplePattern.hpp */,
+				303B2BD41CA24D4F00322318 /* StripesPattern.cpp */,
+				303B2BD51CA24D4F00322318 /* StripesPattern.hpp */,
 			);
 			name = Patterns;
 			sourceTree = "<group>";
@@ -384,9 +389,9 @@
 				300CF0441C652BD800295FBF /* libswresample.a */,
 				300CF0451C652BD800295FBF /* libtag.dylib */,
 				300CF0461C652BD800295FBF /* libyaml.a */,
+				301742251CAE3140007F3D32 /* libaubio.dylib */,
 				308CEE461C48593A007C124A /* Vendor */,
 				30AEA5971C4052A80034C794 /* README.md */,
-				30C3F4091C4046DE00184240 /* aubio.framework */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -530,6 +535,7 @@
 				3074F8CE1C8744A8008BD5EF /* Shape.cpp in Sources */,
 				30C844361C42C17E006452BE /* AudioUI.cpp in Sources */,
 				101D2DB773940813A5C898CD /* ofxAubioPitch.cpp in Sources */,
+				303B2BD61CA24D4F00322318 /* StripesPattern.cpp in Sources */,
 				302F359B1C972DE6001D5E51 /* EventHistory.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
 				305892A41C9921240030F338 /* UiMixin.cpp in Sources */,
@@ -667,6 +673,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
+					/usr/local/Cellar/aubio/0.4.2/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
@@ -702,6 +709,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
+					/usr/local/Cellar/aubio/0.4.2/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
