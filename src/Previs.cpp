@@ -23,8 +23,8 @@ SrPrevis::SrPrevis(SrModel * model, SrAudio * audio) :
     _camera.setPosition(0,5.8,-18);
      */
     
-    _camera.lookAt(ofVec3f(0,0,-60),ofVec3f(0,1,0));
-    _camera.setPosition(0,5.8,1018);
+    _camera.lookAt(ofVec3f(0,-60,0),ofVec3f(0,0,1));
+    _camera.setPosition(0,1018,5.8);
     
     _reverseAngleParam.setName("Reverse Angle");
     _AddUIParameter(_reverseAngleParam);
@@ -39,11 +39,11 @@ void
 SrPrevis::Update()
 {
     if (_reverseAngleParam) {
-        _camera.lookAt(ofVec3f(0,0,-60),ofVec3f(0,1,0));
-        _camera.setPosition(0,5.8,1018);
+        _camera.lookAt(ofVec3f(0,-60,0),ofVec3f(0,0,1));
+        _camera.setPosition(0,1018,5.8);
     } else {
-        _camera.lookAt(ofVec3f(0,0,60),ofVec3f(0,1,0));
-        _camera.setPosition(0,5.8,-18);
+        _camera.lookAt(ofVec3f(0,60,0),ofVec3f(0,0,1));
+        _camera.setPosition(0,-18,5.8);
     }
 }
 
@@ -62,7 +62,7 @@ SrPrevis::Draw(float x, float y, float width, float height)
    
     // Ground plane
     ofPushMatrix();
-    ofRotateX(90);
+    //ofRotateX(90);
     ofSetColor(30,30,30,255);
     ofDrawPlane(3000,3000);
     ofPopMatrix();
@@ -103,9 +103,9 @@ SrPrevis::_DrawSpheres(float lightRadius, float transparency)
             float angle = (float) light / lastStationIdx * 3 * M_PI / 2;
             angle -= M_PI / 4.0;
             
-            float z = station * distanceBetweenStations;
+            float y = station * distanceBetweenStations;
             float x = cos(angle) * radius;
-            float y = sin(angle) * radius + groundToCenter;
+            float z = sin(angle) * radius + groundToCenter;
            
             ofDrawSphere(x,y,z,lightRadius);
         }
