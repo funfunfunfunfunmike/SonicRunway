@@ -58,7 +58,6 @@ void
 SrPattern::Update(const SrTime & now)
 {
     bool value = (bool) _enabledToggle;
-    printf("value %d\n", value);
     _enabledBuffer.Push((float) value);
     
     // Call subclass update

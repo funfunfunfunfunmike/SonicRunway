@@ -29,6 +29,8 @@
 		303B2BD61CA24D4F00322318 /* StripesPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 303B2BD41CA24D4F00322318 /* StripesPattern.cpp */; };
 		305892A41C9921240030F338 /* UiMixin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 305892A21C9921240030F338 /* UiMixin.cpp */; };
 		306565A31C472E7C00917ADB /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306565A11C472E7C00917ADB /* App.cpp */; };
+		3068B2461CB579B30092949A /* previsCameraData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3068B2421CB576BF0092949A /* previsCameraData.txt */; };
+		3068B2491CB5808E0092949A /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3068B2471CB5808E0092949A /* Util.cpp */; };
 		306DFD3F1C80100200AB9225 /* ofxArtnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306DFD3D1C80100200AB9225 /* ofxArtnet.cpp */; };
 		3074F8CE1C8744A8008BD5EF /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3074F8CC1C8744A8008BD5EF /* Shape.cpp */; };
 		3074F8D11C874AF2008BD5EF /* Pattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3074F8CF1C874AF2008BD5EF /* Pattern.cpp */; };
@@ -83,7 +85,7 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolderSpec = 7;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +129,9 @@
 		305892A31C9921240030F338 /* UiMixin.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UiMixin.hpp; sourceTree = "<group>"; };
 		306565A11C472E7C00917ADB /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
 		306565A21C472E7C00917ADB /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
+		3068B2421CB576BF0092949A /* previsCameraData.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = previsCameraData.txt; path = Resources/previsCameraData.txt; sourceTree = "<group>"; };
+		3068B2471CB5808E0092949A /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util.cpp; sourceTree = "<group>"; };
+		3068B2481CB5808E0092949A /* Util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Util.hpp; sourceTree = "<group>"; };
 		306DFD3D1C80100200AB9225 /* ofxArtnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxArtnet.cpp; sourceTree = "<group>"; };
 		306DFD3E1C80100200AB9225 /* ofxArtnet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ofxArtnet.hpp; sourceTree = "<group>"; };
 		3074F8CC1C8744A8008BD5EF /* Shape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shape.cpp; path = Patterns/Shape.cpp; sourceTree = "<group>"; };
@@ -233,6 +238,14 @@
 				9D2C29B96659EBB7A0C5672F /* ofxAubioPitch.h */,
 			);
 			name = src;
+			sourceTree = "<group>";
+		};
+		3068B2411CB576550092949A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3068B2421CB576BF0092949A /* previsCameraData.txt */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		306DFD3C1C80100200AB9225 /* ofxArtnet */ = {
@@ -378,6 +391,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				3068B2411CB576550092949A /* Resources */,
 				300CF03C1C652BD800295FBF /* libavcodec.a */,
 				300CF03D1C652BD800295FBF /* libavformat.a */,
 				300CF03E1C652BD800295FBF /* libavresample.a */,
@@ -420,6 +434,8 @@
 				308CEE5C1C48598D007C124A /* Artnet.hpp */,
 				305892A21C9921240030F338 /* UiMixin.cpp */,
 				305892A31C9921240030F338 /* UiMixin.hpp */,
+				3068B2471CB5808E0092949A /* Util.cpp */,
+				3068B2481CB5808E0092949A /* Util.hpp */,
 				30E025671C97739500C42FFB /* Input */,
 				30B88B7F1C9745D80068F4C1 /* Patterns */,
 			);
@@ -446,6 +462,7 @@
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
 				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
 				E4C2427710CC5ABF004149E2 /* CopyFiles */,
+				3068B2441CB579A20092949A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -500,6 +517,17 @@
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3068B2441CB579A20092949A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3068B2461CB579B30092949A /* previsCameraData.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		E4B6FFFD0C3F9AB9008CF71C /* ShellScript */ = {
@@ -561,6 +589,7 @@
 				308CEE5D1C48598D007C124A /* Artnet.cpp in Sources */,
 				308CEE581C48593A007C124A /* receive.c in Sources */,
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
+				3068B2491CB5808E0092949A /* Util.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

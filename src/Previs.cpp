@@ -30,7 +30,7 @@ SrPrevis::SrPrevis(SrModel * model, SrAudio * audio) :
     _reverseAngleParam.setName("Reverse Angle");
     _AddUIParameter(_reverseAngleParam);
     
-    _ReadAnimatedCameraData("/Users/rj/Desktop/previsCameraData.txt");
+    _ReadAnimatedCameraData("previsCameraData.txt");
     
     _startAnimatedCameraButton.setup("Start Camera Animation", 100, 20);
     _startAnimatedCameraButton.addListener(this,
