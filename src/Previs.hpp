@@ -20,6 +20,8 @@ class SrAudio;
 // A 3d respresntation of the tunnel of lights.
 //
 class SrPrevis : public SrUiMixin {
+    typedef SrPrevis This;
+    
 public:
     SrPrevis(SrModel * model, SrAudio * audio);
     ~SrPrevis();
@@ -31,16 +33,24 @@ public:
     
 private:
     void _DrawSpheres(float radius, float transparency);
+    void _ReadAnimatedCameraData(std::string fileName);
+    void _OnStartAnimatedCameraButtonPressed(const void * sender);
     
 private:
     SrModel *_model;
     SrAudio *_audio;
     float _lightRadius;
+    ofParameter<bool>_reverseAngleParam;
+    int _animatedCameraIndex;
+    
+    std::vector<ofVec3f> _animatedCameraPositions;
+    std::vector<ofVec3f> _animatedCameraLookAts;
+    
+    ofxButton _startAnimatedCameraButton;
     
     //ofEasyCam _camera;
     ofCamera _camera;
     
-    ofParameter<bool>_reverseAngleParam;
 };
 
 #endif

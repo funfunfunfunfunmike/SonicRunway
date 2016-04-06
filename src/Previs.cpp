@@ -15,7 +15,8 @@ SrPrevis::SrPrevis(SrModel * model, SrAudio * audio) :
     _model(model),
     _audio(audio),
     _lightRadius(0.2),
-    _reverseAngleParam(true)
+    _reverseAngleParam(true),
+    _animatedCameraIndex(-1)
 {
     _camera.setFov(35);
     /*
@@ -28,6 +29,13 @@ SrPrevis::SrPrevis(SrModel * model, SrAudio * audio) :
     
     _reverseAngleParam.setName("Reverse Angle");
     _AddUIParameter(_reverseAngleParam);
+    
+    _ReadAnimatedCameraData("/Users/rj/Desktop/previsCameraData.txt");
+    
+    _startAnimatedCameraButton.setup("Start Camera Animation", 100, 20);
+    _startAnimatedCameraButton.addListener(this,
+        &This::_OnStartAnimatedCameraButtonPressed);
+    _AddUI(&_startAnimatedCameraButton);
 }
 
 SrPrevis::~SrPrevis()
@@ -36,14 +44,54 @@ SrPrevis::~SrPrevis()
 }
 
 void
+SrPrevis::_ReadAnimatedCameraData(std::string fileName)
+{
+    std::fstream myFile(fileName, std::ios_base::in);
+    if (not myFile) {
+        printf("Couldn't find animated camera file %s\n", fileName.c_str());
+        return;
+    }
+    
+    float c0, c1, c2, l0, l1, l2;
+    while (myFile >> c0 >> c1 >> c2 >> l0 >> l1 >> l2) {
+        _animatedCameraPositions.push_back(ofVec3f(c0,c1,c2));
+        _animatedCameraLookAts.push_back(ofVec3f(l0,l1,l2));
+    }
+    
+    printf("imported %zu camera frames\n", _animatedCameraPositions.size());
+}
+
+void
+SrPrevis::_OnStartAnimatedCameraButtonPressed(const void *sender)
+{
+    _animatedCameraIndex = 0;
+}
+
+void
 SrPrevis::Update()
 {
-    if (_reverseAngleParam) {
-        _camera.lookAt(ofVec3f(0,-60,0),ofVec3f(0,0,1));
-        _camera.setPosition(0,1018,5.8);
+    if (_animatedCameraIndex >= 0) {
+        // Animated camera.
+        _camera.setPosition(_animatedCameraPositions[_animatedCameraIndex]);
+        _camera.lookAt(_animatedCameraLookAts[_animatedCameraIndex], ofVec3f(0,0,1));
+        
+        // Increment the camera index.  If we're off the end, set to -1 to stop
+        // animation.
+        _animatedCameraIndex++;
+        if (_animatedCameraIndex >= _animatedCameraPositions.size()) {
+            _animatedCameraIndex = -1;
+        }
+        
     } else {
-        _camera.lookAt(ofVec3f(0,60,0),ofVec3f(0,0,1));
-        _camera.setPosition(0,-18,5.8);
+        // Non-animated camera.
+        
+        if (_reverseAngleParam) {
+            _camera.lookAt(ofVec3f(0,-60,0),ofVec3f(0,0,1));
+            _camera.setPosition(0,1018,5.8);
+        } else {
+            _camera.lookAt(ofVec3f(0,60,0),ofVec3f(0,0,1));
+            _camera.setPosition(0,-18,5.8);
+        }
     }
 }
 
