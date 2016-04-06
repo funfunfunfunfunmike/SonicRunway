@@ -100,8 +100,8 @@
 		1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGuiGroup.h; path = ../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
 		238BB8FC8860C7A7012B2E27 /* ofxAubioMelBands.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAubioMelBands.h; path = ../../../addons/ofxAubio/src/ofxAubioMelBands.h; sourceTree = SOURCE_ROOT; };
 		2834D88A62CD23F3DE2C47D1 /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxButton.h; path = ../../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
-		3002E85C1C88F9C900689E57 /* Previs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Previs.cpp; sourceTree = "<group>"; };
-		3002E85D1C88F9C900689E57 /* Previs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Previs.hpp; sourceTree = "<group>"; };
+		3002E85C1C88F9C900689E57 /* Previs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Previs.cpp; path = Previs/Previs.cpp; sourceTree = "<group>"; };
+		3002E85D1C88F9C900689E57 /* Previs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Previs.hpp; path = Previs/Previs.hpp; sourceTree = "<group>"; };
 		300CF03C1C652BD800295FBF /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = ../../../../../../../../usr/local/lib/libavcodec.a; sourceTree = "<group>"; };
 		300CF03D1C652BD800295FBF /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = ../../../../../../../../usr/local/lib/libavformat.a; sourceTree = "<group>"; };
 		300CF03E1C652BD800295FBF /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavresample.a; path = ../../../../../../../../usr/local/lib/libavresample.a; sourceTree = "<group>"; };
@@ -246,6 +246,15 @@
 				3068B2421CB576BF0092949A /* previsCameraData.txt */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		3068B24A1CB584CA0092949A /* Previs */ = {
+			isa = PBXGroup;
+			children = (
+				3002E85C1C88F9C900689E57 /* Previs.cpp */,
+				3002E85D1C88F9C900689E57 /* Previs.hpp */,
+			);
+			name = Previs;
 			sourceTree = "<group>";
 		};
 		306DFD3C1C80100200AB9225 /* ofxArtnet */ = {
@@ -428,8 +437,6 @@
 				30C844381C42D110006452BE /* Model.hpp */,
 				30AC5FEA1C448C7600B793E9 /* Types.hpp */,
 				302695351C8FEE1D007F749C /* Buffer.hpp */,
-				3002E85C1C88F9C900689E57 /* Previs.cpp */,
-				3002E85D1C88F9C900689E57 /* Previs.hpp */,
 				308CEE5B1C48598D007C124A /* Artnet.cpp */,
 				308CEE5C1C48598D007C124A /* Artnet.hpp */,
 				305892A21C9921240030F338 /* UiMixin.cpp */,
@@ -438,6 +445,7 @@
 				3068B2481CB5808E0092949A /* Util.hpp */,
 				30E025671C97739500C42FFB /* Input */,
 				30B88B7F1C9745D80068F4C1 /* Patterns */,
+				3068B24A1CB584CA0092949A /* Previs */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
