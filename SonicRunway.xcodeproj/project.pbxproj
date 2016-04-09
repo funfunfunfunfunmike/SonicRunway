@@ -10,6 +10,8 @@
 		101D2DB773940813A5C898CD /* ofxAubioPitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93CAC8A94359FD331BAD8CFA /* ofxAubioPitch.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
 		3002E85E1C88F9C900689E57 /* Previs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3002E85C1C88F9C900689E57 /* Previs.cpp */; };
+		300802121CB723AD0031DAF2 /* burner1.png in Resources */ = {isa = PBXBuildFile; fileRef = 300802101CB723AD0031DAF2 /* burner1.png */; };
+		300802131CB723AD0031DAF2 /* burner2.png in Resources */ = {isa = PBXBuildFile; fileRef = 300802111CB723AD0031DAF2 /* burner2.png */; };
 		300CF0471C652BD800295FBF /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF03C1C652BD800295FBF /* libavcodec.a */; };
 		300CF0481C652BD800295FBF /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF03D1C652BD800295FBF /* libavformat.a */; };
 		300CF0491C652BD800295FBF /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300CF03E1C652BD800295FBF /* libavresample.a */; };
@@ -43,6 +45,8 @@
 		308CEE5A1C48593A007C124A /* transmit.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE541C48593A007C124A /* transmit.c */; };
 		308CEE5D1C48598D007C124A /* Artnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE5B1C48598D007C124A /* Artnet.cpp */; };
 		30AEA5981C4052A80034C794 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 30AEA5971C4052A80034C794 /* README.md */; };
+		30B8DCE91CB589AC00164558 /* Environment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30B8DCE71CB589AC00164558 /* Environment.cpp */; };
+		30B8DCEB1CB58C3A00164558 /* skyTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 30B8DCEA1CB58C3A00164558 /* skyTexture.png */; };
 		30C844331C422B01006452BE /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844311C422B01006452BE /* Audio.cpp */; };
 		30C844361C42C17E006452BE /* AudioUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844341C42C17E006452BE /* AudioUI.cpp */; };
 		30C844391C42D110006452BE /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C844371C42D110006452BE /* Model.cpp */; };
@@ -102,6 +106,8 @@
 		2834D88A62CD23F3DE2C47D1 /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxButton.h; path = ../../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
 		3002E85C1C88F9C900689E57 /* Previs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Previs.cpp; path = Previs/Previs.cpp; sourceTree = "<group>"; };
 		3002E85D1C88F9C900689E57 /* Previs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Previs.hpp; path = Previs/Previs.hpp; sourceTree = "<group>"; };
+		300802101CB723AD0031DAF2 /* burner1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = burner1.png; path = Resources/burner1.png; sourceTree = "<group>"; };
+		300802111CB723AD0031DAF2 /* burner2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = burner2.png; path = Resources/burner2.png; sourceTree = "<group>"; };
 		300CF03C1C652BD800295FBF /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = ../../../../../../../../usr/local/lib/libavcodec.a; sourceTree = "<group>"; };
 		300CF03D1C652BD800295FBF /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = ../../../../../../../../usr/local/lib/libavformat.a; sourceTree = "<group>"; };
 		300CF03E1C652BD800295FBF /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavresample.a; path = ../../../../../../../../usr/local/lib/libavresample.a; sourceTree = "<group>"; };
@@ -159,6 +165,9 @@
 		308CEE5F1C486177007C124A /* artnet_COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = artnet_COPYING; sourceTree = "<group>"; };
 		30AC5FEA1C448C7600B793E9 /* Types.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Types.hpp; sourceTree = "<group>"; };
 		30AEA5971C4052A80034C794 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		30B8DCE71CB589AC00164558 /* Environment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Environment.cpp; path = Previs/Environment.cpp; sourceTree = "<group>"; };
+		30B8DCE81CB589AC00164558 /* Environment.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Environment.hpp; path = Previs/Environment.hpp; sourceTree = "<group>"; };
+		30B8DCEA1CB58C3A00164558 /* skyTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = skyTexture.png; path = Resources/skyTexture.png; sourceTree = "<group>"; };
 		30C844311C422B01006452BE /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Audio.cpp; path = Input/Audio.cpp; sourceTree = "<group>"; };
 		30C844321C422B01006452BE /* Audio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Audio.hpp; path = Input/Audio.hpp; sourceTree = "<group>"; };
 		30C844341C42C17E006452BE /* AudioUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioUI.cpp; path = Input/AudioUI.cpp; sourceTree = "<group>"; };
@@ -244,6 +253,9 @@
 			isa = PBXGroup;
 			children = (
 				3068B2421CB576BF0092949A /* previsCameraData.txt */,
+				30B8DCEA1CB58C3A00164558 /* skyTexture.png */,
+				300802101CB723AD0031DAF2 /* burner1.png */,
+				300802111CB723AD0031DAF2 /* burner2.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -253,6 +265,8 @@
 			children = (
 				3002E85C1C88F9C900689E57 /* Previs.cpp */,
 				3002E85D1C88F9C900689E57 /* Previs.hpp */,
+				30B8DCE71CB589AC00164558 /* Environment.cpp */,
+				30B8DCE81CB589AC00164558 /* Environment.hpp */,
 			);
 			name = Previs;
 			sourceTree = "<group>";
@@ -532,6 +546,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3068B2461CB579B30092949A /* previsCameraData.txt in Resources */,
+				30B8DCEB1CB58C3A00164558 /* skyTexture.png in Resources */,
+				300802131CB723AD0031DAF2 /* burner2.png in Resources */,
+				300802121CB723AD0031DAF2 /* burner1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,6 +587,7 @@
 				306565A31C472E7C00917ADB /* App.cpp in Sources */,
 				3074F8CE1C8744A8008BD5EF /* Shape.cpp in Sources */,
 				30C844361C42C17E006452BE /* AudioUI.cpp in Sources */,
+				30B8DCE91CB589AC00164558 /* Environment.cpp in Sources */,
 				101D2DB773940813A5C898CD /* ofxAubioPitch.cpp in Sources */,
 				303B2BD61CA24D4F00322318 /* StripesPattern.cpp in Sources */,
 				302F359B1C972DE6001D5E51 /* EventHistory.cpp in Sources */,
