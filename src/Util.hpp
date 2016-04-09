@@ -10,9 +10,14 @@
 #define SR_UTIL_HPP
 
 #include <stdio.h>
+#include <string>
 
 // Set the current working directory to the location of resources
 // so we can load text files, images, etc.
-void SrUtil_ChangeToResourceDirectory();
+void
+SrUtil_ChangeToResourceDirectory();
+
+std::string
+SrUtil_GetAbsolutePathForResource(const std::string & localPath);
 
 #endif /* Util_hpp */

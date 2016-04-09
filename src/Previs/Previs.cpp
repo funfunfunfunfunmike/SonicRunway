@@ -14,11 +14,13 @@ SrPrevis::SrPrevis(SrModel * model, SrAudio * audio) :
     SrUiMixin("Previs"),
     _model(model),
     _audio(audio),
-    _lightRadius(0.2),
+    _lightRadius(0.15),
     _reverseAngleParam(true),
     _animatedCameraIndex(-1)
 {
-    _camera.setFov(35);
+    _AddUI(_environment.GetUiPanel());
+    
+    _camera.setFov(30);
     /*
     _camera.lookAt(ofVec3f(0,0,60),ofVec3f(0,1,0));
     _camera.setPosition(0,5.8,-18);
@@ -51,6 +53,18 @@ SrPrevis::_ReadAnimatedCameraData(std::string fileName)
         printf("Couldn't find animated camera file %s\n", fileName.c_str());
         return;
     }
+    
+    // 30 fps hack!  -- drops every other camera frame to facilitate recording
+    // previs movie..
+    /*
+    float c0, c1, c2, l0, l1, l2;
+    float x0, x1, x2, y0, y1, y2;
+    while (myFile >> c0 >> c1 >> c2 >> l0 >> l1 >> l2 >>
+             x0 >> x1 >> x2 >> y0 >> y1 >> y2) {
+        _animatedCameraPositions.push_back(ofVec3f(c0,c1,c2));
+        _animatedCameraLookAts.push_back(ofVec3f(l0,l1,l2));
+    }
+     */
     
     float c0, c1, c2, l0, l1, l2;
     while (myFile >> c0 >> c1 >> c2 >> l0 >> l1 >> l2) {
@@ -101,23 +115,19 @@ SrPrevis::Draw(float x, float y, float width, float height)
     ofPushStyle();
     
     // Background
-    ofSetColor(10,10,10,255);
+    ofSetColor(0,0,0,255);
     ofFill();
     ofDrawRectangle(x,y,width,height);
     
     // Start 3d stuff here
     _camera.begin(ofRectangle(x,y,width,height));
-   
-    // Ground plane
-    ofPushMatrix();
-    //ofRotateX(90);
-    ofSetColor(30,30,30,255);
-    ofDrawPlane(3000,3000);
-    ofPopMatrix();
     
-    //_DrawSpheres(_lightRadius * 1.5, 40);
-    //_DrawSpheres(_lightRadius * 1.3, 40);
+    _environment.DrawBackground();
+    
+    //_DrawSpheres(_lightRadius * 1.6, 60);
     _DrawSpheres(_lightRadius * 1.0, 255);
+    
+    _environment.DrawBurners();
     
     // End 3d stuff
     _camera.end();
@@ -155,7 +165,11 @@ SrPrevis::_DrawSpheres(float lightRadius, float transparency)
             float x = cos(angle) * radius;
             float z = sin(angle) * radius + groundToCenter;
            
-            ofDrawSphere(x,y,z,lightRadius);
+            ofPushMatrix();
+            ofTranslate(x,y,z);
+            ofRotate(90,1.0,0.0,0.0);
+            ofDrawCircle(0,0,0,lightRadius);
+            ofPopMatrix();
         }
     }
     
@@ -164,8 +178,14 @@ SrPrevis::_DrawSpheres(float lightRadius, float transparency)
 void
 SrPrevis::AudioOut(float * output, int bufferSize, int nChannels) const
 {
-    float cameraDist = _camera.getPosition().length();
-    float delay = cameraDist / _model->GetSpeedOfSound();
+    // Just use the Y position so we don't include a delay if we
+    // are off to the side.  Clamp values to 0.
+    float cameraY = _camera.getPosition()[1];
+    if (cameraY < 0) {
+        cameraY = 0;
+    }
+    
+    float delay = cameraY / _model->GetSpeedOfSound();
     
     _audio->AudioOutDelayed(output, bufferSize, nChannels, delay);
 }

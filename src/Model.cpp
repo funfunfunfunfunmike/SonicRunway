@@ -13,9 +13,9 @@ SrModel::SrModel() :
     _bufferSize(1024),  // for audio input
     _numChannels(1),
     _buffersPerSecond((float) _sampleRate / _bufferSize),
-    _numStations(30),
-    _lightsPerStation(59),
-    _runwayLength(1000.0), // feet
+    _numStations(32),
+    _lightsPerStation(100),
+    _runwayLength(1024.0), // feet XXX not sure about this... 
     _speedOfSound(1126.0), // feet per second
     _archLength(30.0),     // feet
     _framesPerSecond(60)   // Approx. frequency that Update/Draw is called
@@ -120,6 +120,7 @@ SrModel::Clear()
 void
 SrModel::BeginDrawing()
 {
+    ofPushStyle();
     _frameBuffer.begin();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
 }
@@ -130,6 +131,7 @@ SrModel::EndDrawing()
     _frameBuffer.end();
     
     _frameBuffer.readToPixels(_floatPixelsCache);
+    ofPopStyle();
 }
 
 void
@@ -144,7 +146,7 @@ SrModel::RenderFrameBuffer(float x, float y, float width, float height)
     
     ofTranslate(x, y);
     ofScale(width / _numStations, height / _lightsPerStation);
-    _frameBuffer.draw(0, 0);
+    //_frameBuffer.draw(0, 0);
     
     ofPopMatrix();
     ofPopStyle();

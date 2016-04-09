@@ -12,9 +12,9 @@
 #include "CoreFoundation/CoreFoundation.h"
 #endif
 
-void SrUtil_ChangeToResourceDirectory()
+static std::string
+_GetResourcePath()
 {
-    
     // from http://stackoverflow.com/questions/516200/relative-paths-not-working-in-xcode-c
     // This makes relative paths work in C++ in Xcode by changing directory to the Resources folder inside the .app bundle
 #ifdef __APPLE__
@@ -27,8 +27,23 @@ void SrUtil_ChangeToResourceDirectory()
     }
     CFRelease(resourcesURL);
 
-    chdir(path);
-    printf("current path: %s\n", path);
+    return std::string(path);
 #endif
     
+    printf("_GetResourcePath only understood for __APPLE__\n");
+    return std::string("");
+}
+
+void
+SrUtil_ChangeToResourceDirectory()
+{
+    std::string path = _GetResourcePath();
+    chdir(path.c_str());
+}
+
+std::string
+SrUtil_GetAbsolutePathForResource(const std::string & localPath)
+{
+    std::string resourcePath = _GetResourcePath();
+    return resourcePath + '/' + localPath;
 }

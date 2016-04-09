@@ -128,7 +128,7 @@ SrApp::Draw()
     _patternPanel.draw();
     
     _previs.Draw(_uiMargin + _uiColumnWidth * 2, 100,
-                 _uiColumnWidth * 4, 750);
+                 1280, 720);
     
     _artnet.UpdateLights();
 }

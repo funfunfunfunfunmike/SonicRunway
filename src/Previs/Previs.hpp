@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "ofMain.h"
 #include "UiMixin.hpp"
+#include "Environment.hpp"
 
 class SrModel;
 class SrAudio;
@@ -50,6 +51,7 @@ private:
     
     //ofEasyCam _camera;
     ofCamera _camera;
+    SrEnvironment _environment;
     
 };
 
