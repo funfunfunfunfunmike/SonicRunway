@@ -27,6 +27,17 @@ SrArtnet::UpdateLights()
     
     const ofFloatPixels & pixels = _model->GetFloatPixels();
     
+    for (int i=0; i < _model->GetLightsPerStation(); i++) {
+        ofFloatColor color = pixels.getColor(0, i);
+        
+        color.setHsb(color.getHue(), color.getSaturation(),
+                     color.getBrightness() * color.getBrightness());
+        data[i*3] = color[0] * 255;
+        data[i*3 + 1] = color[1] * 255;
+        data[i*3 + 2] = color[2] * 255;
+    }
+    
+    /*
     for(int i=0; i < _model->GetNumStations(); i++) {
         int y = _model->GetLightsPerStation() / 3.0;
         ofFloatColor color = pixels.getColor(i, y);
@@ -39,6 +50,7 @@ SrArtnet::UpdateLights()
         data[i*3 + 1] = color[1] * 255;
         data[i*3 + 2] = color[2] * 255;
     }
+     */
     
     //list nodes for sending
     //with subnet / universe

@@ -13,9 +13,9 @@ SrModel::SrModel() :
     _bufferSize(1024),  // for audio input
     _numChannels(1),
     _buffersPerSecond((float) _sampleRate / _bufferSize),
-    _numStations(32),
+    _numStations(33),  // Station 0 exists in software, but not physically..
     _lightsPerStation(100),
-    _runwayLength(1024.0), // feet XXX not sure about this... 
+    _runwayLength(1024.0), // from station 0 to the end.
     _speedOfSound(1126.0), // feet per second
     _archLength(30.0),     // feet
     _framesPerSecond(60)   // Approx. frequency that Update/Draw is called

@@ -74,10 +74,14 @@ problematic we can use ofMutex to make it thread safe.
 
 TODO:
 
-- Fix or standardize path to aubio.framework in project file?
+- Debug filtering code, fix aliasing issues.
 
-- Move audio output to Previs class.  Use a buffer to delay audio playback
-  so we can see what it looks like from the other end of the runway.
+- Improve FFT visualization.
+
+- Try an RMS-based onset detection -- perhaps combined with beat
+  detection?
+
+- Experiment with TouchOSC input.
 
 - Replace SrTime concepts with regular floats and ofGetElapsedTime?
 
@@ -87,12 +91,9 @@ TODO:
 - Replace binary 'onset' and beat detection with something fuzzier --
   perhaps a few band-pass filters piped into RMS?
 
-- Add some UI with knobs for various settings
-
-- Allow patterns to be turned on/off.  Or perhaps pass them a history-
-  buffered alpha value.
-
 - Make Fft and other filters automatically adjust to global volume level.
 
 - Hook up a second station and figure out how to broadcast to multiple
   boards.
+
+- Design master pattern controller to switch between patterns.
