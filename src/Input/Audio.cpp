@@ -93,6 +93,8 @@ SrAudio::GetCurrentFftValues() const
     for(size_t i=0; i < _ffts.size(); i++) {
         ret.push_back(_ffts[i][0]);
     }
+    
+    return ret;
 }
 
 void

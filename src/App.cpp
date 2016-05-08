@@ -9,10 +9,13 @@
 #include "App.hpp"
 #include "ofApp.h"
 
-#include "ShapePattern.hpp"
+#include "BeatPattern.hpp"
 #include "FftPattern.hpp"
 #include "ExamplePattern.hpp"
 #include "StripesPattern.hpp"
+
+extern "C" void CGSSetDebugOptions(int);
+extern "C" void CGSDeferredUpdates(int);
 
 SrApp::SrApp() :
     _model(),
@@ -23,7 +26,12 @@ SrApp::SrApp() :
     _uiColumnWidth(220),
     _uiMargin(10)
 {
-    ofSetFrameRate(_model.GetFramesPerSecond());
+    ofSetFrameRate(_model.ComputeFramesPerSecond());
+    
+    // Disable vertical sync so FPS can be greater than 60.
+    ofSetVerticalSync(false);
+    CGSSetDebugOptions(0x08000000);
+    CGSDeferredUpdates(true);
     
     _globalPanel.setup("Global");
     _globalPanel.setPosition(_uiMargin,_uiMargin);
@@ -42,9 +50,9 @@ SrApp::SrApp() :
     _AddPattern(examplePattern);
     examplePattern->SetEnabled(false);
     
-    SrShapePattern * shapePattern =
-        new SrShapePattern("Onset Pattern", &_model, &_audio);
-    _AddPattern(shapePattern);
+    SrBeatPattern * beatPattern =
+        new SrBeatPattern("Beat Pattern", &_model, &_audio);
+    _AddPattern(beatPattern);
     
     SrFftPattern *fftPattern =
         new SrFftPattern("Fft Pattern", &_model, &_audio);
@@ -100,7 +108,9 @@ SrApp::Update()
     _audioUI.Update();
     _previs.Update();
     
-    std::string fpsStr = "frame rate: " + ofToString(ofGetFrameRate(), 2);
+    std::string fpsStr = "frame rate: "
+            + ofToString(ofGetTargetFrameRate(), 2)
+            + " / " + ofToString(ofGetFrameRate(), 2);
     ofSetWindowTitle(fpsStr);
 }
 

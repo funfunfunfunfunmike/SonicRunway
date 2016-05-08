@@ -9,32 +9,25 @@
 #ifndef SR_EXAMPLE_PATTERN_HPP
 #define SR_EXAMPLE_PATTERN_HPP
 
-#include <stdio.h>
-#include "Pattern.hpp"
-#include "Buffer.hpp"
+#include "ScrollingPattern.hpp"
 
 //
 // SrExamplePattern is a really simple pattern that just illuminates
 // a single LED for each station.  It is meant to demonstrate how
-// to set up parameters and buffer their values across the length
-// of the runway.
+// to set up parameters and draw.
 //
-class SrExamplePattern : public SrPattern {
+class SrExamplePattern : public SrScrollingPattern {
 public:
     SrExamplePattern(const std::string & name,
                     SrModel * model, SrAudio * audio);
     virtual ~SrExamplePattern();
     
 protected:
-    virtual void _Update(const SrTime & now);
-    virtual void _Draw(const SrTime & now) const;
+    virtual void _DrawCurrentStation(std::vector<ofColor> * buffer) const;
     
 private:
     ofParameter<float> _hueParam;
     ofParameter<float> _angleParam;
-    
-    SrFloatBuffer _hueBuffer;
-    SrFloatBuffer _angleBuffer;
 };
 
 

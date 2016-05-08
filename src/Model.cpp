@@ -15,10 +15,10 @@ SrModel::SrModel() :
     _buffersPerSecond((float) _sampleRate / _bufferSize),
     _numStations(33),  // Station 0 exists in software, but not physically..
     _lightsPerStation(100),
-    _runwayLength(1024.0), // from station 0 to the end.
+    _distanceBetweenStations(32.0), // feet
     _speedOfSound(1126.0), // feet per second
-    _archLength(30.0),     // feet
-    _framesPerSecond(60)   // Approx. frequency that Update/Draw is called
+    _archLength(31.0),     // feet
+    _framesPerStation(1)
 {
     _frameBuffer.allocate(_numStations, _lightsPerStation, GL_RGBA);
 }
@@ -64,9 +64,9 @@ SrModel::GetLightsPerStation() const
 }
 
 float
-SrModel::GetRunwayLength() const
+SrModel::GetDistanceBetweenStations() const
 {
-    return _runwayLength;
+    return _distanceBetweenStations;
 }
 
 float
@@ -81,10 +81,16 @@ SrModel::GetArchLength() const
     return _archLength;
 }
 
-float
-SrModel::GetFramesPerSecond() const
+int
+SrModel::GetFramesPerStation() const
 {
-    return _framesPerSecond;
+    return _framesPerStation;
+}
+
+int
+SrModel::ComputeFramesPerSecond() const
+{
+    return round((float) _framesPerStation / ComputeDelayPerStation());
 }
 
 const ofFloatPixels &
@@ -96,11 +102,7 @@ SrModel::GetFloatPixels() const
 float
 SrModel::ComputeDelayPerStation() const
 {
-    // If the runway is 1000 ft and it has 4 stations, those
-    // stations would be at 0, 333, 666, and 1000.  So we need
-    // to subtract 1 to find the number of intervals between stations.
-    int spacesBetweenStations = GetNumStations() - 1;
-    return GetRunwayLength() / spacesBetweenStations / GetSpeedOfSound();
+    return GetDistanceBetweenStations() / GetSpeedOfSound();
 }
 
 float
@@ -145,8 +147,8 @@ SrModel::RenderFrameBuffer(float x, float y, float width, float height)
     ofDisableSmoothing();
     
     ofTranslate(x, y);
-    ofScale(width / _numStations, height / _lightsPerStation);
-    //_frameBuffer.draw(0, 0);
+    //ofScale(width / _numStations, height / _lightsPerStation);
+    _frameBuffer.draw(0, 0, width, height);
     
     ofPopMatrix();
     ofPopStyle();

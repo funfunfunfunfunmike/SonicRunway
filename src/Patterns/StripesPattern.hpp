@@ -9,14 +9,12 @@
 #ifndef SR_STRIPES_PATTERN_HPP
 #define SR_STRIPES_PATTERN_HPP
 
-#include <stdio.h>
-#include "Pattern.hpp"
-#include "Buffer.hpp"
+#include "ScrollingPattern.hpp"
 
 //
 // SrStripesPattern
 //
-class SrStripesPattern : public SrPattern {
+class SrStripesPattern : public SrScrollingPattern {
 public:
     SrStripesPattern(const std::string & name,
                      SrModel * model, SrAudio * audio);
@@ -24,18 +22,14 @@ public:
     
 protected:
     virtual void _Update(const SrTime & now);
-    virtual void _Draw(const SrTime & now) const;
+    virtual void _DrawCurrentStation(std::vector<ofColor> * buffer) const;
     
 private:
     ofParameter<float> _hueParam;
     ofParameter<int> _numStripesParam;
     ofParameter<float> _spinSpeedParam;
     
-    SrFloatBuffer _hueBuffer;
-    SrFloatBuffer _angleBuffer;
-    SrIntBuffer _numStripesBuffer;
-    
-    float _currentAngle;
+    float _angle;
 };
 
 

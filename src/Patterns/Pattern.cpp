@@ -16,7 +16,7 @@ SrPattern::SrPattern(const std::string & name,
     SrUiMixin(name),
     _model(model),
     _audio(audio),
-    _enabledBuffer(model, SrFrequencyOncePerUpdate),
+    _enabledBuffer(model),
     _enabledParam(true)
 {
     printf("constructed pattern\n");
@@ -48,7 +48,7 @@ SrPattern::SetEnabled(bool enabled)
     _enabledParam = enabled;
 }
 
-const SrFloatBuffer &
+const SrFloatSimpleBuffer &
 SrPattern::GetEnabled() const
 {
     return _enabledBuffer;

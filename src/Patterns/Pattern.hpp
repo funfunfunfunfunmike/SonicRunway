@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 #include "Types.hpp"
-#include "Buffer.hpp"
+#include "SimpleBuffer.hpp"
 #include "UiMixin.hpp"
 #include <string>
 
@@ -22,6 +22,12 @@ class SrAudio;
 //
 // Base class for patterns that draw themselves to the array
 // of lights.  Subclasses should implement Update and Draw.
+//
+// SrPatterns are expected to update every LED for every frame.
+// If you're making a pattern that is intended to stream down
+// the runway at the speed of sound, and doesn't change as
+// it ripples down, consider deriving from SrScrollingPattern
+// instead.
 //
 // Pattern instances are created and owned by SrApp.
 //
@@ -40,7 +46,7 @@ public:
     
     // Get a buffer that contains the history of the
     // 'enabled' parameter (the checkbox that turns it on/off)
-    const SrFloatBuffer & GetEnabled() const;
+    const SrFloatSimpleBuffer & GetEnabled() const;
     
     // Set the current value of 'enabled'.  This will be
     // buffered across time.
@@ -71,7 +77,7 @@ protected:
 private:
     SrModel *_model;
     SrAudio *_audio;
-    SrFloatBuffer _enabledBuffer;
+    SrFloatSimpleBuffer _enabledBuffer;
     ofParameter<bool> _enabledParam;
     
     ofxToggle _enabledToggle;

@@ -84,7 +84,7 @@ SrBuffer<T>::SrBuffer(SrModel * model, SrFrequency frequency) :
         _entriesPerSecond = model->GetBuffersPerSecond();
     }
     if (frequency == SrFrequencyOncePerUpdate) {
-        _entriesPerSecond = model->GetFramesPerSecond();
+        _entriesPerSecond = model->ComputeFramesPerSecond();
     }
     
     _values.resize(_entriesPerSecond * model->GetMaxBufferDuration());

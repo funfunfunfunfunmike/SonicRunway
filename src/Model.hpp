@@ -36,10 +36,15 @@ public:
     int GetNumStations() const;
     int GetLightsPerStation() const;
     
-    float GetRunwayLength() const; // in feet
+    float GetDistanceBetweenStations() const; // in feet
     float GetSpeedOfSound() const; // in feet per second
     float GetArchLength() const;  // in feet
-    float GetFramesPerSecond() const;
+    int ComputeFramesPerSecond() const;
+    
+    // Get the frame rate relative to the speed of sound across the
+    // stations.  1 frame per station means it takes one update/draw
+    // cycle for sound to travel from one station to the next.
+    int GetFramesPerStation() const;
     
     // XXX maybe replace this with DelayAtStation to prevent
     // assumptions about the distance to the first station??
@@ -61,11 +66,10 @@ private:
     
     int _numStations;
     int _lightsPerStation;
-    float _runwayLength;
+    float _distanceBetweenStations;
     float _speedOfSound;
     float _archLength;
-    float _framesPerSecond;
-    
+    int _framesPerStation;
     
     ofFbo _frameBuffer;
     ofFloatPixels _floatPixelsCache;

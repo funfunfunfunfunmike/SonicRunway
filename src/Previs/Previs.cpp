@@ -139,8 +139,7 @@ void
 SrPrevis::_DrawSpheres(float lightRadius, float transparency)
 {
     int numSpacesBetweenStations = _model->GetNumStations() - 1;
-    float distanceBetweenStations =
-        _model->GetRunwayLength() / numSpacesBetweenStations;
+    float distanceBetweenStations = _model->GetDistanceBetweenStations();
     float circumference = _model->GetArchLength() * 4.0 / 3.0;
     float radius = circumference / (M_PI * 2.0);
     

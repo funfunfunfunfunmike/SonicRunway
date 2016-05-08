@@ -11,29 +11,22 @@
 
 #include <stdio.h>
 
-#include "Pattern.hpp"
-#include "Shape.hpp"
-#include "Buffer.hpp"
+#include "ScrollingPattern.hpp"
 
 //
 // A Pattern that renders the fftBuffer to the light array
 //
-class SrFftPattern : public SrPattern {
+class SrFftPattern : public SrScrollingPattern {
 public:
     SrFftPattern(const std::string & name,
                  SrModel * model, SrAudio * audio);
     virtual ~SrFftPattern();
     
 protected:
-    virtual void _Update(const SrTime & now);
-    virtual void _Draw(const SrTime & now) const;
+    virtual void _DrawCurrentStation(std::vector<ofColor> * buffer) const;
     
 private:
     ofParameter<float> _hueShiftParam;
-    
-    ofFloatPixels _pixels;
-    
-    SrFloatBuffer _hueShiftBuffer;
 };
 
 #endif
