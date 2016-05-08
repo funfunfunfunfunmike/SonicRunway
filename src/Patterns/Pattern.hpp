@@ -38,11 +38,11 @@ public:
     
     // Called by the main app to update state.
     // Subclasses should implement _Update()
-    void Update(const SrTime & now);
+    void Update();
     
     // Called by the main app to render the pattern to the
     // light buffer.  Subclasses should implement _Draw()
-    void Draw(const SrTime & now);
+    void Draw();
     
     // Get a buffer that contains the history of the
     // 'enabled' parameter (the checkbox that turns it on/off)
@@ -56,7 +56,7 @@ protected:
     
     // Update the pattern in response to the current state.
     // Prepare to draw.
-    virtual void _Update(const SrTime & now) = 0;
+    virtual void _Update() = 0;
     
     // Draw the pattern.  By the time this is called, the render
     // state will be set to draw to a frame buffer that represents
@@ -69,7 +69,7 @@ protected:
     //
     // Patterns should respect per-station values from the 'Enabled'
     // buffer, and not draw anything when/where they are disabled.
-    virtual void _Draw(const SrTime & now) const = 0;
+    virtual void _Draw() const = 0;
     
     SrModel * GetModel() const;
     SrAudio * GetAudio() const;

@@ -55,19 +55,19 @@ SrPattern::GetEnabled() const
 }
 
 void
-SrPattern::Update(const SrTime & now)
+SrPattern::Update()
 {
     bool value = (bool) _enabledToggle;
     _enabledBuffer.Push((float) value);
     
     // Call subclass update
-    _Update(now);
+    _Update();
 }
 
 void
-SrPattern::Draw(const SrTime & now)
+SrPattern::Draw()
 {
     
     // Call subclass draw
-    _Draw(now);
+    _Draw();
 }

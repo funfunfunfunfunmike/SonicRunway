@@ -18,6 +18,7 @@ SrScrollingPattern::SrScrollingPattern(const std::string & name,
     int numChannels = 4;
     
     _image.allocate(width, height, OF_IMAGE_COLOR_ALPHA);
+    _image.setColor(ofColor::black);
 }
 
 SrScrollingPattern::~SrScrollingPattern()
@@ -26,7 +27,7 @@ SrScrollingPattern::~SrScrollingPattern()
 }
 
 void
-SrScrollingPattern::_Update(const SrTime & now)
+SrScrollingPattern::_Update()
 {
     _index--;
     if (_index < 0) {
@@ -51,7 +52,7 @@ SrScrollingPattern::_Update(const SrTime & now)
 }
 
 void
-SrScrollingPattern::_Draw(const SrTime & now) const
+SrScrollingPattern::_Draw() const
 {
     const SrModel * model = GetModel();
     int numStations = model->GetNumStations();

@@ -21,7 +21,7 @@ public:
     virtual ~SrStripesPattern();
     
 protected:
-    virtual void _Update(const SrTime & now);
+    virtual void _Update();
     virtual void _DrawCurrentStation(std::vector<ofColor> * buffer) const;
     
 private:

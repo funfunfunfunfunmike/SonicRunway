@@ -98,11 +98,9 @@ SrApp::AudioOut(float *output, int bufferSize, int nChannels)
 void
 SrApp::Update()
 {
-    SrTime now = std::chrono::system_clock::now();
-    
     for(auto iter = _patterns.begin(); iter != _patterns.end(); iter++) {
         SrPattern *pattern = *iter;
-        pattern->Update(now);
+        pattern->Update();
     }
     
     _audioUI.Update();
@@ -117,14 +115,12 @@ SrApp::Update()
 void
 SrApp::Draw()
 {
-    SrTime now = std::chrono::system_clock::now();
-    
     _model.Clear();
     _model.BeginDrawing();
     
     for(auto iter = _patterns.begin(); iter != _patterns.end(); iter++) {
         SrPattern *pattern = *iter;
-        pattern->Draw(now);
+        pattern->Draw();
     }
     
     _model.EndDrawing();

@@ -27,8 +27,8 @@ public:
     
 protected:
     // Implemented from SrPattern
-    virtual void _Update(const SrTime & now);
-    virtual void _Draw(const SrTime & now) const;
+    virtual void _Update();
+    virtual void _Draw() const;
     
     // Subclasses implement this to draw the current station.
     virtual void _DrawCurrentStation(std::vector<ofColor> * buffer) const = 0;

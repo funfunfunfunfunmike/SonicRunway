@@ -38,9 +38,9 @@ SrStripesPattern::~SrStripesPattern()
 }
 
 void
-SrStripesPattern::_Update(const SrTime & now)
+SrStripesPattern::_Update()
 {
-    SrScrollingPattern::_Update(now);
+    SrScrollingPattern::_Update();
     
     _angle += _spinSpeedParam / GetModel()->ComputeFramesPerSecond();
 }

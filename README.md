@@ -74,8 +74,6 @@ problematic we can use ofMutex to make it thread safe.
 
 TODO:
 
-- Debug filtering code, fix aliasing issues.
-
 - Improve FFT visualization.
 
 - Try an RMS-based onset detection -- perhaps combined with beat
@@ -97,3 +95,6 @@ TODO:
   boards.
 
 - Design master pattern controller to switch between patterns.
+
+- Fix up gamma correction -- look at other libraries to implement 
+  mapping to LED color space.
