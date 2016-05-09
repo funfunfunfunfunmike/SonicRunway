@@ -13,7 +13,7 @@
 
 //
 // SrExamplePattern is a really simple pattern that just illuminates
-// a single LED for each station.  It is meant to demonstrate how
+// a single LED for each gate.  It is meant to demonstrate how
 // to set up parameters and draw.
 //
 class SrExamplePattern : public SrScrollingPattern {
@@ -23,7 +23,7 @@ public:
     virtual ~SrExamplePattern();
     
 protected:
-    virtual void _DrawCurrentStation(std::vector<ofColor> * buffer) const;
+    virtual void _DrawCurrentGate(std::vector<ofColor> * buffer) const;
     
 private:
     ofParameter<float> _hueParam;

@@ -13,8 +13,8 @@ SrScrollingPattern::SrScrollingPattern(const std::string & name,
     SrPattern(name, model, audio),
     _index(0)
 {
-    int width = model->GetNumStations() * model->GetFramesPerStation();
-    int height = model->GetLightsPerStation();
+    int width = model->GetNumGates() * model->GetFramesPerGate();
+    int height = model->GetLightsPerGate();
     int numChannels = 4;
     
     _image.allocate(width, height, OF_IMAGE_COLOR_ALPHA);
@@ -34,18 +34,18 @@ SrScrollingPattern::_Update()
         _index = (int) _image.getWidth() - 1;
     }
     
-    // Draw the current station into a buffer
-    std::vector<ofColor> currentColors(GetModel()->GetLightsPerStation());
-    for(int i = 0; i < GetModel()->GetLightsPerStation(); i++) {
+    // Draw the current gate into a buffer
+    std::vector<ofColor> currentColors(GetModel()->GetLightsPerGate());
+    for(int i = 0; i < GetModel()->GetLightsPerGate(); i++) {
         currentColors[i] = ofColor::black;
     }
     
     if (GetEnabled()[0]) {
-        _DrawCurrentStation(&currentColors);
+        _DrawCurrentGate(&currentColors);
     }
     
     // Copy the colors to our pixel cache
-    for(int i = 0; i < GetModel()->GetLightsPerStation(); i++) {
+    for(int i = 0; i < GetModel()->GetLightsPerGate(); i++) {
         const ofColor & color = currentColors[i];
         _image.setColor(_index, i, color);
     }
@@ -55,12 +55,12 @@ void
 SrScrollingPattern::_Draw() const
 {
     const SrModel * model = GetModel();
-    int numStations = model->GetNumStations();
-    int lightsPerStation = model->GetLightsPerStation();
+    int numGates = model->GetNumGates();
+    int lightsPerGate = model->GetLightsPerGate();
     
-    for(int x = 0; x < numStations; x++) {
-        for(int y = 0; y < lightsPerStation; y++) {
-            int imageX = (x * model->GetFramesPerStation() + _index)
+    for(int x = 0; x < numGates; x++) {
+        for(int y = 0; y < lightsPerGate; y++) {
+            int imageX = (x * model->GetFramesPerGate() + _index)
                       % (int) _image.getWidth();
            
             // XXX could be more efficient rendering fbo

@@ -28,14 +28,14 @@ SrFftPattern::~SrFftPattern()
 }
 
 void
-SrFftPattern::_DrawCurrentStation(std::vector<ofColor> * buffer) const
+SrFftPattern::_DrawCurrentGate(std::vector<ofColor> * buffer) const
 {
     if (not GetEnabled()[0]) {
         return;
     }
     
     const SrModel * model = GetModel();
-    int numLights = model->GetLightsPerStation();
+    int numLights = model->GetLightsPerGate();
     
     std::vector<float> ffts = GetAudio()->GetCurrentFftValues();
     

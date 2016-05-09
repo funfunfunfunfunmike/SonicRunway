@@ -138,8 +138,8 @@ SrPrevis::Draw(float x, float y, float width, float height)
 void
 SrPrevis::_DrawSpheres(float lightRadius, float transparency)
 {
-    int numSpacesBetweenStations = _model->GetNumStations() - 1;
-    float distanceBetweenStations = _model->GetDistanceBetweenStations();
+    int numSpacesBetweenGates = _model->GetNumGates() - 1;
+    float distanceBetweenGates = _model->GetDistanceBetweenGates();
     float circumference = _model->GetArchLength() * 4.0 / 3.0;
     float radius = circumference / (M_PI * 2.0);
     
@@ -147,20 +147,20 @@ SrPrevis::_DrawSpheres(float lightRadius, float transparency)
     
     float groundToCenter = sin(M_PI / 4.0) * radius;
     
-    int lastStationIdx = _model->GetLightsPerStation() - 1;
+    int lastGateIdx = _model->GetLightsPerGate() - 1;
     
-    for(int station = 0; station < _model->GetNumStations(); station++) {
-        for(int light = 0; light < _model->GetLightsPerStation(); light++) {
+    for(int gate = 0; gate < _model->GetNumGates(); gate++) {
+        for(int light = 0; light < _model->GetLightsPerGate(); light++) {
             
-            ofColor c = pixels.getColor(station, light);
+            ofColor c = pixels.getColor(gate, light);
             ofColor drawColor(c[0], c[1], c[2], transparency);
             
             ofSetColor(drawColor);
             
-            float angle = (float) light / lastStationIdx * 3 * M_PI / 2;
+            float angle = (float) light / lastGateIdx * 3 * M_PI / 2;
             angle -= M_PI / 4.0;
             
-            float y = station * distanceBetweenStations;
+            float y = gate * distanceBetweenGates;
             float x = cos(angle) * radius;
             float z = sin(angle) * radius + groundToCenter;
            

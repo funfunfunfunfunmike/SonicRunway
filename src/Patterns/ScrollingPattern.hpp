@@ -16,8 +16,8 @@
 //
 // ScScrollingPattern is an SrPattern that automatically scrolls
 // down the runway at the speed of sound.  Subclasses only need to
-// implement _DrawCurrentStation, and SrScrollingPattern keeps track
-// of the buffer and renders the rest of the stations appropriately.
+// implement _DrawCurrentGate, and SrScrollingPattern keeps track
+// of the buffer and renders the rest of the gates appropriately.
 //
 class SrScrollingPattern : public SrPattern {
 public:
@@ -30,8 +30,8 @@ protected:
     virtual void _Update();
     virtual void _Draw() const;
     
-    // Subclasses implement this to draw the current station.
-    virtual void _DrawCurrentStation(std::vector<ofColor> * buffer) const = 0;
+    // Subclasses implement this to draw the current gate.
+    virtual void _DrawCurrentGate(std::vector<ofColor> * buffer) const = 0;
     
 private:
     int _index;

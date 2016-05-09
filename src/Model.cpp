@@ -13,14 +13,14 @@ SrModel::SrModel() :
     _bufferSize(1024),  // for audio input
     _numChannels(1),
     _buffersPerSecond((float) _sampleRate / _bufferSize),
-    _numStations(33),  // Station 0 exists in software, but not physically..
-    _lightsPerStation(100),
-    _distanceBetweenStations(32.0), // feet
+    _numGates(33),  // Gate 0 exists in software, but not physically..
+    _lightsPerGate(100),
+    _distanceBetweenGates(32.0), // feet
     _speedOfSound(1126.0), // feet per second
     _archLength(31.0),     // feet
-    _framesPerStation(1)
+    _framesPerGate(1)
 {
-    _frameBuffer.allocate(_numStations, _lightsPerStation, GL_RGBA);
+    _frameBuffer.allocate(_numGates, _lightsPerGate, GL_RGBA);
 }
 
 SrModel::~SrModel()
@@ -52,21 +52,21 @@ SrModel::GetBuffersPerSecond() const
 }
 
 int
-SrModel::GetNumStations() const
+SrModel::GetNumGates() const
 {
-    return _numStations;
+    return _numGates;
 }
 
 int
-SrModel::GetLightsPerStation() const
+SrModel::GetLightsPerGate() const
 {
-    return _lightsPerStation;
+    return _lightsPerGate;
 }
 
 float
-SrModel::GetDistanceBetweenStations() const
+SrModel::GetDistanceBetweenGates() const
 {
-    return _distanceBetweenStations;
+    return _distanceBetweenGates;
 }
 
 float
@@ -82,15 +82,15 @@ SrModel::GetArchLength() const
 }
 
 int
-SrModel::GetFramesPerStation() const
+SrModel::GetFramesPerGate() const
 {
-    return _framesPerStation;
+    return _framesPerGate;
 }
 
 int
 SrModel::ComputeFramesPerSecond() const
 {
-    return round((float) _framesPerStation / ComputeDelayPerStation());
+    return round((float) _framesPerGate / ComputeDelayPerGate());
 }
 
 const ofFloatPixels &
@@ -100,15 +100,15 @@ SrModel::GetFloatPixels() const
 }
 
 float
-SrModel::ComputeDelayPerStation() const
+SrModel::ComputeDelayPerGate() const
 {
-    return GetDistanceBetweenStations() / GetSpeedOfSound();
+    return GetDistanceBetweenGates() / GetSpeedOfSound();
 }
 
 float
 SrModel::GetMaxBufferDuration() const
 {
-    return _numStations * 1.5 * ComputeDelayPerStation();
+    return _numGates * 1.5 * ComputeDelayPerGate();
 }
 
 void
@@ -147,7 +147,7 @@ SrModel::RenderFrameBuffer(float x, float y, float width, float height)
     ofDisableSmoothing();
     
     ofTranslate(x, y);
-    //ofScale(width / _numStations, height / _lightsPerStation);
+    //ofScale(width / _numGates, height / _lightsPerGate);
     _frameBuffer.draw(0, 0, width, height);
     
     ofPopMatrix();

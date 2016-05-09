@@ -22,7 +22,7 @@
 // can then query the time since the last event, or get a buffer
 // that contains samples recording the time since the last event
 // occurred.  This allows patterns to query how long it has been
-// since a given event happened, relative to a particular station.
+// since a given event happened, relative to a particular gate.
 //
 class SrEventHistory {
 public:

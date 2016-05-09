@@ -31,7 +31,7 @@ SrExamplePattern::~SrExamplePattern()
 }
 
 void
-SrExamplePattern::_DrawCurrentStation(std::vector<ofColor> * buffer) const
+SrExamplePattern::_DrawCurrentGate(std::vector<ofColor> * buffer) const
 {
     float hue = _hueParam;
     float angle = _angleParam;

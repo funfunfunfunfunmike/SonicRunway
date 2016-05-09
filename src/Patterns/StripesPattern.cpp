@@ -46,11 +46,11 @@ SrStripesPattern::_Update()
 }
 
 void
-SrStripesPattern::_DrawCurrentStation(std::vector<ofColor> * buffer) const
+SrStripesPattern::_DrawCurrentGate(std::vector<ofColor> * buffer) const
 {
     const SrModel * model = GetModel();
     
-    // Extract the values for each parameter for this station
+    // Extract the values for each parameter for this gate
     float enabled = GetEnabled()[0];
     if (not (bool) enabled) {
         return;

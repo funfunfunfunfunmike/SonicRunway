@@ -21,7 +21,7 @@ public:
     virtual ~SrBeatPattern();
     
 protected:
-    virtual void _DrawCurrentStation(std::vector<ofColor> * buffer) const;
+    virtual void _DrawCurrentGate(std::vector<ofColor> * buffer) const;
     
 private:
     ofParameter<float> _hueParam;

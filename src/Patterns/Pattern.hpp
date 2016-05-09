@@ -61,13 +61,13 @@ protected:
     // Draw the pattern.  By the time this is called, the render
     // state will be set to draw to a frame buffer that represents
     // the lights.
-    //   X coordinates are [0, numStations).
-    //   Y coordinates are [0, lightsPerStation).
+    //   X coordinates are [0, numGates).
+    //   Y coordinates are [0, lightsPerGate).
     //
     // Blend mode is OF_BLENDMODE_ADD so the color values will
     // sum together.
     //
-    // Patterns should respect per-station values from the 'Enabled'
+    // Patterns should respect per-gate values from the 'Enabled'
     // buffer, and not draw anything when/where they are disabled.
     virtual void _Draw() const = 0;
     

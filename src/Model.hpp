@@ -29,26 +29,26 @@ public:
     int GetNumChannels() const;
     float GetBuffersPerSecond() const;
     
-    // XXX Station 0 is assumed to be at the sound source, though it
+    // XXX Gate 0 is assumed to be at the sound source, though it
     // probably won't exist in the actual installation.  So this
-    // number may be higher than the number of physical stations by
+    // number may be higher than the number of physical gates by
     // one or two.
-    int GetNumStations() const;
-    int GetLightsPerStation() const;
+    int GetNumGates() const;
+    int GetLightsPerGate() const;
     
-    float GetDistanceBetweenStations() const; // in feet
+    float GetDistanceBetweenGates() const; // in feet
     float GetSpeedOfSound() const; // in feet per second
     float GetArchLength() const;  // in feet
     int ComputeFramesPerSecond() const;
     
     // Get the frame rate relative to the speed of sound across the
-    // stations.  1 frame per station means it takes one update/draw
-    // cycle for sound to travel from one station to the next.
-    int GetFramesPerStation() const;
+    // gates.  1 frame per gate means it takes one update/draw
+    // cycle for sound to travel from one gate to the next.
+    int GetFramesPerGate() const;
     
-    // XXX maybe replace this with DelayAtStation to prevent
-    // assumptions about the distance to the first station??
-    float ComputeDelayPerStation() const; // in seconds
+    // XXX maybe replace this with DelayAtGate to prevent
+    // assumptions about the distance to the first gate??
+    float ComputeDelayPerGate() const; // in seconds
     float GetMaxBufferDuration() const; // in seconds
     
     void Clear();
@@ -64,12 +64,12 @@ private:
     int _numChannels;
     float _buffersPerSecond;
     
-    int _numStations;
-    int _lightsPerStation;
-    float _distanceBetweenStations;
+    int _numGates;
+    int _lightsPerGate;
+    float _distanceBetweenGates;
     float _speedOfSound;
     float _archLength;
-    int _framesPerStation;
+    int _framesPerGate;
     
     ofFbo _frameBuffer;
     ofFloatPixels _floatPixelsCache;

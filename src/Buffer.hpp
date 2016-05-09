@@ -23,7 +23,7 @@
 // Clients promise to Push new elements into the buffer at a specified
 // frequency.  They can then access elements in the buffer by time.
 // For convenience, the buffer is initialized with the SrModel, so
-// it can provide values relative to a given station given the
+// it can provide values relative to a given gate given the
 // delay of the speed of sound.
 //
 // XXX currently only using Float -- maybe the template is overkill?
@@ -49,10 +49,10 @@ public:
     // are interpolated or averaged given the filterWidth.
     T ComputeValue(float age, float filterWidthInSeconds) const;
     
-    // Access the value at the given station index, assuming
+    // Access the value at the given gate index, assuming
     // that the buffer history corresponds to the speed of sound
     // along the runway as specified in the model.
-    T ComputeValueAtStation(size_t stationIdx) const;
+    T ComputeValueAtGate(size_t gateIdx) const;
     
     // Access a specific element in the buffer by index.
     // Index 0 is the most recent element pushed onto the array.
@@ -156,12 +156,12 @@ SrBuffer<T>::ComputeValue(float age, float filterWidthInSeconds) const
 
 template <class T>
 T
-SrBuffer<T>::ComputeValueAtStation(size_t stationIdx) const
+SrBuffer<T>::ComputeValueAtGate(size_t gateIdx) const
 {
-    float delayPerStation = _model->ComputeDelayPerStation();
-    float age = delayPerStation * stationIdx;
+    float delayPerGate = _model->ComputeDelayPerGate();
+    float age = delayPerGate * gateIdx;
     
-    float filterWidthInSeconds = delayPerStation;
+    float filterWidthInSeconds = delayPerGate;
     return ComputeValue(age, filterWidthInSeconds);
 }
 

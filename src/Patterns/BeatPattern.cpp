@@ -27,7 +27,7 @@ SrBeatPattern::~SrBeatPattern()
 }
 
 void
-SrBeatPattern::_DrawCurrentStation(std::vector<ofColor> * buffer) const
+SrBeatPattern::_DrawCurrentGate(std::vector<ofColor> * buffer) const
 {
     float hue = _hueParam;
     
@@ -44,8 +44,8 @@ SrBeatPattern::_DrawCurrentStation(std::vector<ofColor> * buffer) const
         return;
     }
     
-    // Force full onsetAmount if we're less than one full station behind.
-    if (timeSinceBeat < GetModel()->ComputeDelayPerStation()) {
+    // Force full onsetAmount if we're less than one full gate behind.
+    if (timeSinceBeat < GetModel()->ComputeDelayPerGate()) {
         onsetAmount = 1.0;
     }
     

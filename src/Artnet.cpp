@@ -27,7 +27,7 @@ SrArtnet::UpdateLights()
     
     const ofFloatPixels & pixels = _model->GetFloatPixels();
     
-    for (int i=0; i < _model->GetLightsPerStation(); i++) {
+    for (int i=0; i < _model->GetLightsPerGate(); i++) {
         ofFloatColor color = pixels.getColor(0, i);
         
         color.setHsb(color.getHue(), color.getSaturation(),
@@ -38,8 +38,8 @@ SrArtnet::UpdateLights()
     }
     
     /*
-    for(int i=0; i < _model->GetNumStations(); i++) {
-        int y = _model->GetLightsPerStation() / 3.0;
+    for(int i=0; i < _model->GetNumGates(); i++) {
+        int y = _model->GetLightsPerGate() / 3.0;
         ofFloatColor color = pixels.getColor(i, y);
         
         // XXX hacking gamma correction by squaring the
