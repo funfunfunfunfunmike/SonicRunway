@@ -82,6 +82,7 @@ TODO:
 - Experiment with TouchOSC input.
 
 - Replace SrTime concepts with regular floats and ofGetElapsedTime?
+  (maybe doesn't matter anymore, given recent fps refactoring)
 
 - Provide a generic UI widget for graphing a buffer.  Allow patterns
   to publish these values for debugging.
