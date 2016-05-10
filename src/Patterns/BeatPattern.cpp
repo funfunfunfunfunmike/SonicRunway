@@ -34,8 +34,6 @@ SrBeatPattern::_DrawCurrentGate(std::vector<ofColor> * buffer) const
     float timeSinceBeat =
         GetAudio()->GetBeatHistory().GetSecondsSinceLastEvent()[0];
     
-    printf("timeSinceBeat %f\n", timeSinceBeat);
-    
     float onsetDecayTime = 0.25;
     
     float onsetAmount = 1.0 - timeSinceBeat / onsetDecayTime;

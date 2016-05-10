@@ -22,6 +22,7 @@ SrApp::SrApp() :
     _audio(&_model),
     _audioUI(&_audio),
     _artnet(&_model),
+    _osc(),
     _previs(&_model, &_audio),
     _uiColumnWidth(220),
     _uiMargin(10)
@@ -98,6 +99,7 @@ SrApp::AudioOut(float *output, int bufferSize, int nChannels)
 void
 SrApp::Update()
 {
+    _osc.Update();
     for(auto iter = _patterns.begin(); iter != _patterns.end(); iter++) {
         SrPattern *pattern = *iter;
         pattern->Update();
@@ -110,6 +112,8 @@ SrApp::Update()
             + ofToString(ofGetTargetFrameRate(), 2)
             + " / " + ofToString(ofGetFrameRate(), 2);
     ofSetWindowTitle(fpsStr);
+    
+    
 }
 
 void

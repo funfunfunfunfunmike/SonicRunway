@@ -16,6 +16,7 @@
 #include "Model.hpp"
 #include "Artnet.hpp"
 #include "Previs.hpp"
+#include "Osc.hpp"
 
 class SrPattern;
 
@@ -42,6 +43,7 @@ private:
     SrAudioUI _audioUI;
     SrPrevis _previs;
     SrArtnet _artnet;
+    SrOsc _osc;
     
     std::vector<SrPattern *> _patterns;
     ofxPanel _globalPanel;
