@@ -58,6 +58,8 @@ public:
     const ofFloatPixels & GetFloatPixels() const;
     void RenderFrameBuffer(float x, float y, float width, float height);
     
+    ofParameterGroup & GetParameterGroup();
+    
 private:
     int _sampleRate;
     int _bufferSize;
@@ -70,6 +72,7 @@ private:
     float _speedOfSound;
     float _archLength;
     int _framesPerGate;
+    ofParameterGroup _parameterGroup;
     
     ofFbo _frameBuffer;
     ofFloatPixels _floatPixelsCache;

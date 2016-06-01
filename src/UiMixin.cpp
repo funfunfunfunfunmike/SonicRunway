@@ -12,6 +12,7 @@ SrUiMixin::SrUiMixin(const std::string & name)
 {
     _panel = new ofxPanel();
     _panel->setup(name);
+    _parameterGroup.setName(name);
 }
 
 SrUiMixin::~SrUiMixin()
@@ -37,4 +38,10 @@ void
 SrUiMixin::_AddUI(ofxBaseGui * item)
 {
     _panel->add(item);
+}
+
+ofParameterGroup &
+SrUiMixin::GetParameterGroup()
+{
+    return _parameterGroup;
 }

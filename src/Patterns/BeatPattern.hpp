@@ -23,8 +23,16 @@ public:
 protected:
     virtual void _DrawCurrentGate(std::vector<ofColor> * buffer) const;
     
+    virtual void _Update();
+    
 private:
     ofParameter<float> _hueParam;
+    ofParameter<float> _decayTimeParam;
+    ofParameter<float> _spinSpeedParam;
+    ofParameter<float> _hueSpeedParam;
+    
+    float _spinOffset;
+    float _hueOffset;
 };
 
 #endif

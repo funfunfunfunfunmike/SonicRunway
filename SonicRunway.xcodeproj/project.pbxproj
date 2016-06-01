@@ -42,7 +42,6 @@
 		308CEE591C48593A007C124A /* tod.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE521C48593A007C124A /* tod.c */; };
 		308CEE5A1C48593A007C124A /* transmit.c in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE541C48593A007C124A /* transmit.c */; };
 		308CEE5D1C48598D007C124A /* Artnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 308CEE5B1C48598D007C124A /* Artnet.cpp */; };
-		309D04D51CE18FE30037A64B /* Osc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 309D04D31CE18FE30037A64B /* Osc.cpp */; };
 		30AEA5981C4052A80034C794 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 30AEA5971C4052A80034C794 /* README.md */; };
 		30B8DCE91CB589AC00164558 /* Environment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30B8DCE71CB589AC00164558 /* Environment.cpp */; };
 		30B8DCEB1CB58C3A00164558 /* skyTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 30B8DCEA1CB58C3A00164558 /* skyTexture.png */; };
@@ -172,8 +171,6 @@
 		308CEE5C1C48598D007C124A /* Artnet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Artnet.hpp; sourceTree = "<group>"; };
 		308CEE5E1C486171007C124A /* artnet_AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = artnet_AUTHORS; sourceTree = "<group>"; };
 		308CEE5F1C486177007C124A /* artnet_COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = artnet_COPYING; sourceTree = "<group>"; };
-		309D04D31CE18FE30037A64B /* Osc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Osc.cpp; path = Input/Osc.cpp; sourceTree = "<group>"; };
-		309D04D41CE18FE30037A64B /* Osc.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Osc.hpp; path = Input/Osc.hpp; sourceTree = "<group>"; };
 		30AC5FEA1C448C7600B793E9 /* Types.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Types.hpp; sourceTree = "<group>"; };
 		30AEA5971C4052A80034C794 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		30B8DCE71CB589AC00164558 /* Environment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Environment.cpp; path = Previs/Environment.cpp; sourceTree = "<group>"; };
@@ -391,8 +388,6 @@
 				302F35971C972BE2001D5E51 /* BeatHistory.hpp */,
 				302F35991C972DE6001D5E51 /* EventHistory.cpp */,
 				302F359A1C972DE6001D5E51 /* EventHistory.hpp */,
-				309D04D31CE18FE30037A64B /* Osc.cpp */,
-				309D04D41CE18FE30037A64B /* Osc.hpp */,
 			);
 			name = Input;
 			sourceTree = "<group>";
@@ -578,8 +573,8 @@
 				308CEE461C48593A007C124A /* Vendor */,
 				30AEA5971C4052A80034C794 /* README.md */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
-				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
+				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				6948EE371B920CB800B5AC1A /* local_addons */,
@@ -774,7 +769,6 @@
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
 				308CEE5D1C48598D007C124A /* Artnet.cpp in Sources */,
 				308CEE581C48593A007C124A /* receive.c in Sources */,
-				309D04D51CE18FE30037A64B /* Osc.cpp in Sources */,
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
 				30E57E281CE194730031D5AF /* IpEndpointName.cpp in Sources */,
 				3068B2491CB5808E0092949A /* Util.cpp in Sources */,

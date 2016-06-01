@@ -15,7 +15,7 @@ SrFftPattern::SrFftPattern(const std::string & name,
     SrScrollingPattern(name, model, audio),
     _hueShiftParam(0.0)
 {
-    _hueShiftParam.setName("Hue Shift");
+    _hueShiftParam.setName("Hue");
     _hueShiftParam.setMin(0.0);
     _hueShiftParam.setMax(1.0);
     
@@ -48,6 +48,10 @@ SrFftPattern::_DrawCurrentGate(std::vector<ofColor> * buffer) const
     
     for(int i = 0; i < numLights; i++) {
         float t = (float) i / numLights;
+        
+        // Reduce t since we're mirroring below..
+        t *= 0.7;
+        
         int band = t * ffts.size() - 1;
         if (band >= ffts.size()) {
             band = ffts.size() - 1;
@@ -57,7 +61,7 @@ SrFftPattern::_DrawCurrentGate(std::vector<ofColor> * buffer) const
        
         ofFloatColor c;
         float baseColor = 0.15 + hueShift;
-        float hue = baseColor - 0.6 * (1.0 - fftValue);
+        float hue = baseColor - 0.4 * (1.0 - fftValue);
         if (hue < 0.0) {
             hue += 1.0;
         }
@@ -65,6 +69,9 @@ SrFftPattern::_DrawCurrentGate(std::vector<ofColor> * buffer) const
         hue = fmod(hue, 1.0);
         c.setHsb(hue, 1.0, fftValue * 2.0);
         
-        (*buffer)[i] = c;
+        (*buffer)[i] += c;
+        
+        // mirror image
+        (*buffer)[numLights - 1 - i] += c;
     }
 }

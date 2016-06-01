@@ -21,12 +21,12 @@ SrStripesPattern::SrStripesPattern(const std::string & name,
     _hueParam.setMax(1.0);
     _AddUIParameter(_hueParam);
     
-    _numStripesParam.setName("Num Stripes");
+    _numStripesParam.setName("NumStripes");
     _numStripesParam.setMin(0);
     _numStripesParam.setMax(60);
     _AddUIParameter(_numStripesParam);
     
-    _spinSpeedParam.setName("Spin Speed");
+    _spinSpeedParam.setName("SpinSpeed");
     _spinSpeedParam.setMin(-2000.0);
     _spinSpeedParam.setMax(2000.0);
     _AddUIParameter(_spinSpeedParam);

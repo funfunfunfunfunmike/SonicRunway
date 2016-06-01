@@ -22,7 +22,6 @@ SrApp::SrApp() :
     _audio(&_model),
     _audioUI(&_audio),
     _artnet(&_model),
-    _osc(),
     _previs(&_model, &_audio),
     _uiColumnWidth(220),
     _uiMargin(10)
@@ -47,22 +46,24 @@ SrApp::SrApp() :
     _globalPanel.add(_audioUI.GetUiPanel());
     
     SrExamplePattern *examplePattern =
-        new SrExamplePattern("Example Pattern", &_model, &_audio);
+        new SrExamplePattern("Example", &_model, &_audio);
     _AddPattern(examplePattern);
     examplePattern->SetEnabled(false);
     
     SrBeatPattern * beatPattern =
-        new SrBeatPattern("Beat Pattern", &_model, &_audio);
+        new SrBeatPattern("Beat", &_model, &_audio);
     _AddPattern(beatPattern);
     
     SrFftPattern *fftPattern =
-        new SrFftPattern("Fft Pattern", &_model, &_audio);
+        new SrFftPattern("Fft", &_model, &_audio);
     _AddPattern(fftPattern);
     
     SrStripesPattern *stripesPattern =
-        new SrStripesPattern("Stripes Pattern", &_model, &_audio);
+        new SrStripesPattern("Stripes", &_model, &_audio);
     _AddPattern(stripesPattern);
     stripesPattern->SetEnabled(false);
+    
+    _oscParameterSync.setup(_model.GetParameterGroup(), 8000, "", 9000);
 }
 
 SrApp::~SrApp()
@@ -82,6 +83,7 @@ SrApp::_AddPattern(SrPattern * pattern)
 {
     _patterns.push_back(pattern);
     _patternPanel.add(pattern->GetUiPanel());
+    _model.GetParameterGroup().add(pattern->GetParameterGroup());
 }
 
 void
@@ -99,7 +101,8 @@ SrApp::AudioOut(float *output, int bufferSize, int nChannels)
 void
 SrApp::Update()
 {
-    _osc.Update();
+    _oscParameterSync.update();
+    
     for(auto iter = _patterns.begin(); iter != _patterns.end(); iter++) {
         SrPattern *pattern = *iter;
         pattern->Update();

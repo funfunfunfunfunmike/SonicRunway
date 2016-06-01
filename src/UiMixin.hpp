@@ -24,6 +24,7 @@ public:
     
     void SetUIPosition(float x, float y);
     ofxPanel * GetUiPanel() const;
+    ofParameterGroup & GetParameterGroup();
     
 protected:
     // Subclasses call this from their constructor to
@@ -33,10 +34,12 @@ protected:
     template<typename T>
     void _AddUIParameter(ofParameter<T> & parameter) {
         _panel->add(parameter);
+        _parameterGroup.add(parameter);
     }
     
 private:
     ofxPanel * _panel;
+    ofParameterGroup _parameterGroup;
 };
 
 #endif

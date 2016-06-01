@@ -20,6 +20,7 @@ SrModel::SrModel() :
     _archLength(31.0),     // feet
     _framesPerGate(1)
 {
+    _parameterGroup.setName("Runway");
     _frameBuffer.allocate(_numGates, _lightsPerGate, GL_RGBA);
 }
 
@@ -152,4 +153,10 @@ SrModel::RenderFrameBuffer(float x, float y, float width, float height)
     
     ofPopMatrix();
     ofPopStyle();
+}
+
+ofParameterGroup &
+SrModel::GetParameterGroup()
+{
+    return _parameterGroup;
 }
