@@ -16,10 +16,16 @@
 
 SrAudioUI::SrAudioUI(SrAudio * audio) :
     SrUiMixin("Audio"),
-    _audio(audio)
+    _audio(audio),
+    _playDelayedAudioParam(false)
 {
     _audio = audio;
     
+    _playDelayedAudioParam.setName("Play Delayed Audio");
+    _playDelayedAudioParam.addListener(this,
+                                       &This::_OnPlayDelayedAudioButtonPressed);
+    _AddUIParameter(_playDelayedAudioParam);
+   
     _beatGui.setup("Beat");
     _beatGui.add(_bpmSlider.setup("bpm", 0, 0, 250));
     _AddUI(&_beatGui);
@@ -66,6 +72,12 @@ SrAudioUI::Update()
     _bpmSlider = _audio->GetBeatHistory().GetBpm()[0];
     
     // XXX should set onset threshold here from slider..
+}
+
+void
+SrAudioUI::_OnPlayDelayedAudioButtonPressed(bool &on)
+{
+    _audio -> SetOutputAudioDelayed(on);
 }
 
 /*

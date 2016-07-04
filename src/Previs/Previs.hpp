@@ -33,23 +33,30 @@ public:
     void AudioOut(float * output, int bufferSize, int nChannels) const;
     
 private:
-    void _DrawSpheres(float radius, float transparency);
+    
+    void _SetupLights();
+    void _DrawLights();
     void _ReadAnimatedCameraData(std::string fileName);
-    void _OnStartAnimatedCameraButtonPressed(const void * sender);
+    void _OnStartAnimatedCameraButtonPressed(bool &on);
     
 private:
     SrModel *_model;
     SrAudio *_audio;
-    float _lightRadius;
+    ofMesh _lightsMesh;
+    
+    ofShader _lightShader;
+    ofImage _textureForShader;
+    ofImage _dotLight;
+    
     ofParameter<bool>_reverseAngleParam;
+    ofParameter<bool>_geomShaderDrawing;
     int _animatedCameraIndex;
     
     std::vector<ofVec3f> _animatedCameraPositions;
     std::vector<ofVec3f> _animatedCameraLookAts;
     
-    ofxButton _startAnimatedCameraButton;
+    ofParameter<bool> _startAnimatedCameraButton;
     
-    //ofEasyCam _camera;
     ofCamera _camera;
     SrEnvironment _environment;
     

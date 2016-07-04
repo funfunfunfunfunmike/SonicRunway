@@ -21,6 +21,7 @@ class SrAudio;
 // SrAudioUI - Draw some sliders showing audio algorithm settings
 //
 class SrAudioUI : public SrUiMixin {
+        typedef SrAudioUI This;
 public:
     SrAudioUI(SrAudio * audio);
     ~SrAudioUI();
@@ -28,13 +29,19 @@ public:
     void Update();
     
 private:
+    void _OnPlayDelayedAudioButtonPressed(bool &on);
+
+private:
     
     SrAudio *_audio;
     
     ofxPanel _beatGui;
+    
+    ofParameter<bool> _playDelayedAudioParam;
     ofxFloatSlider _bpmSlider;
     
     ofxPanel _onsetGui;
+    
     ofxFloatSlider _gotOnsetSlider;
     ofxFloatSlider _onsetThresholdSlider;
     ofxFloatSlider _onsetNoveltySlider;

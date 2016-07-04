@@ -46,6 +46,8 @@ public:
     void AudioOutDelayed(float * output, int bufferSize, int nChannels,
                          float delayInSeconds) const;
     
+    void SetOutputAudioDelayed(bool sendAudioOut);
+    
     typedef vector<vector<float> > AudioVecBuffer;
     const AudioVecBuffer & GetFullAudioBuffer(float delayInSeconds) const;
     
@@ -61,6 +63,8 @@ private:
     AudioVecBuffer _fullAudioBuffer;
     
     essentia::standard::Algorithm *_bandPass;
+    
+    bool _outputDelayed;
     
     ofxAubioMelBands _bands;
     

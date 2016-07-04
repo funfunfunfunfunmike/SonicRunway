@@ -67,6 +67,10 @@
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
 		5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C88333E71C9457E441C33474 /* ofxButton.cpp */; };
 		67383740F5CC47ED5F955A76 /* ofxAubioMelBands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 776A1553D592FD9AA388C543 /* ofxAubioMelBands.cpp */; };
+		7AD999491D29E652002BD0F3 /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD999481D29E652002BD0F3 /* light.png */; };
+		7AD9994E1D2A118F002BD0F3 /* shaderFrag.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9994B1D2A118F002BD0F3 /* shaderFrag.glsl */; };
+		7AD9994F1D2A118F002BD0F3 /* shaderGeom.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9994C1D2A118F002BD0F3 /* shaderGeom.glsl */; };
+		7AD999501D2A118F002BD0F3 /* shaderVert.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 7AD9994D1D2A118F002BD0F3 /* shaderVert.glsl */; };
 		837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15F2C6477A769C03A56D1401 /* ofxSlider.cpp */; };
 		856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9604B925D32EE39065747725 /* ofxBaseGui.cpp */; };
 		9C7B8B4D99CDFC508E76CC3A /* ofxAubioOnset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A90A4B17BBB4CB627CA22C4 /* ofxAubioOnset.cpp */; };
@@ -227,6 +231,10 @@
 		737C0C27DB7B0C9484DCEBAE /* ofxAubioBlock.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxAubioBlock.cpp; path = ../../../addons/ofxAubio/src/ofxAubioBlock.cpp; sourceTree = SOURCE_ROOT; };
 		776A1553D592FD9AA388C543 /* ofxAubioMelBands.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxAubioMelBands.cpp; path = ../../../addons/ofxAubio/src/ofxAubioMelBands.cpp; sourceTree = SOURCE_ROOT; };
 		78D67A00EB899FAC09430597 /* ofxLabel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLabel.cpp; path = ../../../addons/ofxGui/src/ofxLabel.cpp; sourceTree = SOURCE_ROOT; };
+		7AD999481D29E652002BD0F3 /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = light.png; path = Resources/light.png; sourceTree = "<group>"; };
+		7AD9994B1D2A118F002BD0F3 /* shaderFrag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shaderFrag.glsl; path = Resources/shaderFrag.glsl; sourceTree = "<group>"; };
+		7AD9994C1D2A118F002BD0F3 /* shaderGeom.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shaderGeom.glsl; path = Resources/shaderGeom.glsl; sourceTree = "<group>"; };
+		7AD9994D1D2A118F002BD0F3 /* shaderVert.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shaderVert.glsl; path = Resources/shaderVert.glsl; sourceTree = "<group>"; };
 		802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSliderGroup.cpp; path = ../../../addons/ofxGui/src/ofxSliderGroup.cpp; sourceTree = SOURCE_ROOT; };
 		87F26B4B24CBD428AD9EEBAA /* ofxBaseGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBaseGui.h; path = ../../../addons/ofxGui/src/ofxBaseGui.h; sourceTree = SOURCE_ROOT; };
 		89449E3044D456F7DE7BEA14 /* ofxPanel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPanel.h; path = ../../../addons/ofxGui/src/ofxPanel.h; sourceTree = SOURCE_ROOT; };
@@ -297,6 +305,10 @@
 		3068B2411CB576550092949A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7AD9994B1D2A118F002BD0F3 /* shaderFrag.glsl */,
+				7AD9994C1D2A118F002BD0F3 /* shaderGeom.glsl */,
+				7AD9994D1D2A118F002BD0F3 /* shaderVert.glsl */,
+				7AD999481D29E652002BD0F3 /* light.png */,
 				3068B2421CB576BF0092949A /* previsCameraData.txt */,
 				30B8DCEA1CB58C3A00164558 /* skyTexture.png */,
 				300802101CB723AD0031DAF2 /* burner1.png */,
@@ -646,7 +658,7 @@
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "SonicRunway" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -689,10 +701,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AD9994E1D2A118F002BD0F3 /* shaderFrag.glsl in Resources */,
 				3068B2461CB579B30092949A /* previsCameraData.txt in Resources */,
 				30B8DCEB1CB58C3A00164558 /* skyTexture.png in Resources */,
 				300802131CB723AD0031DAF2 /* burner2.png in Resources */,
+				7AD999491D29E652002BD0F3 /* light.png in Resources */,
+				7AD9994F1D2A118F002BD0F3 /* shaderGeom.glsl in Resources */,
 				300802121CB723AD0031DAF2 /* burner1.png in Resources */,
+				7AD999501D2A118F002BD0F3 /* shaderVert.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +809,7 @@
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
@@ -891,6 +908,7 @@
 					/usr/local/lib,
 					/usr/local/Cellar/aubio/0.4.2/lib,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = cc.openFrameworks.ofapp;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -931,6 +949,7 @@
 					/usr/local/lib,
 					/usr/local/Cellar/aubio/0.4.2/lib,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = cc.openFrameworks.ofapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;

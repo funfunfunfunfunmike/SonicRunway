@@ -22,6 +22,7 @@ SrAudio::SrAudio(SrModel * model) :
     _model(model),
     _lowOnsetHistory(model),
     _beatHistory(model),
+    _outputDelayed(false),
     _fullAudioBufferIndex(0)
 {
     // Allocate one float buffer for each FFT band
@@ -143,9 +144,20 @@ SrAudio::AudioOut(float *output, int bufferSize, int nChannels) const
  */
 
 void
+SrAudio::SetOutputAudioDelayed(bool sendAudioOut)
+{
+    _outputDelayed = sendAudioOut;
+}
+
+void
 SrAudio::AudioOutDelayed(float * output, int bufferSize, int nChannels,
                          float delayInSeconds) const
 {
+    
+    if ( ! _outputDelayed ){
+        return;
+    }
+    
     int bufferOffset = delayInSeconds * _model->GetBuffersPerSecond();
     int thisIndex = _fullAudioBufferIndex + bufferOffset;
     thisIndex %= _fullAudioBuffer.size();

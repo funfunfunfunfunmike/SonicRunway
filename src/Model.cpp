@@ -14,7 +14,7 @@ SrModel::SrModel() :
     _numChannels(1),
     _buffersPerSecond((float) _sampleRate / _bufferSize),
     _numGates(33),  // Gate 0 exists in software, but not physically..
-    _lightsPerGate(100),
+    _lightsPerGate(277),
     _distanceBetweenGates(32.0), // feet
     _speedOfSound(1126.0), // feet per second
     _archLength(31.0),     // feet
